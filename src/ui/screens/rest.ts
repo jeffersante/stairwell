@@ -7,6 +7,8 @@ import { renderCatPanel } from '../components/cat-panel';
 import { renderAnnouncer } from '../components/announcer';
 import { announcerRest } from '../../data/announcer-lines';
 import { catMoodLines } from '../../data/cat-dialogue';
+import { audio } from '../../engine/audio';
+import { triggerViewerChat } from '../components/viewer-chat';
 import type { GamePhase, RestRoom } from '../../types';
 
 export function renderRestScreen(container: HTMLElement, onTransition: (next: GamePhase) => void): void {
@@ -40,8 +42,11 @@ export function renderRestScreen(container: HTMLElement, onTransition: (next: Ga
   // Actions
   const actions = el('div', 'rest-options');
 
+  triggerViewerChat('rest');
+
   const restBtn = el('button', 'btn btn-action btn-action-primary', `Rest (+${rest.healAmount} HP)`);
   restBtn.addEventListener('click', () => {
+    audio.playHeal(rest.healAmount);
     modifyRun(s => {
       s.hp = clamp(s.hp + rest.healAmount, 0, s.maxHp);
       s.cat = updateBond(s.cat, rest.catBondGain);
@@ -57,6 +62,8 @@ export function renderRestScreen(container: HTMLElement, onTransition: (next: Ga
 
   const petBtn = el('button', 'btn btn-action', `Pet ${state.cat.name}`);
   petBtn.addEventListener('click', () => {
+    audio.playCatPurr();
+    triggerViewerChat('cat_bond');
     modifyRun(s => {
       s.cat = updateBond(s.cat, 10);
       const result = catGainXp(s.cat, 5);

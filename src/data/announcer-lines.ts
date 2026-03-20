@@ -567,3 +567,121 @@ export const announcerViewerMilestone: string[] = [
   "We've hit the big number! THE number! You know the one! The one where good things happen! TO US! To you? TBD!",
   "VIEWER MILESTONE! The audience grows! Your chances don't! But the AUDIENCE! Incredible!",
 ];
+
+// ══════════════════════════════════════════════════════════════
+//  DICE ROLL REACTIONS
+// ══════════════════════════════════════════════════════════════
+
+export const announcerCriticalHit: string[] = [
+  "NATURAL TWENTY! The dice gods SMILE upon you! Briefly! SAVOR IT!",
+  "CRIT! CRITICAL HIT! The damage numbers are BEAUTIFUL!",
+  "NAT 20 BABY! Even the BUILDING flinched! Did you see that?!",
+  "THE DICE HAVE SPOKEN and they said DESTRUCTION!",
+  "Critical hit! The viewers just lost their MINDS! The chat is PURE CAPSLOCK!",
+  "TWENTY! A NATURAL TWENTY! I'm framing this die roll! It's going on the WALL!",
+  "Maximum damage ACHIEVED! The enemy is rethinking its LIFE CHOICES!",
+  "CRIT! The dice rolled a 20 and even THEY seem surprised!",
+  "Natural 20! Statistically improbable! Dramatically PERFECT!",
+  "THE BIG TWO-OH! This is what we're ALL here for! PEAK CONTENT!",
+];
+
+export const announcerFumble: string[] = [
+  "NATURAL ONE! Oh no! OH NO! The dice have BETRAYED you!",
+  "Fumble! You fumbled! The dice literally could not have gone WORSE!",
+  "NAT 1! Even the ENEMY looks embarrassed for you!",
+  "A one! A ONE! The worst possible outcome! The chat is HOWLING!",
+  "Critical failure! Your weapon questions its life choices! YOUR life choices!",
+  "FUMBLE! The dice just filed a restraining order against your HAND!",
+  "Natural 1! The mathematical floor! The basement of outcomes! You LIVE here now!",
+  "One! UNO! SINGULAR! The loneliest number AND the deadliest!",
+  "Fumbled! The cat just face-palmed! Cats don't HAVE palms but it FOUND a way!",
+  "NAT 1! Somewhere, a statistics professor just used you as a CAUTIONARY EXAMPLE!",
+];
+
+// ══════════════════════════════════════════════════════════════
+//  SPELL CASTING REACTIONS
+// ══════════════════════════════════════════════════════════════
+
+export const announcerSpellCast: string[] = [
+  "BUILDING CODE VIOLATION! The contestant is wielding BUREAUCRATIC MAGIC!",
+  "A spell! A SPELL! The building's own regulations turned against it!",
+  "Compliance Points spent! Regulatory magic DEPLOYED! This is UNPRECEDENTED!",
+  "MAGIC! Or as we call it here, 'aggressive regulatory enforcement!'",
+  "The contestant casts a Building Code! The building is NOT happy about this!",
+  "Spell cast! The mana flows! The damage follows! CAUSE AND EFFECT!",
+  "A code violation has been ISSUED! The target is in NON-COMPLIANCE! With BEING ALIVE!",
+  "Magical attack! The viewers love spell effects! More sparkles means MORE VIEWERS!",
+  "Building Code activated! The building's own rules used as WEAPONS! IRONIC!",
+  "SPELLCASTING! The ancient art of reading the fine print and THROWING IT!",
+];
+
+// ══════════════════════════════════════════════════════════════
+//  CLASS-SPECIFIC REACTIONS
+// ══════════════════════════════════════════════════════════════
+
+export const announcerClassAbility: string[] = [
+  "CLASS ABILITY ACTIVATED! This is what happens when you SPECIALIZE!",
+  "Signature move! The class fantasy is REAL and it is VIOLENT!",
+  "There it is! The class ability! The thing that makes this build UNIQUE!",
+  "SPECIAL ATTACK! You can't buy this kind of specialization! Well, you CAN, but not HERE!",
+  "Class power ENGAGED! This is why you picked this job! THE VIOLENCE!",
+  "Ability triggered! Years of training! Months of experience! SECONDS of cooldown!",
+  "SIGNATURE ABILITY! The viewers knew it was coming! They STILL cheered!",
+  "Class technique deployed! Textbook execution! Of both the technique AND the enemy!",
+  "That's the class ability! That's THE THING! The reason we're ALL here!",
+  "Special move! Every class has one! Some are better! THIS one is... well, you'll SEE!",
+];
+
+// ══════════════════════════════════════════════════════════════
+//  FLOOR THEME TRANSITIONS
+// ══════════════════════════════════════════════════════════════
+
+export const announcerLobbyFloor: string[] = [
+  "THE LOBBY! Where dreams of escape begin and immediately stall at the front desk!",
+  "Welcome to the Lobby floors! Corporate mundanity at its most LETHAL!",
+  "Lobby territory! Everything is beige! The enemies! The carpet! Your CHANCES!",
+  "The Lobby! Where the building pretends to be NORMAL! It is NOT normal!",
+  "Ground floor vibes! Office supplies, disgruntled workers, and the faint smell of BETRAYAL!",
+];
+
+export const announcerOfficeFloor: string[] = [
+  "THE OFFICES! Cubicle mazes and fluorescent NIGHTMARES! Welcome to CORPORATE HELL!",
+  "Office floors! Where performance reviews are LITERALLY deadly!",
+  "Welcome to the cubicle farm! The crops here are PAIN and PAPERWORK!",
+  "The Offices! Someone microwaved fish and the building NEVER forgave humanity!",
+  "Office territory! Open floor plans were a mistake! An AGGRESSIVE mistake!",
+];
+
+export const announcerExecutiveFloor: string[] = [
+  "THE EXECUTIVE SUITE! Gold everything! Danger EVERYWHERE! The view is DYING for!",
+  "Executive floors! Where the REAL monsters wear TIES!",
+  "Welcome to the top! Mahogany, power plays, and enemies with DENTAL PLANS!",
+  "The Executive Suite! More gold than sense! More danger than BOTH!",
+  "Executive territory! The air smells of expensive cologne and EXISTENTIAL THREATS!",
+];
+
+export const announcerMaintenanceFloor: string[] = [
+  "MAINTENANCE FLOORS! Dark! Dangerous! The building's GUTS exposed!",
+  "Welcome to Maintenance! OSHA has never been here! OSHA will NEVER be here!",
+  "The Maintenance levels! Exposed pipes, broken lights, and things that go CLANK in the dark!",
+  "Maintenance territory! The building stops being polite and starts being INDUSTRIAL!",
+  "Down in the guts of the building! Steam! Darkness! The smell of copper and REGRET!",
+];
+
+export const announcerArchivesFloor: string[] = [
+  "THE ARCHIVES! Where time goes to DIE and filing cabinets go to INFINITY!",
+  "Welcome to the Archives! Reality is a SUGGESTION here! A very weak suggestion!",
+  "Archive floors! The Dewey Decimal System has been replaced with MADNESS!",
+  "The Archives! Time moves differently here! Sometimes BACKWARD! Sometimes SIDEWAYS!",
+  "Archive territory! Every book contains a truth! Every truth contains a THREAT!",
+];
+
+export const announcerBasementFloor: string[] = [
+  "THE BASEMENT OF BASEMENTS! The building's TRUE FACE! Obsidian and BLOOD GOLD!",
+  "Welcome to the bottom! Or the top! Or the BEGINNING! Geography is MEANINGLESS here!",
+  "The Basement! Aztec architecture meets corporate horror! It's worse than it SOUNDS!",
+  "Final floors! Obsidian! Jade! Things that predate human MEMORY!",
+  "The Basement of Basements! The building stops pretending! IT WAS NEVER AN OFFICE!",
+  "Down here, the carpet is obsidian and the muzak is SCREAMING! Welcome to the TRUTH!",
+  "The deepest floors! Where gold is paid in BLOOD and blood is worth more than GOLD!",
+];

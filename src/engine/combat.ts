@@ -1,5 +1,7 @@
-import type { CombatState, Enemy, RunState, ItemAction, StatusEffect, EnemyAction } from '../types';
+import type { CombatState, Enemy, RunState, ItemAction, StatusEffect, EnemyAction, DiceRoll, ClassAbility } from '../types';
 import { clamp } from '../utils';
+import { rollAttack, rollDamage, rollDice, rollSave, getStatModifier } from './dice';
+import { getClassById } from '../data/classes';
 
 export function initCombat(enemy: Enemy): CombatState {
   return {
@@ -21,6 +23,11 @@ export interface CombatActionResult {
   effects: { effect: StatusEffect; turns: number }[];
   logEntries: string[];
   viewerChange: number;
+  attackRoll?: DiceRoll;
+  damageRoll?: DiceRoll;
+  hit?: boolean;
+  critical?: boolean;
+  fumble?: boolean;
 }
 
 export function getAvailableActions(runState: RunState): { source: string; action: ItemAction }[] {
@@ -58,35 +65,92 @@ export function getAvailableActions(runState: RunState): { source: string; actio
     }
   }
 
+  // Class signature ability + unlocked tree abilities
+  const playerClass = getClassById(runState.playerClass);
+  if (playerClass) {
+    const sigCd = runState.classAbilityCooldowns[playerClass.signatureAbility.name] ?? 0;
+    if (sigCd <= 0) {
+      actions.push({
+        source: playerClass.name,
+        action: classAbilityToItemAction(playerClass.signatureAbility),
+      });
+    }
+
+    for (const ability of playerClass.abilityTree) {
+      if (runState.playerLevel >= ability.levelRequired) {
+        const cd = runState.classAbilityCooldowns[ability.name] ?? 0;
+        if (cd <= 0) {
+          actions.push({
+            source: playerClass.name,
+            action: classAbilityToItemAction(ability),
+          });
+        }
+      }
+    }
+  }
+
   // Always have a basic attack
   if (actions.length === 0) {
     actions.push({
       source: 'Fists',
-      action: { name: 'Punch', damage: 3, description: 'A desperate swing.' },
+      action: { name: 'Punch', damage: 3, damageDice: '1d4', hitBonus: 0, description: 'A desperate swing.' },
     });
   }
 
   return actions;
 }
 
+function classAbilityToItemAction(ability: ClassAbility): ItemAction {
+  const action: ItemAction = {
+    name: ability.name,
+    description: ability.description,
+  };
+
+  switch (ability.effect.type) {
+    case 'damage':
+      action.damageDice = ability.effect.dice;
+      break;
+    case 'aoe_damage':
+      action.damageDice = ability.effect.dice;
+      break;
+    case 'heal':
+      action.healing = ability.effect.amount;
+      break;
+    case 'stun':
+      action.statusEffect = 'stun';
+      action.statusDuration = ability.effect.duration;
+      break;
+    case 'debuff_enemy':
+      action.statusEffect = ability.effect.effect;
+      action.statusDuration = ability.effect.duration;
+      break;
+    case 'buff':
+      action.shield = ability.effect.amount;
+      break;
+    case 'viewer_boost':
+      action.viewerBoost = ability.effect.amount;
+      break;
+  }
+
+  return action;
+}
+
 export function resolvePlayerAction(
   action: ItemAction,
   combat: CombatState,
-  _runState: RunState
+  runState: RunState
 ): CombatActionResult {
   const logEntries: string[] = [];
-  let damage = action.damage ?? 0;
-  const healing = action.healing ?? 0;
+  let damage = 0;
+  let healing = action.healing ?? 0;
   const shield = action.shield ?? 0;
   const effects: { effect: StatusEffect; turns: number }[] = [];
   let viewerChange = 0;
-
-  // Check if player is cursed (-25% damage)
-  const isCursed = combat.playerStatuses.some(s => s.effect === 'cursed');
-  if (isCursed && damage > 0) {
-    damage = Math.round(damage * 0.75);
-    logEntries.push('Curse weakens your attack!');
-  }
+  let attackRoll: DiceRoll | undefined;
+  let damageRoll: DiceRoll | undefined;
+  let hit: boolean | undefined;
+  let critical = false;
+  let fumble = false;
 
   // Check if player is stunned
   const isStunned = combat.playerStatuses.some(s => s.effect === 'stun');
@@ -95,9 +159,74 @@ export function resolvePlayerAction(
     return { damage: 0, healing: 0, shield: 0, effects: [], logEntries, viewerChange: -5 };
   }
 
-  if (damage > 0) {
-    logEntries.push(`${action.name} deals ${damage} damage!`);
+  const hasDamageDice = action.damageDice !== undefined;
+  const hasFlatDamage = action.damage !== undefined && action.damage > 0;
+
+  if (hasDamageDice || hasFlatDamage) {
+    // Determine hit bonus from action or STR/DEX modifier
+    const statMod = getStatModifier(
+      Math.max(runState.playerStats.str, runState.playerStats.dex)
+    );
+    const hitBonus = (action.hitBonus ?? 0) + statMod;
+    const targetAC = combat.enemy.armorClass;
+
+    // Roll to hit
+    const attackResult = rollAttack(hitBonus, targetAC, runState.rng);
+    attackRoll = attackResult.roll;
+    hit = attackResult.hit;
+    critical = attackResult.critical;
+    fumble = attackResult.fumble;
+
+    if (fumble) {
+      logEntries.push(`${action.name}: Natural 1! Fumble!`);
+      // Fumble consequences
+      const fumbleRoll = Math.floor(runState.rng() * 3);
+      switch (fumbleRoll) {
+        case 0:
+          logEntries.push('You stumble and lose your footing!');
+          break;
+        case 1:
+          logEntries.push('Your weapon slips! Embarrassing.');
+          break;
+        case 2:
+          logEntries.push('You hit yourself for 2 damage!');
+          damage = -2; // negative = self damage, handled by caller
+          break;
+      }
+      viewerChange += 10; // fumbles are entertaining
+      return { damage: 0, healing: 0, shield: 0, effects: [], logEntries, viewerChange, attackRoll, hit: false, critical: false, fumble: true };
+    }
+
+    if (!hit) {
+      logEntries.push(`${action.name}: Rolled ${attackRoll.results[0]}+${hitBonus}=${attackRoll.results[0] + hitBonus} vs AC ${targetAC} — Miss!`);
+      viewerChange -= 2;
+      return { damage: 0, healing: 0, shield: 0, effects: [], logEntries, viewerChange, attackRoll, hit: false, critical: false, fumble: false };
+    }
+
+    // Hit! Roll damage
+    if (hasDamageDice) {
+      damageRoll = rollDamage(action.damageDice!, runState.rng, critical);
+      damage = damageRoll.total;
+    } else {
+      damage = action.damage!;
+      if (critical) damage *= 2;
+    }
+
+    // Check if player is cursed (-25% damage)
+    const isCursed = combat.playerStatuses.some(s => s.effect === 'cursed');
+    if (isCursed && damage > 0) {
+      damage = Math.round(damage * 0.75);
+      logEntries.push('Curse weakens your attack!');
+    }
+
+    if (critical) {
+      logEntries.push(`${action.name}: CRITICAL HIT! Rolled natural 20!`);
+      viewerChange += 20;
+    } else {
+      logEntries.push(`${action.name}: Hit! (${attackRoll.results[0]}+${hitBonus} vs AC ${targetAC}) for ${damage} damage!`);
+    }
   }
+
   if (healing > 0) {
     logEntries.push(`${action.name} heals for ${healing}!`);
   }
@@ -106,21 +235,35 @@ export function resolvePlayerAction(
   }
 
   if (action.statusEffect && action.statusDuration) {
-    effects.push({ effect: action.statusEffect, turns: action.statusDuration });
-    logEntries.push(`Applied ${action.statusEffect} for ${action.statusDuration} turns!`);
+    // Status effects may require a save
+    const saveStat = getStatusSaveStat(action.statusEffect);
+    if (saveStat) {
+      const enemyStatValue = 10; // enemies use base 10 for saves
+      const dc = 10 + getStatModifier(runState.playerStats.cha);
+      const save = rollSave(enemyStatValue, dc, runState.rng);
+      if (save.success) {
+        logEntries.push(`${combat.enemy.name} resists ${action.statusEffect}!`);
+      } else {
+        effects.push({ effect: action.statusEffect, turns: action.statusDuration });
+        logEntries.push(`Applied ${action.statusEffect} for ${action.statusDuration} turns!`);
+      }
+    } else {
+      effects.push({ effect: action.statusEffect, turns: action.statusDuration });
+      logEntries.push(`Applied ${action.statusEffect} for ${action.statusDuration} turns!`);
+    }
   }
 
   if (action.viewerBoost) {
     viewerChange += action.viewerBoost;
   }
 
-  return { damage, healing, shield, effects, logEntries, viewerChange };
+  return { damage, healing, shield, effects, logEntries, viewerChange, attackRoll, damageRoll, hit, critical, fumble };
 }
 
 export function resolveEnemyTurn(
   combat: CombatState,
-  _runState: RunState
-): { damage: number; effects: { effect: StatusEffect; turns: number }[]; logEntries: string[] } {
+  runState: RunState
+): { damage: number; effects: { effect: StatusEffect; turns: number }[]; logEntries: string[]; attackRoll?: DiceRoll } {
   const logEntries: string[] = [];
   const effects: { effect: StatusEffect; turns: number }[] = [];
 
@@ -132,22 +275,67 @@ export function resolveEnemyTurn(
   }
 
   const action = combat.enemyNextAction;
+
+  // Enemy rolls to hit vs player AC
+  const enemyHitBonus = Math.floor(combat.enemy.armorClass / 3); // derive hit bonus from AC
+  const attackResult = rollAttack(enemyHitBonus, runState.armorClass, runState.rng);
+
+  if (attackResult.fumble) {
+    logEntries.push(`${combat.enemy.name} fumbles their ${action.name}!`);
+    return { damage: 0, effects: [], logEntries, attackRoll: attackResult.roll };
+  }
+
+  if (!attackResult.hit) {
+    logEntries.push(`${combat.enemy.name} uses ${action.name} — misses! (${attackResult.roll.results[0]}+${enemyHitBonus} vs AC ${runState.armorClass})`);
+    return { damage: 0, effects: [], logEntries, attackRoll: attackResult.roll };
+  }
+
   let damage = action.damage;
 
-  // Check enemy cursed debuff
-  const isCursed = combat.enemyStatuses.some(s => s.effect === 'cursed');
-  if (isCursed) {
-    damage = Math.round(damage * 0.75);
+  // Critical hit
+  if (attackResult.critical) {
+    damage *= 2;
+    logEntries.push(`${combat.enemy.name} scores a CRITICAL HIT with ${action.name} for ${damage} damage!`);
+  } else {
+    // Check enemy cursed debuff
+    const isCursed = combat.enemyStatuses.some(s => s.effect === 'cursed');
+    if (isCursed) {
+      damage = Math.round(damage * 0.75);
+    }
+    logEntries.push(`${combat.enemy.name} uses ${action.name} for ${damage} damage!`);
   }
-
-  logEntries.push(`${combat.enemy.name} uses ${action.name} for ${damage} damage!`);
 
   if (action.statusEffect && action.statusDuration) {
-    effects.push({ effect: action.statusEffect, turns: action.statusDuration });
-    logEntries.push(`You are afflicted with ${action.statusEffect}!`);
+    // Player can save vs status effects
+    const saveStat = getStatusSaveStat(action.statusEffect);
+    if (saveStat) {
+      const playerStatValue = runState.playerStats[saveStat];
+      const dc = 10 + Math.floor(combat.enemy.armorClass / 4);
+      const save = rollSave(playerStatValue, dc, runState.rng);
+      if (save.success) {
+        logEntries.push(`You resist ${action.statusEffect}! (save: ${save.roll.results[0]}+${getStatModifier(playerStatValue)})`);
+      } else {
+        effects.push({ effect: action.statusEffect, turns: action.statusDuration });
+        logEntries.push(`You are afflicted with ${action.statusEffect}!`);
+      }
+    } else {
+      effects.push({ effect: action.statusEffect, turns: action.statusDuration });
+      logEntries.push(`You are afflicted with ${action.statusEffect}!`);
+    }
   }
 
-  return { damage, effects, logEntries };
+  return { damage, effects, logEntries, attackRoll: attackResult.roll };
+}
+
+function getStatusSaveStat(effect: StatusEffect): keyof import('../types').PlayerStats | null {
+  switch (effect) {
+    case 'poison': return 'con';
+    case 'stun': return 'con';
+    case 'bleed': return 'dex';
+    case 'on_fire': return 'dex';
+    case 'cursed': return 'wis';
+    case 'existential_dread': return 'wis';
+  }
 }
 
 export function tickStatusEffects(combat: CombatState): { playerDamage: number; enemyDamage: number; logEntries: string[] } {
@@ -220,4 +408,12 @@ export function advanceEnemyAction(combat: CombatState, rng: () => number): Enem
     return otherActions[idx];
   }
   return actions[0];
+}
+
+export function tickClassAbilityCooldowns(cooldowns: Record<string, number>): Record<string, number> {
+  const updated: Record<string, number> = {};
+  for (const [key, val] of Object.entries(cooldowns)) {
+    if (val > 0) updated[key] = val - 1;
+  }
+  return updated;
 }

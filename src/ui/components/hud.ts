@@ -1,21 +1,43 @@
 import { el } from '../../utils';
 import { getRunState } from '../../engine/state';
+import { getClassById } from '../../data/classes';
+import { getPlayerXpThreshold } from '../../engine/progression';
 
 let hudElement: HTMLElement | null = null;
 let hpText: HTMLElement | null = null;
 let hpFill: HTMLElement | null = null;
+let manaFill: HTMLElement | null = null;
+let manaText: HTMLElement | null = null;
 let goldText: HTMLElement | null = null;
 let floorText: HTMLElement | null = null;
 let viewerText: HTMLElement | null = null;
 let entertainmentFill: HTMLElement | null = null;
+let levelText: HTMLElement | null = null;
+let xpFill: HTMLElement | null = null;
+let acText: HTMLElement | null = null;
 
 export function renderHud(): HTMLElement {
   const state = getRunState();
+  const playerClass = getClassById(state.playerClass);
 
   hudElement = el('div', 'hud');
 
-  // Left: HP
+  // Left: HP + Mana + Gold
   const left = el('div', 'hud-left');
+
+  // Class icon + name
+  if (playerClass) {
+    const classDisplay = el('div', 'hud-class');
+    classDisplay.appendChild(el('span', 'hud-class-emoji', playerClass.emoji));
+    classDisplay.appendChild(el('span', 'hud-class-name', playerClass.name));
+    const acEl = el('span', 'hud-ac');
+    acEl.textContent = `AC ${state.armorClass}`;
+    acText = acEl;
+    classDisplay.appendChild(acEl);
+    left.appendChild(classDisplay);
+  }
+
+  // HP
   const hpContainer = el('div', 'hud-hp-container');
   const hpBar = el('div', 'hp-bar hp-bar-sm');
   hpFill = el('div', `hp-fill ${getHpClass(state.hp, state.maxHp)}`);
@@ -26,6 +48,20 @@ export function renderHud(): HTMLElement {
   hpContainer.appendChild(hpText);
   left.appendChild(hpContainer);
 
+  // Mana bar
+  if (state.maxMana > 0) {
+    const manaContainer = el('div', 'hud-mana-container');
+    const manaBar = el('div', 'mana-bar mana-bar-sm');
+    manaFill = el('div', 'mana-fill');
+    manaFill.style.width = `${(state.mana / state.maxMana) * 100}%`;
+    manaBar.appendChild(manaFill);
+    manaContainer.appendChild(manaBar);
+    manaText = el('div', 'hud-mana-text', `${state.mana}/${state.maxMana}`);
+    manaContainer.appendChild(manaText);
+    left.appendChild(manaContainer);
+  }
+
+  // Gold
   const goldDisplay = el('div', 'hud-gold');
   const goldIcon = el('span', 'hud-gold-icon', '\uD83D\uDCB0');
   goldText = el('span', undefined, `${state.gold}`);
@@ -33,12 +69,24 @@ export function renderHud(): HTMLElement {
   goldDisplay.appendChild(goldText);
   left.appendChild(goldDisplay);
 
-  // Center: Floor
+  // Center: Floor + Level
   const center = el('div', 'hud-center');
   const floorLabel = el('span', 'hud-floor-label', 'B');
   floorText = el('span', 'hud-floor', `${state.floorNumber}`);
   center.appendChild(floorLabel);
   center.appendChild(floorText);
+
+  // Level + XP
+  const levelDisplay = el('div', 'hud-level-display');
+  levelText = el('div', 'hud-level-text', `Lv ${state.playerLevel}`);
+  levelDisplay.appendChild(levelText);
+  const xpThreshold = getPlayerXpThreshold(state.playerLevel);
+  const xpBar = el('div', 'hud-xp-bar');
+  xpFill = el('div', 'hud-xp-fill');
+  xpFill.style.width = `${xpThreshold < Infinity ? Math.min(100, (state.playerXp / xpThreshold) * 100) : 100}%`;
+  xpBar.appendChild(xpFill);
+  levelDisplay.appendChild(xpBar);
+  center.appendChild(levelDisplay);
 
   // Right: Viewers
   const right = el('div', 'hud-right');
@@ -72,6 +120,10 @@ export function updateHud(): void {
       hpFill.style.width = `${(state.hp / state.maxHp) * 100}%`;
       hpFill.className = `hp-fill ${getHpClass(state.hp, state.maxHp)}`;
     }
+    if (manaFill && state.maxMana > 0) {
+      manaFill.style.width = `${(state.mana / state.maxMana) * 100}%`;
+    }
+    if (manaText) manaText.textContent = `${state.mana}/${state.maxMana}`;
     if (goldText) goldText.textContent = `${state.gold}`;
     if (floorText) floorText.textContent = `${state.floorNumber}`;
     if (viewerText) viewerText.textContent = `${state.viewers.count}`;
@@ -79,6 +131,12 @@ export function updateHud(): void {
       entertainmentFill.style.width = `${state.viewers.entertainmentMeter}%`;
       entertainmentFill.className = `entertainment-fill ${getEntertainmentClass(state.viewers.entertainmentMeter)}`;
     }
+    if (levelText) levelText.textContent = `Lv ${state.playerLevel}`;
+    if (xpFill) {
+      const xpThreshold = getPlayerXpThreshold(state.playerLevel);
+      xpFill.style.width = `${xpThreshold < Infinity ? Math.min(100, (state.playerXp / xpThreshold) * 100) : 100}%`;
+    }
+    if (acText) acText.textContent = `AC ${state.armorClass}`;
   } catch {
     // run may not be active
   }

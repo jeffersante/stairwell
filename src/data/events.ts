@@ -1543,4 +1543,678 @@ export const allEvents: EventRoom[] = [
       },
     ],
   },
+
+  // ══════════════════════════════════════════════════════════════
+  //  EXECUTIVE SUITE EVENTS (B11-B15)
+  // ══════════════════════════════════════════════════════════════
+  {
+    id: 'golden-handshake-deal',
+    title: 'The Golden Handshake',
+    description: 'A spectral executive materializes, hand extended, smile immaculate. "I have an offer you literally cannot refuse," it says. "Your soul for a corner office. The dental plan is excellent."',
+    choices: [
+      {
+        text: 'Shake the hand',
+        outcome: {
+          description: 'The handshake burns. Gold flows up your arm. You feel richer, emptier, and strangely motivated to synergize. You gain gold but something feels permanently wrong.',
+          goldChange: 80,
+          hpChange: -15,
+          viewerChange: 60,
+        },
+        weight: 30,
+      },
+      {
+        text: 'Counter-offer: their soul for YOUR corner office',
+        outcome: {
+          description: 'The ghost is so impressed by your audacity it forgets it\'s dead. It applauds, gives you a signing bonus, and vanishes in a puff of cologne.',
+          goldChange: 40,
+          viewerChange: 100,
+          catBondChange: 5,
+        },
+        weight: 35,
+      },
+      {
+        text: 'Refuse and walk away',
+        outcome: {
+          description: 'The ghost looks hurt. "Nobody refuses the golden handshake," it whispers. Then it accepts your decision with grace. Corporate culture at its most unsettling.',
+          catBondChange: 10,
+          viewerChange: -15,
+        },
+        weight: 35,
+      },
+    ],
+  },
+  {
+    id: 'performance-review-from-beyond',
+    title: 'Performance Review From Beyond',
+    description: 'A spectral HR representative appears with a clipboard. "Your annual review is overdue by approximately forever," they say. "Let\'s discuss your KPIs."',
+    choices: [
+      {
+        text: 'Accept the review gracefully',
+        outcome: {
+          description: '"Exceeds expectations in: surviving. Needs improvement in: not being here." You get a 3% raise (in gold) and a deep sense that you should have negotiated harder.',
+          goldChange: 20,
+          hpChange: 10,
+          viewerChange: 30,
+        },
+        weight: 35,
+      },
+      {
+        text: 'Demand a promotion',
+        outcome: {
+          description: 'The ghost stares. "You want a PROMOTION? In THIS economy? In THIS building?" It laughs so hard it becomes briefly corporeal. You steal its pen.',
+          viewerChange: 70,
+          goldChange: 10,
+        },
+        weight: 30,
+      },
+      {
+        text: 'File a complaint about the review process',
+        outcome: {
+          description: 'You fill out 47 forms. Each form generates three more forms. The bureaucracy spiral heals you through sheer mundane normalcy.',
+          hpChange: 15,
+          viewerChange: 20,
+          catBondChange: -5,
+        },
+        weight: 35,
+      },
+    ],
+  },
+  {
+    id: 'executive-washroom',
+    title: 'The Executive Washroom',
+    description: 'Behind a mahogany door lies the fabled executive washroom. Gold fixtures. Heated marble. A toilet that plays your choice of classical music. The mirror shows a version of you that made better life choices.',
+    choices: [
+      {
+        text: 'Use the facilities',
+        outcome: {
+          description: 'You feel refreshed in a way that transcends physical health. The bidet alone was a life-changing experience. You emerge a slightly better person.',
+          hpChange: 25,
+          viewerChange: 20,
+        },
+        weight: 35,
+      },
+      {
+        text: 'Loot the gold fixtures',
+        outcome: {
+          description: 'You pry the faucets off. Gold! Pure gold! The mirror version of you shakes its head in disappointment. The viewers love it.',
+          goldChange: 55,
+          viewerChange: 60,
+          catBondChange: -5,
+        },
+        weight: 30,
+      },
+      {
+        text: 'Talk to your mirror self',
+        outcome: {
+          description: '"You should have taken that job at Google," mirror-you says. You cry a little. The cat headbutts your knee. It\'s weirdly therapeutic.',
+          hpChange: 10,
+          catBondChange: 15,
+          viewerChange: 40,
+        },
+        weight: 35,
+      },
+    ],
+  },
+  {
+    id: 'hostile-merger',
+    title: 'Hostile Merger',
+    description: 'Two ghostly corporations are waging a spectral proxy war on this floor. Both sides approach you with briefcases full of promises. "Side with us," they each whisper. "We have the better dental."',
+    choices: [
+      {
+        text: 'Side with Corp A (GrimCo)',
+        outcome: {
+          description: 'GrimCo wins the merger. As thanks, they give you stock options in a company that exists in three parallel realities. The dividends are... unusual.',
+          goldChange: 45,
+          viewerChange: 40,
+          hpChange: -10,
+        },
+        weight: 30,
+      },
+      {
+        text: 'Side with Corp B (DreadTech)',
+        outcome: {
+          description: 'DreadTech absorbs GrimCo. They celebrate by giving you a corner of the building that\'s slightly less hostile. The ambient dread decreases by 2%.',
+          hpChange: 20,
+          viewerChange: 40,
+          catBondChange: 5,
+        },
+        weight: 30,
+      },
+      {
+        text: 'Play both sides',
+        outcome: {
+          description: 'You accept bribes from both, then sell the merger info to a third ghost company. Triple agent. The viewers are RIVETED.',
+          goldChange: 70,
+          viewerChange: 120,
+          hpChange: -15,
+        },
+        weight: 40,
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  //  MAINTENANCE EVENTS (B16-B20)
+  // ══════════════════════════════════════════════════════════════
+  {
+    id: 'the-boiler-room-deal',
+    title: 'The Boiler Room Deal',
+    description: 'Deep in the maintenance sublevel, a sentient boiler rumbles. "Feed me something," it groans. "Metal, paper, flesh — I accept all currencies."',
+    choices: [
+      {
+        text: 'Feed it gold (30 gold)',
+        outcome: {
+          description: 'The boiler purrs. Steam wraps around you like a warm blanket. You feel restored. The boiler winks. Boilers shouldn\'t be able to wink.',
+          goldChange: -30,
+          hpChange: 30,
+          viewerChange: 40,
+        },
+        weight: 35,
+      },
+      {
+        text: 'Feed it an item',
+        outcome: {
+          description: 'The boiler digests your offering and belches out something better. Recycling at its most supernatural.',
+          itemLost: true,
+          goldChange: 15,
+          viewerChange: 50,
+        },
+        weight: 30,
+      },
+      {
+        text: 'Kick it',
+        outcome: {
+          description: 'You kick the boiler. It screams. Steam erupts from every pipe on the floor. Worth it for the viewers, not for your skin.',
+          hpChange: -20,
+          viewerChange: 80,
+        },
+        weight: 35,
+      },
+    ],
+  },
+  {
+    id: 'the-fuse-box-gamble',
+    title: 'The Fuse Box Gamble',
+    description: 'An ancient fuse box hangs open on the wall. Three switches are labeled: LIGHT, POWER, and a third label that has been scratched off and replaced with what appears to be a rune drawn in blood.',
+    choices: [
+      {
+        text: 'Flip LIGHT',
+        outcome: {
+          description: 'The lights come on. All of them. Even the ones in rooms that don\'t exist. You can see everything on this floor clearly. Including things you wish you couldn\'t.',
+          viewerChange: 30,
+          catBondChange: 5,
+        },
+        weight: 35,
+      },
+      {
+        text: 'Flip POWER',
+        outcome: {
+          description: 'Everything powers up. Vending machines dispense free snacks. The elevator works for exactly one trip. You grab what you can.',
+          goldChange: 30,
+          hpChange: 10,
+          viewerChange: 20,
+        },
+        weight: 35,
+      },
+      {
+        text: 'Flip the blood rune switch',
+        outcome: {
+          description: 'Reality inverts for three seconds. You are the building. The building is you. When it stops, you have 50 more gold and a nosebleed that won\'t stop for two floors.',
+          goldChange: 50,
+          hpChange: -15,
+          viewerChange: 100,
+        },
+        weight: 30,
+      },
+    ],
+  },
+  {
+    id: 'the-supply-closet',
+    title: 'The Forgotten Supply Closet',
+    description: 'A supply closet that hasn\'t been opened since 1987. The dust is so thick it has developed a personality. Inside: shelves of mysterious maintenance chemicals in unlabeled bottles.',
+    choices: [
+      {
+        text: 'Drink the blue one',
+        outcome: {
+          description: 'It tastes like mint and static electricity. Your HP recovers and your vision goes temporarily blue. The cat refuses to look at you for an hour.',
+          hpChange: 25,
+          catBondChange: -5,
+          viewerChange: 50,
+        },
+        weight: 30,
+      },
+      {
+        text: 'Mix the red and green ones',
+        outcome: {
+          description: 'BOOM. A small explosion. You\'re singed but alive. The resulting compound is worth a fortune to the right (wrong) people.',
+          hpChange: -10,
+          goldChange: 55,
+          viewerChange: 70,
+        },
+        weight: 35,
+      },
+      {
+        text: 'Take everything without opening anything',
+        outcome: {
+          description: 'You stuff bottles into your pockets. Some clink ominously. Nothing explodes. Yet. The cat judges your hoarding instinct.',
+          goldChange: 20,
+          catBondChange: -3,
+          viewerChange: 15,
+        },
+        weight: 35,
+      },
+    ],
+  },
+  {
+    id: 'pipe-organ',
+    title: 'The Pipe Organ',
+    description: 'The maintenance pipes have arranged themselves into something resembling a church organ. Notes echo through the corridors. Playing it might do... something.',
+    choices: [
+      {
+        text: 'Play a soothing melody',
+        outcome: {
+          description: 'The pipes hum in harmony. Enemies on this floor become slightly calmer. Your cat purrs. The building itself seems to relax, just a fraction.',
+          hpChange: 15,
+          catBondChange: 10,
+          viewerChange: 30,
+        },
+        weight: 35,
+      },
+      {
+        text: 'Play the most aggressive metal riff you know',
+        outcome: {
+          description: 'The pipes SCREAM. Steam erupts in rhythm. The building shudders. Somewhere, something dies. The viewers go absolutely ballistic.',
+          hpChange: -5,
+          viewerChange: 120,
+        },
+        weight: 30,
+      },
+      {
+        text: 'Play "Happy Birthday"',
+        outcome: {
+          description: 'The building trembles. It IS its birthday. Nobody has ever known. Nobody has ever cared. A single gold tear falls from the ceiling. Then several more.',
+          goldChange: 40,
+          catBondChange: 5,
+          viewerChange: 60,
+        },
+        weight: 35,
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  //  ARCHIVES EVENTS (B21-B25)
+  // ══════════════════════════════════════════════════════════════
+  {
+    id: 'the-overdue-book',
+    title: 'The Overdue Book',
+    description: 'A ghostly librarian blocks your path. "You have an overdue book," she says. "Checked out: 1947. Fine: your eternal soul." She adjusts her spectral glasses expectantly.',
+    choices: [
+      {
+        text: 'Pay the fine (30 gold)',
+        outcome: {
+          description: 'She accepts the gold, stamps RETURNED on a card made of light, and lets you pass. "Your record is clean," she says. "For now." The book was about gardening.',
+          goldChange: -30,
+          viewerChange: 30,
+        },
+        weight: 35,
+      },
+      {
+        text: 'Claim you never checked it out',
+        outcome: {
+          description: 'She pulls out your library card. It has your photo on it. From 1947. You don\'t remember 1947. The existential implications heal nothing.',
+          hpChange: -10,
+          viewerChange: 60,
+          catBondChange: 5,
+        },
+        weight: 30,
+      },
+      {
+        text: 'Return the book (you do have it, somehow)',
+        outcome: {
+          description: 'You reach into your bag and pull out a book you\'ve never seen. The librarian gasps. "A first edition!" She gives you the rare book reward.',
+          goldChange: 45,
+          hpChange: 10,
+          viewerChange: 50,
+        },
+        weight: 35,
+      },
+    ],
+  },
+  {
+    id: 'time-loop-room',
+    title: 'The Room You\'ve Been In Before',
+    description: 'You enter a room and feel overwhelming deja vu. Everything is exactly as you left it — except you\'ve never been here. A note on the desk reads: "Third time. Try the window this time."',
+    choices: [
+      {
+        text: 'Try the window',
+        outcome: {
+          description: 'Outside the window is a different floor entirely. You climb through and find a cache of items from your "previous" visits. Time is a flat circle in this building.',
+          goldChange: 35,
+          hpChange: 10,
+          viewerChange: 60,
+        },
+        weight: 35,
+      },
+      {
+        text: 'Read more of the notes',
+        outcome: {
+          description: 'There are dozens, each in your handwriting. "Don\'t trust the clock." "The cat remembers." "Floor 24 is a lie." The knowledge is maddening but useful.',
+          viewerChange: 80,
+          catBondChange: 10,
+          hpChange: -5,
+        },
+        weight: 30,
+      },
+      {
+        text: 'Leave immediately',
+        outcome: {
+          description: 'You back out. The door closes. When you turn around, you\'re in the room again. You leave again. Room again. On the fifth loop, it lets you go.',
+          hpChange: -10,
+          viewerChange: 40,
+        },
+        weight: 35,
+      },
+    ],
+  },
+  {
+    id: 'the-reading-room',
+    title: 'The Reading Room That Reads You',
+    description: 'A circular room lined with books. As you enter, every spine changes to display a different chapter of your life. One shelf is labeled "WHAT HAPPENS NEXT." It\'s empty.',
+    choices: [
+      {
+        text: 'Read a chapter from your past',
+        outcome: {
+          description: 'You relive your happiest memory. The warmth of it heals you. When you close the book, you can\'t remember which memory it was. But you feel better.',
+          hpChange: 25,
+          catBondChange: 5,
+          viewerChange: 40,
+        },
+        weight: 35,
+      },
+      {
+        text: 'Write in "WHAT HAPPENS NEXT"',
+        outcome: {
+          description: 'You write: "I survive." The building trembles. That\'s not how this works. That\'s not how ANY of this works. But the ink dries and the words stay.',
+          viewerChange: 100,
+          hpChange: 5,
+          catBondChange: 10,
+        },
+        weight: 30,
+      },
+      {
+        text: 'Burn the shelf labeled "REGRETS"',
+        outcome: {
+          description: 'The books catch fire with a sound like sighing. The regrets are gone. All of them. You feel lighter. Emptier. Free? The viewers aren\'t sure if this was healthy.',
+          viewerChange: 80,
+          hpChange: -10,
+          goldChange: 25,
+        },
+        weight: 35,
+      },
+    ],
+  },
+  {
+    id: 'the-card-catalog-oracle',
+    title: 'The Card Catalog Oracle',
+    description: 'A massive card catalog hums with energy. Each drawer is labeled with a question. "WHEN WILL I DIE?" "WHY AM I HERE?" "WHERE IS THE BATHROOM?" One drawer is labeled with your name.',
+    choices: [
+      {
+        text: 'Open the drawer with your name',
+        outcome: {
+          description: 'Inside: a single card that reads "Still looking." That\'s either terrifying or comforting. You pocket the card. It pulses warmly.',
+          catBondChange: 10,
+          viewerChange: 50,
+        },
+        weight: 35,
+      },
+      {
+        text: 'Open "WHERE IS THE BATHROOM?"',
+        outcome: {
+          description: 'The card contains precise directions to the executive washroom three floors up. There\'s also a coupon for free healing. Practical magic.',
+          hpChange: 20,
+          goldChange: 15,
+          viewerChange: 30,
+        },
+        weight: 35,
+      },
+      {
+        text: 'Slam all the drawers shut',
+        outcome: {
+          description: 'The catalog SCREAMS. All the knowledge, compressed. It shatters into a shower of gold-edged cards that cut and pay simultaneously.',
+          goldChange: 50,
+          hpChange: -15,
+          viewerChange: 70,
+        },
+        weight: 30,
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  //  BASEMENT OF BASEMENTS EVENTS (B26-B30)
+  // ══════════════════════════════════════════════════════════════
+  {
+    id: 'the-obsidian-altar',
+    title: 'The Obsidian Altar',
+    description: 'An altar of black volcanic glass sits in the center of a room that used to be a break room. The microwave is still there, but it\'s full of jade offerings. The altar pulses with a heartbeat.',
+    choices: [
+      {
+        text: 'Make an offering (30 gold)',
+        outcome: {
+          description: 'The altar accepts your gold and transmutes it into power. Ancient fire fills your veins. You feel stronger, but something inside you is now... watching.',
+          goldChange: -30,
+          hpChange: 30,
+          viewerChange: 60,
+        },
+        weight: 35,
+      },
+      {
+        text: 'Take an offering from the altar',
+        outcome: {
+          description: 'You grab a jade figure. It burns cold. The altar shudders. Something far below growls. But the jade is worth a fortune, and you were never one for caution.',
+          goldChange: 65,
+          hpChange: -20,
+          viewerChange: 80,
+        },
+        weight: 30,
+      },
+      {
+        text: 'Microwave the jade',
+        outcome: {
+          description: 'You put jade in the microwave and hit "popcorn." The resulting explosion is spectacular, ancient, and somehow creates a healing field. The cat is impressed against its will.',
+          hpChange: 15,
+          viewerChange: 120,
+          catBondChange: 10,
+        },
+        weight: 35,
+      },
+    ],
+  },
+  {
+    id: 'blood-gold-fountain',
+    title: 'The Blood Gold Fountain',
+    description: 'A fountain flows with liquid gold. Real, molten gold. It\'s beautiful. It\'s deadly. It whispers your name and tells you exactly how much you\'re worth. The number is insultingly specific.',
+    choices: [
+      {
+        text: 'Drink from the fountain',
+        outcome: {
+          description: 'It tastes like ambition and regret. Gold flows through you. You are temporarily richer and permanently changed. Your blood will never be quite the same color.',
+          goldChange: 70,
+          hpChange: -25,
+          viewerChange: 80,
+        },
+        weight: 30,
+      },
+      {
+        text: 'Throw a coin in and make a wish',
+        outcome: {
+          description: '"I wish to survive." The fountain laughs. Then grants it, grudgingly. Your HP is restored but the fountain seems personally offended by your lack of ambition.',
+          goldChange: -5,
+          hpChange: 35,
+          viewerChange: 50,
+        },
+        weight: 35,
+      },
+      {
+        text: 'Redirect the gold into your inventory',
+        outcome: {
+          description: 'You engineer a crude pipe from nearby materials and siphon gold. It works until the fountain notices and redirects a stream at your face. Worth it.',
+          goldChange: 85,
+          hpChange: -15,
+          viewerChange: 100,
+          catBondChange: -5,
+        },
+        weight: 35,
+      },
+    ],
+  },
+  {
+    id: 'the-jaguar-throne',
+    title: 'The Jaguar Throne',
+    description: 'An obsidian throne shaped like a crouching jaguar. Its eyes are emeralds. Its teeth are daggers. A sign above reads: "EMPLOYEE OF THE ETERNITY — SIT TO ACCEPT AWARD."',
+    choices: [
+      {
+        text: 'Sit on the throne',
+        outcome: {
+          description: 'The jaguar roars. Not the throne — the ACTUAL jaguar spirit that lives in it. It tests your worth. You barely pass. But you pass. Power floods through you.',
+          hpChange: 20,
+          goldChange: 30,
+          viewerChange: 100,
+        },
+        weight: 30,
+      },
+      {
+        text: 'Pry out the emerald eyes',
+        outcome: {
+          description: 'The emeralds come free with a sickening crack. They\'re worth a fortune. The throne goes dark. Something in the building mourns. Something else starts hunting.',
+          goldChange: 80,
+          hpChange: -20,
+          viewerChange: 60,
+        },
+        weight: 35,
+      },
+      {
+        text: 'Let the cat sit on the throne',
+        outcome: {
+          description: 'The cat sits. The jaguar spirit recognizes a kindred soul. The cat glows briefly, gains ancient knowledge, and immediately uses it to judge you more effectively.',
+          catBondChange: 20,
+          viewerChange: 140,
+          hpChange: 10,
+        },
+        weight: 35,
+      },
+    ],
+  },
+  {
+    id: 'the-cenote',
+    title: 'The Sacred Cenote',
+    description: 'Where the basement floor should be, there\'s a natural cenote — a deep, circular pool of impossibly clear water. The bottom is lined with gold and bones. Offerings from centuries you don\'t recognize.',
+    choices: [
+      {
+        text: 'Dive for treasure',
+        outcome: {
+          description: 'You plunge in. The water is warm. The gold is real. The bones are grabby. You surface with treasure and exactly three fewer years of life expectancy.',
+          goldChange: 75,
+          hpChange: -20,
+          viewerChange: 80,
+        },
+        weight: 30,
+      },
+      {
+        text: 'Pray at the edge',
+        outcome: {
+          description: 'You kneel. The water ripples. Something ancient and vast notices you — briefly, dismissively, but notices. It leaves a blessing. Or a mark. Same thing down here.',
+          hpChange: 30,
+          catBondChange: 10,
+          viewerChange: 50,
+        },
+        weight: 35,
+      },
+      {
+        text: 'Skip a stone across the surface',
+        outcome: {
+          description: 'The stone skips seven times. Each skip heals a wound. On the eighth, the water pulls it under. Seven for seven. The building respects your whimsy.',
+          hpChange: 20,
+          viewerChange: 70,
+          goldChange: 15,
+        },
+        weight: 35,
+      },
+    ],
+  },
+  {
+    id: 'obsidian-mirror',
+    title: 'The Smoking Mirror',
+    description: 'An obsidian mirror stands alone in a room of polished volcanic glass. Your reflection moves independently. It smiles. You are not smiling. "Trade?" it asks.',
+    choices: [
+      {
+        text: 'Trade HP for gold',
+        outcome: {
+          description: 'Your reflection reaches out and takes something intangible from your chest. It hurts. Gold materializes at your feet. Fair trade? The mirror thinks so.',
+          hpChange: -25,
+          goldChange: 70,
+          viewerChange: 60,
+        },
+        weight: 30,
+      },
+      {
+        text: 'Trade gold for power',
+        outcome: {
+          description: 'You press gold against the glass. It absorbs. Your reflection flexes. Suddenly, so do you. The gold is gone but your fists feel like they\'re made of something harder than bone.',
+          goldChange: -40,
+          hpChange: 25,
+          viewerChange: 50,
+        },
+        weight: 35,
+      },
+      {
+        text: 'Shatter the mirror',
+        outcome: {
+          description: 'Seven years bad luck? In THIS building? What\'s the difference? The glass shatters beautifully. Your reflection screams. Each shard is worth something.',
+          goldChange: 50,
+          hpChange: -10,
+          viewerChange: 100,
+          catBondChange: -5,
+        },
+        weight: 35,
+      },
+    ],
+  },
+  {
+    id: 'mictlan-waiting-room',
+    title: 'The Mictlan Waiting Room',
+    description: 'A waiting room with magazines from the Aztec afterlife. "Take a number," says a skeleton receptionist. The numbers start at a million and go backward. Yours is 7.',
+    choices: [
+      {
+        text: 'Wait your turn',
+        outcome: {
+          description: 'You wait. And wait. Time doesn\'t pass normally here. When your number is called, you\'ve been sitting for what feels like three lifetimes. You feel rested, but wrong.',
+          hpChange: 35,
+          viewerChange: 20,
+          catBondChange: 5,
+        },
+        weight: 35,
+      },
+      {
+        text: 'Cut in line',
+        outcome: {
+          description: 'The ghosts in line are FURIOUS. Ancient Aztec ghosts are scary when furious. You escape with gold raining from the ceiling but several spiritual bruises.',
+          goldChange: 45,
+          hpChange: -15,
+          viewerChange: 90,
+        },
+        weight: 30,
+      },
+      {
+        text: 'Read the afterlife magazines',
+        outcome: {
+          description: '"Top 10 Ways to Haunt Your Descendants." "Is Your Burial Chamber Feng Shui?" The knowledge is bizarre but somehow applicable. You learn things about the building.',
+          viewerChange: 50,
+          catBondChange: 10,
+        },
+        weight: 35,
+      },
+    ],
+  },
 ];

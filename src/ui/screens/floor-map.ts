@@ -4,6 +4,9 @@ import type { GamePhase, RoomType } from '../../types';
 import { renderAnnouncerInline } from '../components/announcer';
 import { pickRandom } from '../../utils';
 import { announcerFloorStart } from '../../data/announcer-lines';
+import { getThemeForFloor } from '../../data/floor-themes';
+import { audio } from '../../engine/audio';
+import { triggerViewerChat } from '../components/viewer-chat';
 
 const ROOM_ICONS: Record<RoomType, string> = {
   combat: '\u2694\uFE0F',
@@ -30,9 +33,32 @@ export function renderFloorMapScreen(container: HTMLElement, onTransition: (next
   const state = getRunState();
   const floor = state.floor;
 
+  // Floor theme
+  const theme = getThemeForFloor(floor.number);
+
+  // Start ambient audio for this floor theme
+  audio.startAmbient(theme.id);
+
   // Header
   const header = el('div', 'floor-map-header');
   header.appendChild(el('div', 'floor-map-title', `BASEMENT ${floor.number}`));
+
+  // Theme display
+  const themeDisplay = el('div', 'floor-theme-display');
+  themeDisplay.style.borderLeftColor = theme.colorAccent;
+  themeDisplay.appendChild(el('div', 'floor-theme-name', theme.name));
+  themeDisplay.appendChild(el('div', 'floor-theme-desc', theme.description));
+  header.appendChild(themeDisplay);
+
+  // Hazard warnings
+  if (theme.hazards.length > 0) {
+    const hazardWarning = el('div', 'floor-hazard-warning');
+    hazardWarning.appendChild(el('span', 'floor-hazard-icon', '\u26A0\uFE0F'));
+    const hazardNames = theme.hazards.map(h => h.name).join(', ');
+    hazardWarning.appendChild(el('span', 'floor-hazard-text', `Hazards: ${hazardNames}`));
+    header.appendChild(hazardWarning);
+  }
+
   const explored = floor.rooms.filter(r => r.explored).length;
   header.appendChild(el('div', 'floor-map-subtitle', `${explored}/${floor.rooms.length} rooms explored`));
   container.appendChild(header);
@@ -102,7 +128,11 @@ export function renderFloorMapScreen(container: HTMLElement, onTransition: (next
   if (allExplored) {
     const actions = el('div', 'screen-actions');
     const descendBtn = el('button', 'btn btn-action btn-action-primary', 'Descend to Next Floor');
-    descendBtn.addEventListener('click', () => onTransition('floor_complete'));
+    descendBtn.addEventListener('click', () => {
+      audio.playButtonClick();
+      triggerViewerChat('floor_clear');
+      onTransition('floor_complete');
+    });
     actions.appendChild(descendBtn);
     container.appendChild(actions);
   }

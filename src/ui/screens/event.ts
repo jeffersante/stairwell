@@ -4,6 +4,8 @@ import { updateHud } from '../components/hud';
 import { renderAnnouncer } from '../components/announcer';
 import { updateBond } from '../../engine/cat';
 import { announcerEvent } from '../../data/announcer-lines';
+import { audio } from '../../engine/audio';
+import { triggerViewerChat } from '../components/viewer-chat';
 import type { GamePhase, EventRoom, EventChoice } from '../../types';
 
 export function renderEventScreen(container: HTMLElement, onTransition: (next: GamePhase) => void): void {
@@ -62,6 +64,8 @@ export function renderEventScreen(container: HTMLElement, onTransition: (next: G
       btn.appendChild(text);
 
       btn.addEventListener('click', () => {
+        audio.playButtonClick();
+        triggerViewerChat('event_choice');
         resolveChoice(choice, container, onTransition);
       });
 

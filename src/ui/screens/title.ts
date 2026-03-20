@@ -1,5 +1,6 @@
 import { el } from '../../utils';
 import { getMetaState } from '../../engine/state';
+import { audio } from '../../engine/audio';
 import type { GamePhase } from '../../types';
 
 export function renderTitleScreen(container: HTMLElement, onTransition: (next: GamePhase) => void): void {
@@ -22,11 +23,19 @@ export function renderTitleScreen(container: HTMLElement, onTransition: (next: G
   const menu = el('div', 'title-menu');
 
   const descendBtn = el('button', 'btn btn-action-primary title-start-btn', 'Descend');
-  descendBtn.addEventListener('click', () => onTransition('run_setup'));
+  descendBtn.addEventListener('click', () => {
+    audio.init();
+    audio.playButtonClick();
+    onTransition('run_setup');
+  });
   menu.appendChild(descendBtn);
 
   const unlocksBtn = el('button', 'btn', 'Unlocks');
-  unlocksBtn.addEventListener('click', () => onTransition('meta_shop'));
+  unlocksBtn.addEventListener('click', () => {
+    audio.init();
+    audio.playButtonClick();
+    onTransition('meta_shop');
+  });
   menu.appendChild(unlocksBtn);
 
   container.appendChild(menu);

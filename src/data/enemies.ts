@@ -12,6 +12,7 @@ const lobbyEnemies: Enemy[] = [
     description: 'A clump of dust and lint that achieved consciousness under the lobby radiator. It resents you for breathing its relatives.',
     floorRange: [1, 3],
     hp: 12,
+    armorClass: 8,
     actions: [
       { name: 'Lint Storm', damage: 3, telegraph: 'The dust bunny puffs up ominously...' },
       { name: 'Sneeze Trigger', damage: 2, statusEffect: 'stun', statusDuration: 1, telegraph: 'Allergens swirl in the air...' },
@@ -30,6 +31,7 @@ const lobbyEnemies: Enemy[] = [
     description: 'Not just any rat. This one has a lanyard.',
     floorRange: [1, 4],
     hp: 15,
+    armorClass: 8,
     actions: [
       { name: 'Gnaw', damage: 4, telegraph: 'The rat bares its yellowed teeth...' },
       { name: 'Tail Whip', damage: 3, telegraph: 'Its tail coils back like a spring...' },
@@ -49,6 +51,7 @@ const lobbyEnemies: Enemy[] = [
     description: 'It spins. You spin. Nobody wins.',
     floorRange: [1, 5],
     hp: 20,
+    armorClass: 10,
     actions: [
       { name: 'Full Rotation', damage: 5, telegraph: 'The door accelerates to unsafe speeds...' },
       { name: 'Pinch', damage: 3, statusEffect: 'bleed', statusDuration: 2, telegraph: 'The gap between panels narrows...' },
@@ -67,6 +70,7 @@ const lobbyEnemies: Enemy[] = [
     description: 'The ghost of ten thousand awkward conversations. It gurgles with the small talk of the damned.',
     floorRange: [1, 5],
     hp: 14,
+    armorClass: 8,
     actions: [
       { name: 'Splash', damage: 3, telegraph: 'Water begins bubbling aggressively...' },
       { name: 'Idle Gossip', damage: 2, statusEffect: 'existential_dread', statusDuration: 2, telegraph: 'It starts talking about the weather...' },
@@ -85,6 +89,7 @@ const lobbyEnemies: Enemy[] = [
     description: 'Explains why your packages always arrive damaged. It feeds on tracking numbers.',
     floorRange: [1, 4],
     hp: 13,
+    armorClass: 9,
     actions: [
       { name: 'Box Throw', damage: 4, telegraph: 'It hoists a suspiciously heavy parcel...' },
       { name: 'Papercut Barrage', damage: 3, statusEffect: 'bleed', statusDuration: 1, telegraph: 'Manila envelopes fan out like shuriken...' },
@@ -103,6 +108,7 @@ const lobbyEnemies: Enemy[] = [
     description: 'The light that never quite works. It has learned to weaponize its intermittence.',
     floorRange: [2, 5],
     hp: 10,
+    armorClass: 8,
     actions: [
       { name: 'Strobe Flash', damage: 3, statusEffect: 'stun', statusDuration: 1, telegraph: 'The buzzing intensifies...' },
       { name: 'Glass Shatter', damage: 5, telegraph: 'Cracks spider across the tube...' },
@@ -121,6 +127,7 @@ const lobbyEnemies: Enemy[] = [
     description: 'The mop water gained sentience. It slides across linoleum with purpose. That purpose is you.',
     floorRange: [1, 4],
     hp: 11,
+    armorClass: 8,
     actions: [
       { name: 'Slippery Lunge', damage: 3, statusEffect: 'stun', statusDuration: 1, telegraph: 'The puddle surges toward your feet...' },
       { name: 'Dirty Splash', damage: 4, statusEffect: 'poison', statusDuration: 1, telegraph: 'Gray-brown water arcs upward...' },
@@ -139,6 +146,7 @@ const lobbyEnemies: Enemy[] = [
     description: 'Set to 72. Reads 72. It is not 72. It has never been 72. The thermostat lies, and the lies have become violent.',
     floorRange: [2, 5],
     hp: 14,
+    armorClass: 9,
     actions: [
       { name: 'Heat Wave', damage: 4, statusEffect: 'on_fire', statusDuration: 1, telegraph: 'The display reads 999°...' },
       { name: 'Cold Snap', damage: 3, statusEffect: 'stun', statusDuration: 1, telegraph: 'Frost crystallizes on every surface...' },
@@ -157,6 +165,7 @@ const lobbyEnemies: Enemy[] = [
     description: 'BWAAAAAAAA. That is its war cry. That is its only cry. It has been screaming since 2003.',
     floorRange: [1, 5],
     hp: 16,
+    armorClass: 9,
     actions: [
       { name: 'Jet Blast', damage: 4, telegraph: 'The nozzle rotates toward your face...' },
       { name: 'Deafening Roar', damage: 3, statusEffect: 'stun', statusDuration: 1, telegraph: 'It activates at maximum volume...' },
@@ -175,6 +184,7 @@ const lobbyEnemies: Enemy[] = [
     description: 'It sees everything. It judges everything. Now it shoots lasers, because why not.',
     floorRange: [2, 6],
     hp: 18,
+    armorClass: 10,
     actions: [
       { name: 'Laser Focus', damage: 5, telegraph: 'A red dot appears on your chest...' },
       { name: 'Flash Capture', damage: 3, statusEffect: 'stun', statusDuration: 1, telegraph: 'The flash charges up...' },
@@ -201,6 +211,7 @@ const officeEnemies: Enemy[] = [
     description: 'PC LOAD LETTER? It loads something far worse. Paper jams are the least of your concerns.',
     floorRange: [5, 10],
     hp: 28,
+    armorClass: 11,
     actions: [
       { name: 'Paper Jam Fury', damage: 6, telegraph: 'ERROR ERROR ERROR flashes across the display...' },
       { name: 'Toner Spray', damage: 5, statusEffect: 'poison', statusDuration: 2, telegraph: 'Black powder billows from every seam...' },
@@ -221,6 +232,7 @@ const officeEnemies: Enemy[] = [
     description: 'That is not a cubicle. That has never been a cubicle. Those are teeth.',
     floorRange: [5, 10],
     hp: 32,
+    armorClass: 12,
     actions: [
       { name: 'Wall Slam', damage: 7, telegraph: 'The partition walls lurch inward...' },
       { name: 'Swivel Chair Launch', damage: 6, telegraph: 'An office chair rockets toward you...' },
@@ -241,6 +253,7 @@ const officeEnemies: Enemy[] = [
     description: 'Your snack is stuck on the spiral. It knows. It feeds on your impotent rage.',
     floorRange: [5, 10],
     hp: 35,
+    armorClass: 12,
     actions: [
       { name: 'Can Barrage', damage: 7, telegraph: 'The machine rumbles and shakes...' },
       { name: 'Price Gouge', damage: 4, statusEffect: 'cursed', statusDuration: 3, telegraph: 'Prices on the display skyrocket...' },
@@ -261,6 +274,7 @@ const officeEnemies: Enemy[] = [
     description: 'Forty staplers move as one. They share a single, malevolent purpose. That purpose is stapling you.',
     floorRange: [5, 9],
     hp: 22,
+    armorClass: 10,
     actions: [
       { name: 'Staple Storm', damage: 6, statusEffect: 'bleed', statusDuration: 2, telegraph: 'Dozens of staplers click open in unison...' },
       { name: 'Swarm Dive', damage: 5, telegraph: 'The swarm rises and banks sharply...' },
@@ -279,6 +293,7 @@ const officeEnemies: Enemy[] = [
     description: 'Born from the breakroom carafe that nobody ever cleans. It is 40% coffee, 60% rage.',
     floorRange: [5, 10],
     hp: 26,
+    armorClass: 11,
     actions: [
       { name: 'Scalding Splash', damage: 6, statusEffect: 'on_fire', statusDuration: 2, telegraph: 'Steam erupts from its liquid body...' },
       { name: 'Caffeine Rush', damage: 8, telegraph: 'It vibrates at an impossible frequency...' },
@@ -298,6 +313,7 @@ const officeEnemies: Enemy[] = [
     description: 'Lives in the crumb-encrusted gaps between the keys. Has eight legs made of USB cables.',
     floorRange: [6, 10],
     hp: 20,
+    armorClass: 10,
     actions: [
       { name: 'Key Clatter', damage: 5, telegraph: 'Keys rattle across the floor toward you...' },
       { name: 'Cable Bind', damage: 4, statusEffect: 'stun', statusDuration: 1, telegraph: 'USB tendrils snake out...' },
@@ -316,6 +332,7 @@ const officeEnemies: Enemy[] = [
     description: '"Per my LAST existence, I asked you NOT to leave dishes in the ethereal sink." It floats. It judges. It cuts.',
     floorRange: [5, 8],
     hp: 16,
+    armorClass: 10,
     actions: [
       { name: 'Papercut', damage: 4, statusEffect: 'bleed', statusDuration: 2, telegraph: 'The note folds itself into something sharp...' },
       { name: 'Guilt Trip', damage: 3, statusEffect: 'existential_dread', statusDuration: 3, telegraph: 'The handwriting somehow gets more disappointed...' },
@@ -341,6 +358,7 @@ const maintenanceEnemies: Enemy[] = [
     description: 'The ghost of a janitor who never got to retire. Still mopping. Still angry about the mess you just made.',
     floorRange: [10, 15],
     hp: 40,
+    armorClass: 13,
     actions: [
       { name: 'Mop Sweep', damage: 8, telegraph: 'The spectral mop winds back...' },
       { name: 'Bucket Toss', damage: 7, statusEffect: 'stun', statusDuration: 1, telegraph: 'A ghostly bucket lifts off the ground...' },
@@ -361,6 +379,7 @@ const maintenanceEnemies: Enemy[] = [
     description: 'It lives in the ventilation. It IS the ventilation. The building breathes because it chooses to.',
     floorRange: [10, 15],
     hp: 38,
+    armorClass: 13,
     actions: [
       { name: 'Arctic Blast', damage: 7, statusEffect: 'stun', statusDuration: 1, telegraph: 'The temperature plummets...' },
       { name: 'Suffocating Heat', damage: 6, statusEffect: 'on_fire', statusDuration: 2, telegraph: 'The vents glow red-hot...' },
@@ -380,6 +399,7 @@ const maintenanceEnemies: Enemy[] = [
     description: 'Thirty feet of corroded copper pipe that learned to slither. Hisses steam instead of venom.',
     floorRange: [10, 15],
     hp: 42,
+    armorClass: 14,
     actions: [
       { name: 'Steam Blast', damage: 8, statusEffect: 'on_fire', statusDuration: 2, telegraph: 'Pressure gauges go red...' },
       { name: 'Constrict', damage: 7, telegraph: 'Pipes coil around the room...' },
@@ -400,6 +420,7 @@ const maintenanceEnemies: Enemy[] = [
     description: 'Every blown fuse, every tripped breaker — it remembers them all. And it holds grudges.',
     floorRange: [10, 14],
     hp: 35,
+    armorClass: 12,
     actions: [
       { name: 'Arc Flash', damage: 9, telegraph: 'Sparks cascade from the open panel...' },
       { name: 'Short Circuit', damage: 6, statusEffect: 'stun', statusDuration: 2, telegraph: 'The lights flicker wildly...' },
@@ -418,6 +439,7 @@ const maintenanceEnemies: Enemy[] = [
     description: 'This building was constructed in 1973 and it shows. Do not inhale.',
     floorRange: [11, 15],
     hp: 50,
+    armorClass: 14,
     actions: [
       { name: 'Toxic Cloud', damage: 5, statusEffect: 'poison', statusDuration: 3, telegraph: 'White fibers drift from its crumbling body...' },
       { name: 'Body Slam', damage: 10, telegraph: 'It lurches forward, shedding chunks...' },
@@ -437,6 +459,7 @@ const maintenanceEnemies: Enemy[] = [
     description: 'Started in the bathroom. Spread to the breakroom. Now it has opinions and a rudimentary nervous system.',
     floorRange: [10, 14],
     hp: 30,
+    armorClass: 12,
     actions: [
       { name: 'Spore Burst', damage: 5, statusEffect: 'poison', statusDuration: 3, telegraph: 'Spores fill the air in a green haze...' },
       { name: 'Creeping Growth', damage: 6, telegraph: 'Tendrils of mold crawl across the floor...' },
@@ -455,6 +478,7 @@ const maintenanceEnemies: Enemy[] = [
     description: 'It was supposed to fight fires. Now it fights everything. Approach from the side — never the nozzle end.',
     floorRange: [10, 15],
     hp: 34,
+    armorClass: 12,
     actions: [
       { name: 'Foam Cannon', damage: 6, statusEffect: 'stun', statusDuration: 1, telegraph: 'The pin pops out on its own...' },
       { name: 'Pressurized Charge', damage: 9, telegraph: 'It launches itself like a red torpedo...' },
@@ -480,6 +504,7 @@ const serverEnemies: Enemy[] = [
     description: 'Forty-two units of blinking fury. Its error logs contain prophecies. All of them are bad news for you.',
     floorRange: [15, 20],
     hp: 55,
+    armorClass: 16,
     actions: [
       { name: 'Overheat', damage: 10, statusEffect: 'on_fire', statusDuration: 2, telegraph: 'Every fan spins to maximum...' },
       { name: 'Cable Whip', damage: 8, telegraph: 'Ethernet cables lash out like tentacles...' },
@@ -500,6 +525,7 @@ const serverEnemies: Enemy[] = [
     description: 'A living manifestation of network security. Denies your packets. Denies your existence.',
     floorRange: [15, 20],
     hp: 48,
+    armorClass: 15,
     actions: [
       { name: 'Packet Drop', damage: 8, telegraph: 'Connection timeout imminent...' },
       { name: 'Port Block', damage: 6, statusEffect: 'cursed', statusDuration: 2, telegraph: 'All exits seal themselves...' },
@@ -519,6 +545,7 @@ const serverEnemies: Enemy[] = [
     description: 'The tangled mass beneath every desk has achieved sentience. It remembers every cable tie that was never used.',
     floorRange: [15, 19],
     hp: 44,
+    armorClass: 15,
     actions: [
       { name: 'Entangle', damage: 6, statusEffect: 'stun', statusDuration: 2, telegraph: 'Cables slither across the floor...' },
       { name: 'Electric Shock', damage: 9, telegraph: 'Exposed copper glints in the dark...' },
@@ -538,6 +565,7 @@ const serverEnemies: Enemy[] = [
     description: 'The spirit of every print job that said "printing" but never actually printed. It has been waiting. Patiently.',
     floorRange: [15, 20],
     hp: 40,
+    armorClass: 14,
     actions: [
       { name: 'Infinite Loop', damage: 7, statusEffect: 'existential_dread', statusDuration: 2, telegraph: '"Processing..." appears in the air...' },
       { name: 'Paper Trail', damage: 8, statusEffect: 'bleed', statusDuration: 2, telegraph: 'Pages stream from nowhere...' },
@@ -556,6 +584,7 @@ const serverEnemies: Enemy[] = [
     description: '"Select all squares containing AGONY." Every answer is wrong. Every answer was always wrong.',
     floorRange: [16, 20],
     hp: 38,
+    armorClass: 14,
     actions: [
       { name: 'Identity Crisis', damage: 7, statusEffect: 'existential_dread', statusDuration: 3, telegraph: '"Are you a robot?" echoes in your skull...' },
       { name: 'Distorted Text', damage: 6, statusEffect: 'stun', statusDuration: 1, telegraph: 'Reality warps into illegible characters...' },
@@ -575,6 +604,7 @@ const serverEnemies: Enemy[] = [
     description: 'Thousands of dead pixels that crawled off their monitors to form a buzzing, flickering horde.',
     floorRange: [15, 19],
     hp: 36,
+    armorClass: 14,
     actions: [
       { name: 'Screen Burn', damage: 8, statusEffect: 'on_fire', statusDuration: 1, telegraph: 'The swarm glows white-hot...' },
       { name: 'Blind Spot', damage: 6, statusEffect: 'stun', statusDuration: 1, telegraph: 'Your vision fills with black squares...' },
@@ -593,6 +623,7 @@ const serverEnemies: Enemy[] = [
     description: 'Written in COBOL in 1987. Nobody knows what it does. Nobody dares delete it. Now it walks among us.',
     floorRange: [16, 20],
     hp: 52,
+    armorClass: 16,
     actions: [
       { name: 'Stack Overflow', damage: 10, telegraph: 'Memory usage spikes to critical...' },
       { name: 'Deprecated Method', damage: 7, statusEffect: 'cursed', statusDuration: 2, telegraph: 'Warning: this attack is deprecated but still lethal...' },
@@ -619,6 +650,7 @@ const executiveEnemies: Enemy[] = [
     description: 'Cell A1 contains your name. Cell B1 contains the date of your demise. It auto-calculates.',
     floorRange: [20, 25],
     hp: 58,
+    armorClass: 17,
     actions: [
       { name: 'Formula Error', damage: 10, statusEffect: 'existential_dread', statusDuration: 2, telegraph: '#REF! #VALUE! #DIV/0! spread across reality...' },
       { name: 'Pivot Table Slam', damage: 12, telegraph: 'Data reorganizes into a fist shape...' },
@@ -639,6 +671,7 @@ const executiveEnemies: Enemy[] = [
     description: 'Neither alive nor dead, neither useful nor entirely useless. Schedules meetings about scheduling meetings.',
     floorRange: [20, 25],
     hp: 52,
+    armorClass: 16,
     actions: [
       { name: 'Mandatory Meeting', damage: 8, statusEffect: 'stun', statusDuration: 2, telegraph: 'A calendar invite appears in your mind...' },
       { name: 'Performance Review', damage: 10, statusEffect: 'existential_dread', statusDuration: 3, telegraph: '"Let\'s discuss your metrics..."' },
@@ -658,6 +691,7 @@ const executiveEnemies: Enemy[] = [
     description: 'An impossibly long conference table that folds, unfolds, and crushes. It seats forty. It crushes one.',
     floorRange: [20, 25],
     hp: 65,
+    armorClass: 17,
     actions: [
       { name: 'Table Flip', damage: 14, telegraph: 'The mahogany surface tilts upward...' },
       { name: 'Chair Launch', damage: 9, telegraph: 'Ergonomic chairs wheel into formation...' },
@@ -677,6 +711,7 @@ const executiveEnemies: Enemy[] = [
     description: '"TEAMWORK: Together Everyone Achieves More... BLOOD." It drains your will to live through inspirational quotes.',
     floorRange: [20, 24],
     hp: 46,
+    armorClass: 15,
     actions: [
       { name: 'Inspire Dread', damage: 8, statusEffect: 'existential_dread', statusDuration: 3, telegraph: '"Hang in there!" it whispers, not kindly...' },
       { name: 'Life Drain', damage: 10, statusEffect: 'cursed', statusDuration: 2, telegraph: 'The cat on the poster reaches for you...' },
@@ -695,6 +730,7 @@ const executiveEnemies: Enemy[] = [
     description: 'A formless mass of buzzwords given flesh. It wants to "leverage your core competencies" (your organs).',
     floorRange: [21, 25],
     hp: 56,
+    armorClass: 16,
     actions: [
       { name: 'Synergize', damage: 9, statusEffect: 'cursed', statusDuration: 2, telegraph: 'It mutters about "moving the needle"...' },
       { name: 'Absorb', damage: 11, telegraph: 'The blob extends a pseudopod labeled "onboarding"...' },
@@ -714,6 +750,7 @@ const executiveEnemies: Enemy[] = [
     description: 'The lobby fountain on the executive floor. People threw coins in and wished for promotions. Something heard those wishes.',
     floorRange: [20, 25],
     hp: 50,
+    armorClass: 15,
     actions: [
       { name: 'Coin Spray', damage: 9, telegraph: 'Coins lift from the basin and spin...' },
       { name: 'Tidal Slam', damage: 12, telegraph: 'Water rises impossibly high...' },
@@ -740,6 +777,7 @@ const penthouseEnemies: Enemy[] = [
     description: 'The express elevator that only goes up. And by "up" it means "through you."',
     floorRange: [25, 30],
     hp: 70,
+    armorClass: 17,
     actions: [
       { name: 'Express Ascent', damage: 14, telegraph: 'The floor indicator races upward...' },
       { name: 'Door Crush', damage: 12, statusEffect: 'bleed', statusDuration: 2, telegraph: 'Doors begin closing on your position...' },
@@ -760,6 +798,7 @@ const penthouseEnemies: Enemy[] = [
     description: 'Hangs from a fraying cable on floor 28. Has been dead for decades. Still has a perfect squeegee technique.',
     floorRange: [25, 30],
     hp: 60,
+    armorClass: 16,
     actions: [
       { name: 'Squeegee Slash', damage: 12, statusEffect: 'bleed', statusDuration: 2, telegraph: 'The squeegee gleams with spectral light...' },
       { name: 'Vertigo Pull', damage: 10, statusEffect: 'stun', statusDuration: 1, telegraph: 'It gestures toward the window. You feel a pull...' },
@@ -779,6 +818,7 @@ const penthouseEnemies: Enemy[] = [
     description: 'Decorative, they said. Purely aesthetic, they said. It just blinked.',
     floorRange: [26, 30],
     hp: 75,
+    armorClass: 18,
     actions: [
       { name: 'Stone Dive', damage: 15, telegraph: 'It spreads granite wings...' },
       { name: 'Petrifying Gaze', damage: 8, statusEffect: 'stun', statusDuration: 2, telegraph: 'Its stone eyes lock onto yours...' },
@@ -798,6 +838,7 @@ const penthouseEnemies: Enemy[] = [
     description: 'Eight arms of cut crystal. Spins webs of refracted light. Drops on you from the vaulted ceiling of the penthouse lounge.',
     floorRange: [25, 30],
     hp: 62,
+    armorClass: 17,
     actions: [
       { name: 'Prism Beam', damage: 13, statusEffect: 'on_fire', statusDuration: 2, telegraph: 'Light focuses through crystal limbs...' },
       { name: 'Crystal Web', damage: 9, statusEffect: 'stun', statusDuration: 2, telegraph: 'Razor-thin crystal threads shimmer in the air...' },
@@ -817,6 +858,7 @@ const penthouseEnemies: Enemy[] = [
     description: 'The eyes follow you. The mouth issues quarterly earnings reports. The hands reach out of the frame.',
     floorRange: [25, 30],
     hp: 58,
+    armorClass: 16,
     actions: [
       { name: 'Golden Handshake', damage: 11, statusEffect: 'cursed', statusDuration: 3, telegraph: 'A hand extends from the canvas...' },
       { name: 'Hostile Takeover', damage: 14, telegraph: 'The portrait doubles in size...' },
@@ -836,6 +878,7 @@ const penthouseEnemies: Enemy[] = [
     description: 'Receives signals from places that do not exist. Broadcasts your location to things that should not know it.',
     floorRange: [26, 30],
     hp: 68,
+    armorClass: 18,
     actions: [
       { name: 'Signal Burst', damage: 13, statusEffect: 'stun', statusDuration: 1, telegraph: 'Static fills your thoughts...' },
       { name: 'Frequency Scream', damage: 11, statusEffect: 'existential_dread', statusDuration: 3, telegraph: 'A tone beyond hearing rattles your bones...' },
@@ -855,6 +898,7 @@ const penthouseEnemies: Enemy[] = [
     description: 'Part helicopter, part dragon, all fury. Its rotors are wings. Its exhaust is fire. It guards the final stairway.',
     floorRange: [27, 30],
     hp: 80,
+    armorClass: 18,
     actions: [
       { name: 'Rotor Storm', damage: 14, statusEffect: 'bleed', statusDuration: 2, telegraph: 'Blades spin up to lethal speed...' },
       { name: 'Exhaust Flame', damage: 12, statusEffect: 'on_fire', statusDuration: 3, telegraph: 'The turbine glows cherry-red...' },
@@ -881,6 +925,7 @@ const transitionalEnemies: Enemy[] = [
     description: 'Your own shadow, three steps behind you on the staircase. It has been gaining on you since floor one.',
     floorRange: [3, 12],
     hp: 25,
+    armorClass: 10,
     actions: [
       { name: 'Mirror Strike', damage: 6, telegraph: 'Your shadow raises its fist before you do...' },
       { name: 'Step Behind', damage: 5, statusEffect: 'existential_dread', statusDuration: 2, telegraph: 'You hear your own footsteps, one beat late...' },
@@ -899,6 +944,7 @@ const transitionalEnemies: Enemy[] = [
     description: 'The battery is not low. The battery was never low. It screams because it chooses to.',
     floorRange: [4, 14],
     hp: 18,
+    armorClass: 9,
     actions: [
       { name: 'Piercing Shriek', damage: 7, statusEffect: 'stun', statusDuration: 1, telegraph: 'The chirping accelerates...' },
       { name: 'False Alarm', damage: 4, statusEffect: 'existential_dread', statusDuration: 2, telegraph: 'It beeps once. Twice. The pause stretches...' },
@@ -917,6 +963,7 @@ const transitionalEnemies: Enemy[] = [
     description: 'Started on floor 3 six years ago. Never found their desk. Feral now. Still has the lanyard.',
     floorRange: [3, 15],
     hp: 20,
+    armorClass: 9,
     actions: [
       { name: 'Desperate Flailing', damage: 5, telegraph: 'They swing a binder clip on a lanyard...' },
       { name: 'Anxious Energy', damage: 4, statusEffect: 'stun', statusDuration: 1, telegraph: 'They start talking very fast about their "action items"...' },
@@ -936,6 +983,7 @@ const transitionalEnemies: Enemy[] = [
     description: 'It points to exits that do not exist. It has lured hundreds to dead ends. The arrow glows with malice.',
     floorRange: [8, 20],
     hp: 30,
+    armorClass: 13,
     actions: [
       { name: 'False Hope', damage: 6, statusEffect: 'existential_dread', statusDuration: 3, telegraph: 'The green glow pulses invitingly...' },
       { name: 'Dead End Slam', damage: 9, telegraph: 'A wall materializes where the exit should be...' },
@@ -954,6 +1002,7 @@ const transitionalEnemies: Enemy[] = [
     description: 'An escalator that tore itself from the floor and learned to crawl. Each step is a leg. It has 200 legs.',
     floorRange: [8, 18],
     hp: 45,
+    armorClass: 14,
     actions: [
       { name: 'Step Grind', damage: 9, statusEffect: 'bleed', statusDuration: 2, telegraph: 'Metal steps churn like teeth...' },
       { name: 'Handrail Whip', damage: 7, telegraph: 'Rubber handrails lash out...' },
@@ -973,6 +1022,7 @@ const transitionalEnemies: Enemy[] = [
     description: 'The lobby clock, grown to monstrous size. Its hands are swords. Its face shows the time of your death.',
     floorRange: [12, 25],
     hp: 55,
+    armorClass: 16,
     actions: [
       { name: 'Minute Hand Slash', damage: 10, statusEffect: 'bleed', statusDuration: 2, telegraph: 'The long hand sweeps toward you...' },
       { name: 'Hour Strike', damage: 14, telegraph: 'BONG. BONG. BONG. Each strike is a shockwave...' },
@@ -992,6 +1042,7 @@ const transitionalEnemies: Enemy[] = [
     description: 'Badge number 0000. Been on the night shift since 1971. His flashlight beam burns. His radio speaks in tongues.',
     floorRange: [6, 18],
     hp: 38,
+    armorClass: 12,
     actions: [
       { name: 'Flashlight Beam', damage: 8, statusEffect: 'on_fire', statusDuration: 1, telegraph: 'The flashlight focuses to a searing point...' },
       { name: 'Radio Screech', damage: 6, statusEffect: 'stun', statusDuration: 1, telegraph: 'The walkie-talkie emits an inhuman frequency...' },
@@ -1007,6 +1058,533 @@ const transitionalEnemies: Enemy[] = [
   },
 ];
 
+// ══════════════════════════════════════════════════════════════
+//  EXECUTIVE SUITE THEMED (B11-B15)
+// ══════════════════════════════════════════════════════════════
+
+const executiveSuiteEnemies: Enemy[] = [
+  {
+    id: 'corrupt-vp',
+    name: 'Corrupt VP of Operations',
+    emoji: '🤵',
+    description: 'Once human, now a walking quarterly report. His handshake drains your 401k and your will to live.',
+    floorRange: [11, 15],
+    hp: 48,
+    armorClass: 13,
+    actions: [
+      { name: 'Hostile Takeover', damage: 10, telegraph: 'He pulls out a leveraged buyout document...' },
+      { name: 'Golden Parachute', damage: 7, statusEffect: 'cursed', statusDuration: 3, telegraph: 'A golden briefcase opens ominously...' },
+      { name: 'Downsizing', damage: 12, telegraph: '"We\'re going in a different direction..."' },
+    ],
+    lootTable: [
+      { itemId: 'rare-golden-handshake', weight: 10 },
+      { itemId: 'uncommon-executive-pen', weight: 20 },
+    ],
+    goldDrop: [18, 35],
+    xpDrop: 28,
+  },
+  {
+    id: 'golden-golem',
+    name: 'Golden Golem',
+    emoji: '🏆',
+    description: 'Assembled from melted-down executive bonuses. Each step leaves a gold footprint. It wants its bonuses back.',
+    floorRange: [11, 15],
+    hp: 55,
+    armorClass: 15,
+    actions: [
+      { name: 'Gilded Fist', damage: 12, telegraph: 'Its golden arm rears back, gleaming...' },
+      { name: 'Bonus Round', damage: 8, statusEffect: 'stun', statusDuration: 1, telegraph: 'Gold coins orbit its body faster and faster...' },
+      { name: 'Market Crash', damage: 14, telegraph: 'The golem throws itself forward like a falling stock...' },
+    ],
+    lootTable: [
+      { itemId: 'rare-gold-ingot', weight: 8 },
+      { itemId: 'uncommon-gilded-shard', weight: 20 },
+    ],
+    goldDrop: [25, 45],
+    xpDrop: 32,
+  },
+  {
+    id: 'phantom-secretary',
+    name: 'Phantom Secretary',
+    emoji: '👩‍💼',
+    description: 'She knows where every body is buried because she filed the paperwork. Her typing speed is 666 WPM.',
+    floorRange: [11, 14],
+    hp: 38,
+    armorClass: 12,
+    actions: [
+      { name: 'Memo Blitz', damage: 8, statusEffect: 'bleed', statusDuration: 2, telegraph: 'A typewriter begins clacking at inhuman speed...' },
+      { name: 'Schedule Overload', damage: 6, statusEffect: 'stun', statusDuration: 2, telegraph: 'Your calendar fills with back-to-back meetings...' },
+    ],
+    lootTable: [
+      { itemId: 'uncommon-fountain-pen', weight: 20 },
+      { itemId: 'uncommon-rolodex', weight: 15 },
+    ],
+    goldDrop: [14, 28],
+    xpDrop: 24,
+  },
+  {
+    id: 'stock-ticker-serpent',
+    name: 'Stock Ticker Serpent',
+    emoji: '📈',
+    description: 'A living ribbon of LED stock prices that coils through the executive floor. The numbers spell your doom in real time.',
+    floorRange: [12, 15],
+    hp: 42,
+    armorClass: 11,
+    actions: [
+      { name: 'Bull Run', damage: 11, telegraph: 'The ticker surges forward in a green flash...' },
+      { name: 'Bear Market', damage: 9, statusEffect: 'existential_dread', statusDuration: 2, telegraph: 'All numbers turn red simultaneously...' },
+      { name: 'Margin Call', damage: 8, statusEffect: 'cursed', statusDuration: 2, telegraph: '"SELL SELL SELL" scrolls across its body...' },
+    ],
+    lootTable: [
+      { itemId: 'uncommon-ticker-tape', weight: 25 },
+      { itemId: 'rare-insider-info', weight: 5 },
+    ],
+    goldDrop: [16, 32],
+    xpDrop: 26,
+  },
+  {
+    id: 'corner-office-minotaur',
+    name: 'Corner Office Minotaur',
+    emoji: '🐂',
+    description: 'Half executive, half bull. Full anger management issues. Its labyrinth is made of cubicle walls.',
+    floorRange: [13, 15],
+    hp: 52,
+    armorClass: 14,
+    actions: [
+      { name: 'Boardroom Charge', damage: 14, telegraph: 'It lowers its horns and scrapes the mahogany floor...' },
+      { name: 'Quarterly Stomp', damage: 10, statusEffect: 'stun', statusDuration: 1, telegraph: 'The floor shakes as it rears up...' },
+      { name: 'Severance Package', damage: 8, statusEffect: 'bleed', statusDuration: 3, telegraph: 'It presents a contract written in blood...' },
+    ],
+    lootTable: [
+      { itemId: 'rare-minotaur-horn', weight: 8 },
+      { itemId: 'uncommon-mahogany-shard', weight: 20 },
+    ],
+    goldDrop: [20, 38],
+    xpDrop: 30,
+  },
+];
+
+// ══════════════════════════════════════════════════════════════
+//  MAINTENANCE THEMED (B16-B20)
+// ══════════════════════════════════════════════════════════════
+
+const maintenanceThemedEnemies: Enemy[] = [
+  {
+    id: 'steam-golem',
+    name: 'Steam Golem',
+    emoji: '♨️',
+    description: 'A humanoid shape of pressurized steam held together by corroded pipe fittings. Its body temperature exceeds the surface of disappointment.',
+    floorRange: [16, 20],
+    hp: 52,
+    armorClass: 13,
+    actions: [
+      { name: 'Pressure Release', damage: 10, statusEffect: 'on_fire', statusDuration: 2, telegraph: 'Pressure gauges redline across its body...' },
+      { name: 'Pipe Arm Slam', damage: 12, telegraph: 'A copper arm extends to triple length...' },
+      { name: 'Scalding Cloud', damage: 7, statusEffect: 'poison', statusDuration: 2, telegraph: 'White vapor pours from every joint...' },
+    ],
+    lootTable: [
+      { itemId: 'uncommon-pressure-gauge', weight: 20 },
+      { itemId: 'rare-steam-core', weight: 8 },
+    ],
+    goldDrop: [14, 26],
+    xpDrop: 26,
+  },
+  {
+    id: 'burst-pipe-elemental',
+    name: 'Burst Pipe Elemental',
+    emoji: '💧',
+    description: 'Water that refused to follow plumbing codes. It erupts from walls, floors, and occasionally ceilings with malicious intent.',
+    floorRange: [16, 20],
+    hp: 44,
+    armorClass: 10,
+    actions: [
+      { name: 'Hydro Cannon', damage: 11, telegraph: 'Water pressure builds behind a bulging wall...' },
+      { name: 'Flood Surge', damage: 8, statusEffect: 'stun', statusDuration: 1, telegraph: 'Water rises rapidly around your ankles...' },
+      { name: 'Rust Spray', damage: 7, statusEffect: 'poison', statusDuration: 3, telegraph: 'Brown water mixes with corroded metal flakes...' },
+    ],
+    lootTable: [
+      { itemId: 'uncommon-pipe-wrench', weight: 25 },
+      { itemId: 'uncommon-water-valve', weight: 15 },
+    ],
+    goldDrop: [12, 24],
+    xpDrop: 24,
+  },
+  {
+    id: 'circuit-breaker-beast',
+    name: 'Circuit Breaker Beast',
+    emoji: '⚡',
+    description: 'The electrical panel gained legs and opinions. It flips breakers in your nervous system.',
+    floorRange: [16, 19],
+    hp: 46,
+    armorClass: 14,
+    actions: [
+      { name: 'Arc Flash', damage: 13, telegraph: 'Blue-white light builds between its terminals...' },
+      { name: 'Blackout', damage: 5, statusEffect: 'stun', statusDuration: 2, telegraph: 'Every light on the floor dies at once...' },
+      { name: 'Ground Fault', damage: 9, statusEffect: 'on_fire', statusDuration: 1, telegraph: 'Electricity arcs across the wet floor...' },
+    ],
+    lootTable: [
+      { itemId: 'uncommon-copper-wire', weight: 25 },
+      { itemId: 'rare-breaker-core', weight: 5 },
+    ],
+    goldDrop: [13, 25],
+    xpDrop: 25,
+  },
+  {
+    id: 'ventilation-crawler',
+    name: 'Ventilation Crawler',
+    emoji: '🕷️',
+    description: 'Something that lives in the ductwork. Nobody has ever seen it clearly. Everyone has heard it moving above the ceiling tiles.',
+    floorRange: [17, 20],
+    hp: 40,
+    armorClass: 15,
+    actions: [
+      { name: 'Ceiling Drop', damage: 12, telegraph: 'Ceiling tiles bulge downward...' },
+      { name: 'Duct Wind', damage: 7, statusEffect: 'stun', statusDuration: 1, telegraph: 'A howl echoes through the ventilation system...' },
+      { name: 'Filter Choke', damage: 8, statusEffect: 'poison', statusDuration: 2, telegraph: 'Decades of dust billows from the vents...' },
+    ],
+    lootTable: [
+      { itemId: 'uncommon-air-filter', weight: 25 },
+      { itemId: 'rare-crawler-fang', weight: 5 },
+    ],
+    goldDrop: [12, 22],
+    xpDrop: 22,
+  },
+  {
+    id: 'condemned-foreman',
+    name: 'Condemned Foreman',
+    emoji: '👷',
+    description: 'He died on the job in 1973. OSHA never investigated. He has had fifty years to get angry about it.',
+    floorRange: [16, 20],
+    hp: 50,
+    armorClass: 13,
+    actions: [
+      { name: 'Wrench Throw', damage: 10, telegraph: 'A spectral pipe wrench spins through the air...' },
+      { name: 'Hard Hat Headbutt', damage: 11, telegraph: 'He lowers his ghostly hard hat and charges...' },
+      { name: 'Condemnation', damage: 6, statusEffect: 'cursed', statusDuration: 3, telegraph: 'He stamps a ghostly CONDEMNED notice on your chest...' },
+    ],
+    lootTable: [
+      { itemId: 'uncommon-hard-hat', weight: 20 },
+      { itemId: 'uncommon-tool-belt', weight: 15 },
+      { itemId: 'rare-master-blueprint', weight: 5 },
+    ],
+    goldDrop: [14, 28],
+    xpDrop: 28,
+  },
+];
+
+// ══════════════════════════════════════════════════════════════
+//  ARCHIVES THEMED (B21-B25)
+// ══════════════════════════════════════════════════════════════
+
+const archivesThemedEnemies: Enemy[] = [
+  {
+    id: 'temporal-echo',
+    name: 'Temporal Echo',
+    emoji: '👥',
+    description: 'A version of you from two minutes in the future. It knows what you\'re going to do because it already did it.',
+    floorRange: [21, 25],
+    hp: 55,
+    armorClass: 14,
+    actions: [
+      { name: 'Pre-emptive Strike', damage: 11, telegraph: 'It mirrors your stance before you take it...' },
+      { name: 'Temporal Displacement', damage: 8, statusEffect: 'stun', statusDuration: 2, telegraph: 'You feel yourself phase out of the present...' },
+      { name: 'Paradox Punch', damage: 13, telegraph: 'It attacks with a fist you haven\'t thrown yet...' },
+    ],
+    lootTable: [
+      { itemId: 'rare-temporal-shard', weight: 10 },
+      { itemId: 'uncommon-hourglass', weight: 15 },
+    ],
+    goldDrop: [18, 34],
+    xpDrop: 32,
+  },
+  {
+    id: 'paradox-clerk',
+    name: 'Paradox Clerk',
+    emoji: '🧑‍💼',
+    description: 'Filed your birth and death certificate simultaneously. Its filing system uses four-dimensional folders.',
+    floorRange: [21, 25],
+    hp: 48,
+    armorClass: 12,
+    actions: [
+      { name: 'Misfile', damage: 9, statusEffect: 'existential_dread', statusDuration: 3, telegraph: 'It opens a drawer labeled with your name...' },
+      { name: 'Overdue Notice', damage: 10, statusEffect: 'cursed', statusDuration: 2, telegraph: 'A fine from 2047 materializes in your pocket...' },
+      { name: 'Chronological Reshelving', damage: 7, statusEffect: 'stun', statusDuration: 1, telegraph: 'The room reorganizes with you as a misplaced item...' },
+    ],
+    lootTable: [
+      { itemId: 'uncommon-time-stamp', weight: 20 },
+      { itemId: 'rare-archive-key', weight: 8 },
+    ],
+    goldDrop: [16, 30],
+    xpDrop: 28,
+  },
+  {
+    id: 'dewey-decimator',
+    name: 'Dewey Decimator',
+    emoji: '📚',
+    description: 'A sentient library classification system. It has decided to classify you under "Extinct."',
+    floorRange: [21, 24],
+    hp: 45,
+    armorClass: 13,
+    actions: [
+      { name: 'Catalog Crush', damage: 10, telegraph: 'Filing cabinets slam open with lethal force...' },
+      { name: 'Cross-Reference', damage: 8, statusEffect: 'existential_dread', statusDuration: 2, telegraph: 'It whispers the exact page where your story ends...' },
+      { name: 'Book Avalanche', damage: 12, telegraph: 'Shelves tilt forward in a cascade of knowledge...' },
+    ],
+    lootTable: [
+      { itemId: 'uncommon-library-card', weight: 25 },
+      { itemId: 'rare-ancient-tome', weight: 5 },
+    ],
+    goldDrop: [15, 28],
+    xpDrop: 26,
+  },
+  {
+    id: 'microfiche-wraith',
+    name: 'Microfiche Wraith',
+    emoji: '🎞️',
+    description: 'A ghost trapped on tiny film. It projects itself at full size. The resolution is terrible. The damage is HD.',
+    floorRange: [22, 25],
+    hp: 42,
+    armorClass: 11,
+    actions: [
+      { name: 'Projection Beam', damage: 11, statusEffect: 'on_fire', statusDuration: 1, telegraph: 'Light focuses through translucent film...' },
+      { name: 'Rewind', damage: 7, statusEffect: 'stun', statusDuration: 2, telegraph: 'Time stutters backward around you...' },
+    ],
+    lootTable: [
+      { itemId: 'uncommon-film-reel', weight: 20 },
+      { itemId: 'rare-microfiche-reader', weight: 8 },
+    ],
+    goldDrop: [14, 26],
+    xpDrop: 24,
+  },
+  {
+    id: 'infinite-index',
+    name: 'The Infinite Index',
+    emoji: '🗂️',
+    description: 'A card catalog that extends in every direction including some that shouldn\'t exist. Pulling the wrong card summons your replacement.',
+    floorRange: [23, 25],
+    hp: 58,
+    armorClass: 14,
+    actions: [
+      { name: 'Card Storm', damage: 9, statusEffect: 'bleed', statusDuration: 2, telegraph: 'Thousands of index cards orbit the room...' },
+      { name: 'File Under: Pain', damage: 13, telegraph: 'A drawer shoots out directly at your midsection...' },
+      { name: 'Recursive Reference', damage: 7, statusEffect: 'stun', statusDuration: 2, telegraph: 'The card says "See: This Card." Your brain stalls...' },
+    ],
+    lootTable: [
+      { itemId: 'rare-infinity-card', weight: 8 },
+      { itemId: 'uncommon-brass-drawer-pull', weight: 20 },
+    ],
+    goldDrop: [18, 34],
+    xpDrop: 32,
+  },
+];
+
+// ══════════════════════════════════════════════════════════════
+//  BASEMENT OF BASEMENTS / ELDRITCH (B26-B30)
+// ══════════════════════════════════════════════════════════════
+
+const eldritchThemedEnemies: Enemy[] = [
+  {
+    id: 'obsidian-sentinel',
+    name: 'Obsidian Sentinel',
+    emoji: '🗡️',
+    description: 'Carved from volcanic glass by something that predates the building. Its edges are molecular-thin. Its patience is infinite.',
+    floorRange: [26, 30],
+    hp: 72,
+    armorClass: 16,
+    actions: [
+      { name: 'Obsidian Slash', damage: 14, statusEffect: 'bleed', statusDuration: 3, telegraph: 'Light shatters along its razor-edge arm...' },
+      { name: 'Mirror Shatter', damage: 10, statusEffect: 'stun', statusDuration: 1, telegraph: 'Its reflective surface fractures, showing you your death...' },
+      { name: 'Volcanic Heart', damage: 12, statusEffect: 'on_fire', statusDuration: 2, telegraph: 'Magma glows through cracks in its chest...' },
+    ],
+    lootTable: [
+      { itemId: 'rare-obsidian-edge', weight: 8 },
+      { itemId: 'legendary-sentinel-core', weight: 2 },
+    ],
+    goldDrop: [25, 48],
+    xpDrop: 45,
+  },
+  {
+    id: 'blood-accountant',
+    name: 'Blood Accountant',
+    emoji: '🩸',
+    description: 'Keeps the building\'s true ledger. Every death is an asset. Every survivor is a liability. Its red ink is not ink.',
+    floorRange: [26, 30],
+    hp: 65,
+    armorClass: 14,
+    actions: [
+      { name: 'Blood Audit', damage: 12, statusEffect: 'bleed', statusDuration: 3, telegraph: 'It opens a ledger bound in something that was once alive...' },
+      { name: 'Tax the Living', damage: 10, statusEffect: 'cursed', statusDuration: 3, telegraph: '"Your existence carries a cost..." it hisses...' },
+      { name: 'Foreclosure', damage: 15, telegraph: 'It stamps DENIED across your field of vision...' },
+    ],
+    lootTable: [
+      { itemId: 'rare-blood-ledger-page', weight: 10 },
+      { itemId: 'legendary-crimson-abacus', weight: 2 },
+    ],
+    goldDrop: [24, 46],
+    xpDrop: 44,
+  },
+  {
+    id: 'jaguar-knight-of-finance',
+    name: 'Jaguar Knight of Finance',
+    emoji: '🐆',
+    description: 'Aztec warrior in a three-piece suit of obsidian scales. Its briefcase contains a macuahuitl. Its performance review is fatal.',
+    floorRange: [26, 30],
+    hp: 78,
+    armorClass: 17,
+    actions: [
+      { name: 'Obsidian Blade Storm', damage: 16, statusEffect: 'bleed', statusDuration: 2, telegraph: 'Razor-sharp obsidian studs extend from its weapon...' },
+      { name: 'Predator Pounce', damage: 14, telegraph: 'It drops to all fours with inhuman speed...' },
+      { name: 'Quarterly Sacrifice', damage: 10, statusEffect: 'cursed', statusDuration: 4, telegraph: 'It raises a jade dagger above an altar shaped like a desk...' },
+    ],
+    lootTable: [
+      { itemId: 'rare-jaguar-pelt', weight: 8 },
+      { itemId: 'legendary-obsidian-macuahuitl', weight: 2 },
+    ],
+    goldDrop: [28, 52],
+    xpDrop: 50,
+  },
+  {
+    id: 'jade-serpent',
+    name: 'Jade Serpent',
+    emoji: '🐍',
+    description: 'Quetzalcoatl\'s HR representative. A feathered serpent carved from jade that slithers through the halls dispensing ancient corporate wisdom and lethal bites.',
+    floorRange: [27, 30],
+    hp: 70,
+    armorClass: 15,
+    actions: [
+      { name: 'Feathered Lash', damage: 13, telegraph: 'Emerald feathers bristle like blades...' },
+      { name: 'Jade Venom', damage: 9, statusEffect: 'poison', statusDuration: 4, telegraph: 'Green liquid drips from crystalline fangs...' },
+      { name: 'Serpent\'s Wisdom', damage: 8, statusEffect: 'existential_dread', statusDuration: 3, telegraph: 'It whispers a truth you weren\'t ready to hear...' },
+    ],
+    lootTable: [
+      { itemId: 'rare-jade-fang', weight: 10 },
+      { itemId: 'legendary-feathered-crown', weight: 2 },
+    ],
+    goldDrop: [26, 48],
+    xpDrop: 46,
+  },
+  {
+    id: 'calendar-stone-golem',
+    name: 'Calendar Stone Golem',
+    emoji: '🪨',
+    description: 'The Aztec calendar made flesh. Or rather, stone. It counts down to the end of your current age, which is this one, which is now.',
+    floorRange: [26, 29],
+    hp: 80,
+    armorClass: 18,
+    actions: [
+      { name: 'Epoch Slam', damage: 16, telegraph: 'The stone disc rotates and drops like a guillotine...' },
+      { name: 'Sun Stone Burn', damage: 11, statusEffect: 'on_fire', statusDuration: 3, telegraph: 'The center face glows with solar fury...' },
+      { name: 'Age Turn', damage: 8, statusEffect: 'stun', statusDuration: 2, telegraph: 'The calendar clicks forward. You feel centuries pass...' },
+    ],
+    lootTable: [
+      { itemId: 'rare-calendar-fragment', weight: 8 },
+      { itemId: 'legendary-sun-stone', weight: 2 },
+    ],
+    goldDrop: [28, 50],
+    xpDrop: 48,
+  },
+  {
+    id: 'cenote-shade',
+    name: 'Cenote Shade',
+    emoji: '🌊',
+    description: 'A dripping figure that emerged from the sacrificial well in the basement. It smells of ancient water and modern regret.',
+    floorRange: [26, 30],
+    hp: 60,
+    armorClass: 13,
+    actions: [
+      { name: 'Drowning Touch', damage: 11, statusEffect: 'stun', statusDuration: 2, telegraph: 'Cold water pools in your lungs...' },
+      { name: 'Offering Demand', damage: 9, statusEffect: 'cursed', statusDuration: 3, telegraph: 'It extends a skeletal hand, palm up...' },
+      { name: 'Abyssal Wave', damage: 14, telegraph: 'Water surges from a well that shouldn\'t exist...' },
+    ],
+    lootTable: [
+      { itemId: 'rare-cenote-pearl', weight: 10 },
+      { itemId: 'uncommon-waterlogged-coin', weight: 20 },
+    ],
+    goldDrop: [22, 42],
+    xpDrop: 40,
+  },
+  {
+    id: 'gold-skull-collector',
+    name: 'Gold Skull Collector',
+    emoji: '💀',
+    description: 'Its body is a tower of gilded skulls. Each skull whispers stock tips from the afterlife. All the stocks are in Hell.',
+    floorRange: [27, 30],
+    hp: 68,
+    armorClass: 15,
+    actions: [
+      { name: 'Skull Launch', damage: 12, telegraph: 'A golden skull detaches and rockets toward you...' },
+      { name: 'Death Dividend', damage: 10, statusEffect: 'cursed', statusDuration: 3, telegraph: 'The skulls whisper your net worth in the afterlife...' },
+      { name: 'Skull Tower Collapse', damage: 18, telegraph: 'The entire structure topples toward you...' },
+    ],
+    lootTable: [
+      { itemId: 'rare-golden-skull', weight: 8 },
+      { itemId: 'legendary-death-ledger', weight: 2 },
+    ],
+    goldDrop: [26, 50],
+    xpDrop: 48,
+  },
+  {
+    id: 'eldritch-copier',
+    name: 'Eldritch Copier',
+    emoji: '📠',
+    description: 'The copier from floor 6, but it fell through reality into the basement. Now it copies souls. Collate and staple.',
+    floorRange: [26, 28],
+    hp: 58,
+    armorClass: 14,
+    actions: [
+      { name: 'Soul Copy', damage: 10, statusEffect: 'existential_dread', statusDuration: 3, telegraph: 'The glass surface shows your face, but wrong...' },
+      { name: 'Eldritch Jam', damage: 13, statusEffect: 'stun', statusDuration: 1, telegraph: 'ERROR: SOUL_FEED_JAM flashes in crimson...' },
+      { name: 'Infinite Copies', damage: 8, statusEffect: 'bleed', statusDuration: 2, telegraph: 'Copies of you stream from the output tray, each more broken...' },
+    ],
+    lootTable: [
+      { itemId: 'rare-soul-toner', weight: 10 },
+      { itemId: 'uncommon-eldritch-paper', weight: 20 },
+    ],
+    goldDrop: [20, 38],
+    xpDrop: 36,
+  },
+  {
+    id: 'tlaloc-sprinkler',
+    name: 'Tlaloc Sprinkler System',
+    emoji: '🌧️',
+    description: 'The fire suppression system has been possessed by an Aztec rain god. It rains blood on Tuesdays. Every day is Tuesday here.',
+    floorRange: [28, 30],
+    hp: 62,
+    armorClass: 12,
+    actions: [
+      { name: 'Blood Rain', damage: 10, statusEffect: 'poison', statusDuration: 3, telegraph: 'The sprinklers activate. The water is not water...' },
+      { name: 'Storm Surge', damage: 14, telegraph: 'Lightning crackles between sprinkler heads...' },
+      { name: 'Sacred Flood', damage: 9, statusEffect: 'stun', statusDuration: 2, telegraph: 'The floor becomes a shallow lake of crimson...' },
+    ],
+    lootTable: [
+      { itemId: 'rare-rain-charm', weight: 10 },
+      { itemId: 'legendary-tlaloc-mask', weight: 2 },
+    ],
+    goldDrop: [24, 44],
+    xpDrop: 42,
+  },
+  {
+    id: 'obsidian-elevator',
+    name: 'Obsidian Elevator',
+    emoji: '🛗',
+    description: 'An elevator carved from black volcanic glass. Its buttons are Aztec glyphs. It goes to floors that exist only in nightmares.',
+    floorRange: [26, 30],
+    hp: 74,
+    armorClass: 16,
+    actions: [
+      { name: 'Floor -13', damage: 15, telegraph: 'The display shows a floor number in a language predating numbers...' },
+      { name: 'Obsidian Door Crush', damage: 13, statusEffect: 'bleed', statusDuration: 2, telegraph: 'Glass doors slam shut on empty air... then on you...' },
+      { name: 'Dimensional Freefall', damage: 11, statusEffect: 'existential_dread', statusDuration: 3, telegraph: 'The cable snaps. You fall upward...' },
+    ],
+    lootTable: [
+      { itemId: 'rare-obsidian-button', weight: 10 },
+      { itemId: 'legendary-impossible-keycard', weight: 2 },
+    ],
+    goldDrop: [26, 48],
+    xpDrop: 46,
+  },
+];
+
 export const allEnemies: Enemy[] = [
   ...lobbyEnemies,
   ...officeEnemies,
@@ -1015,4 +1593,8 @@ export const allEnemies: Enemy[] = [
   ...executiveEnemies,
   ...penthouseEnemies,
   ...transitionalEnemies,
+  ...executiveSuiteEnemies,
+  ...maintenanceThemedEnemies,
+  ...archivesThemedEnemies,
+  ...eldritchThemedEnemies,
 ];

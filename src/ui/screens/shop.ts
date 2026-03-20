@@ -5,6 +5,8 @@ import { renderItemCard } from '../components/item-card';
 import { renderAnnouncer } from '../components/announcer';
 import { announcerShop } from '../../data/announcer-lines';
 import { vendorTemplates } from '../../data/shops';
+import { audio } from '../../engine/audio';
+import { triggerViewerChat } from '../components/viewer-chat';
 import type { GamePhase, ShopRoom, GameItem } from '../../types';
 
 export function renderShopScreen(container: HTMLElement, onTransition: (next: GamePhase) => void): void {
@@ -18,6 +20,8 @@ export function renderShopScreen(container: HTMLElement, onTransition: (next: Ga
   const shop = room.data as ShopRoom;
 
   // Pick a vendor template for personality
+  triggerViewerChat('shop_visit');
+
   const vendor = vendorTemplates.length > 0
     ? pickRandom(vendorTemplates, state.rng)
     : null;
@@ -99,6 +103,8 @@ export function renderShopScreen(container: HTMLElement, onTransition: (next: Ga
 
     if (!isSold && canAfford) {
       shopItem.addEventListener('click', () => {
+        audio.playItemPickup();
+        audio.playGoldPickup();
         modifyRun(s => {
           s.gold -= price;
           equipOrStoreItem(s, item);
@@ -118,6 +124,7 @@ export function renderShopScreen(container: HTMLElement, onTransition: (next: Ga
   const actions = el('div', 'screen-actions');
   const leaveBtn = el('button', 'btn btn-action', 'Leave Shop');
   leaveBtn.addEventListener('click', () => {
+    audio.playButtonClick();
     modifyRun(s => {
       s.roomsExplored++;
       if (s.currentRoom) s.currentRoom.explored = true;

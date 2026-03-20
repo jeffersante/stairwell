@@ -1,6 +1,6 @@
 import './style.css';
 import { getRunState, initRun, isRunActive, endRun, modifyRun } from './engine/state';
-import type { GamePhase, GameItem } from './types';
+import type { GamePhase, GameItem, PlayerClassName, CatClassName } from './types';
 import { generateFloor } from './engine/floor';
 import { renderHud, updateHud, removeHud } from './ui/components/hud';
 import { renderTitleScreen } from './ui/screens/title';
@@ -15,6 +15,10 @@ import { renderMetaShopScreen } from './ui/screens/meta-shop';
 import { renderLootScreen } from './ui/screens/loot';
 import { renderTrapScreen } from './ui/screens/trap';
 import { renderRestScreen } from './ui/screens/rest';
+import { renderCraftingScreen } from './ui/screens/crafting';
+import { initViewerChat, destroyViewerChat } from './ui/components/viewer-chat';
+import { renderAudioControls } from './ui/components/audio-controls';
+import { audio } from './engine/audio';
 
 const app = document.getElementById('app');
 if (!app) {
@@ -23,7 +27,7 @@ if (!app) {
 
 const RUN_PHASES: GamePhase[] = [
   'floor_map', 'combat', 'shop', 'event', 'rest',
-  'loot', 'trap', 'boss', 'room', 'room_result',
+  'loot', 'trap', 'crafting', 'boss', 'room', 'room_result',
   'floor_complete', 'boss_result',
 ];
 
@@ -32,15 +36,22 @@ function manageHud(phase: GamePhase): void {
   const existingHud = document.querySelector('.hud');
   if (needsHud && !existingHud) {
     document.body.insertBefore(renderHud(), document.body.firstChild);
+    initViewerChat();
   } else if (needsHud) {
     updateHud();
   } else if (existingHud) {
     removeHud();
+    destroyViewerChat();
+  }
+
+  // Ensure audio controls exist
+  if (!document.querySelector('.audio-controls')) {
+    document.body.appendChild(renderAudioControls());
   }
 }
 
-function startRun(catName: string, startingItem: GameItem | null): void {
-  initRun(catName, startingItem);
+function startRun(catName: string, startingItem: GameItem | null, playerClassName?: PlayerClassName, catClassName?: CatClassName): void {
+  initRun(catName, startingItem, undefined, playerClassName, catClassName);
   transitionTo('floor_map');
 }
 
@@ -74,6 +85,8 @@ function transitionTo(phase: GamePhase): void {
   switch (phase) {
     case 'title':
       removeHud();
+      destroyViewerChat();
+      audio.init();
       renderTitleScreen(app!, transitionTo);
       break;
     case 'run_setup':
@@ -107,6 +120,9 @@ function transitionTo(phase: GamePhase): void {
       break;
     case 'rest':
       renderRestScreen(app!, transitionTo);
+      break;
+    case 'crafting':
+      renderCraftingScreen(app!, transitionTo);
       break;
     case 'floor_complete':
       advanceFloor();

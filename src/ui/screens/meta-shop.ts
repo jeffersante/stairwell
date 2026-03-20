@@ -2,6 +2,7 @@ import { el } from '../../utils';
 import { getMetaState, modifyMeta, saveMetaState } from '../../engine/state';
 import { canPurchaseUnlock, purchaseUnlock } from '../../engine/progression';
 import { allUnlocks } from '../../data/unlocks';
+import { audio } from '../../engine/audio';
 import type { GamePhase } from '../../types';
 
 const CATEGORY_EMOJI: Record<string, string> = {
@@ -65,6 +66,8 @@ export function renderMetaShopScreen(container: HTMLElement, onTransition: (next
 
     if (!purchased && canBuy) {
       item.addEventListener('click', () => {
+        audio.playButtonClick();
+        audio.playItemPickup();
         const newMeta = purchaseUnlock(unlock.id, meta);
         modifyMeta(() => {
           Object.assign(meta, newMeta);
@@ -82,7 +85,10 @@ export function renderMetaShopScreen(container: HTMLElement, onTransition: (next
   // Actions
   const actions = el('div', 'screen-actions');
   const backBtn = el('button', 'btn btn-action', 'Back');
-  backBtn.addEventListener('click', () => onTransition('title'));
+  backBtn.addEventListener('click', () => {
+    audio.playButtonClick();
+    onTransition('title');
+  });
   actions.appendChild(backBtn);
   container.appendChild(actions);
 }

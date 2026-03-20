@@ -1,9 +1,12 @@
-import type { RunState, MetaState, CatState, Floor, ViewerState, GameItem } from '../types';
+import type { RunState, MetaState, GameItem, PlayerClassName, CatClassName } from '../types';
 import { mulberry32 } from '../utils';
 import { initCat } from './cat';
 import { initViewers } from './viewers';
 import { generateFloor } from './floor';
 import { getStartingViewers } from './progression';
+import { rollStats, getStatModifier } from './dice';
+import { getClassById } from '../data/classes';
+import { allItems } from '../data/items';
 
 const META_STORAGE_KEY = 'stairwell_meta';
 
@@ -28,12 +31,43 @@ export function modifyMeta(fn: (state: MetaState) => void): void {
   fn(metaState);
 }
 
-export function initRun(catName: string, startingItem: GameItem | null, seed?: number): void {
+export function initRun(
+  catName: string,
+  startingItem: GameItem | null,
+  seed?: number,
+  playerClassName?: PlayerClassName,
+  catClassName?: CatClassName
+): void {
   const actualSeed = seed ?? Date.now();
   const rng = mulberry32(actualSeed);
   const cat = initCat(catName);
   const viewers = initViewers(getStartingViewers(metaState));
   const floor = generateFloor(1, rng);
+
+  // Roll stats and apply class bonuses
+  const className: PlayerClassName = playerClassName ?? 'intern';
+  const playerClass = getClassById(className);
+  let stats = rollStats(rng);
+
+  if (className === 'intern') {
+    // Intern starts with all 8s
+    stats = { str: 8, dex: 8, con: 8, int: 8, wis: 8, cha: 8 };
+  }
+
+  // Apply class stat bonuses
+  if (playerClass) {
+    for (const [stat, bonus] of Object.entries(playerClass.statBonuses)) {
+      stats[stat as keyof typeof stats] += bonus as number;
+    }
+  }
+
+  // Calculate AC from base 10 + DEX modifier + armor
+  const dexMod = getStatModifier(stats.dex);
+  let armorClass = 10 + dexMod;
+
+  // Starting mana = 4 + INT modifier (min 2)
+  const intMod = getStatModifier(stats.int);
+  const maxMana = Math.max(4 + intMod, 2);
 
   const initialEquipment = {
     weapon: null as GameItem | null,
@@ -41,9 +75,30 @@ export function initRun(catName: string, startingItem: GameItem | null, seed?: n
     accessory: null as GameItem | null,
   };
 
+  // Equip class starting items
+  if (playerClass) {
+    const startingWeapon = allItems.find(i => i.id === playerClass.startingWeaponId);
+    if (startingWeapon) {
+      initialEquipment.weapon = startingWeapon;
+    }
+    if (playerClass.startingArmorId) {
+      const startingArmor = allItems.find(i => i.id === playerClass.startingArmorId);
+      if (startingArmor) {
+        initialEquipment.armor = startingArmor;
+        armorClass += 2;
+      }
+    }
+  }
+
+  // Override with explicitly provided starting item
   if (startingItem && (startingItem.slot === 'weapon' || startingItem.slot === 'armor' || startingItem.slot === 'accessory')) {
     initialEquipment[startingItem.slot as keyof typeof initialEquipment] = startingItem;
   }
+
+  const itemsFound: string[] = [];
+  if (initialEquipment.weapon) itemsFound.push(initialEquipment.weapon.id);
+  if (initialEquipment.armor) itemsFound.push(initialEquipment.armor.id);
+  if (startingItem) itemsFound.push(startingItem.id);
 
   runState = {
     phase: 'floor_map',
@@ -60,9 +115,20 @@ export function initRun(catName: string, startingItem: GameItem | null, seed?: n
     currentRoom: null,
     combatState: null,
     roomsExplored: 0,
-    itemsFound: startingItem ? [startingItem.id] : [],
+    itemsFound,
     enemiesDefeated: [],
     rng,
+    // v2 fields
+    playerStats: stats,
+    playerClass: className,
+    catClass: catClassName ?? 'alley_cat',
+    playerLevel: 1,
+    playerXp: 0,
+    armorClass,
+    mana: maxMana,
+    maxMana,
+    spells: [],
+    classAbilityCooldowns: {},
   };
 }
 

@@ -14,9 +14,10 @@ export const commonItems: GameItem[] = [
     slot: 'weapon',
     description: 'A surprisingly well-balanced janitorial weapon.',
     flavorText: 'The prophecy said nothing about mopping, yet here we are.',
+    materialTags: ['metal', 'organic', 'liquid'],
     actions: [
-      { name: 'Mop Slap', damage: 7, description: 'A wet, demoralizing strike.' },
-      { name: 'Wring Out', damage: 5, statusEffect: 'poison', statusDuration: 2, description: 'The water is of unknowable origin.' },
+      { name: 'Mop Slap', damage: 7, damageDice: '1d6', hitBonus: 2, description: 'A wet, demoralizing strike.' },
+      { name: 'Wring Out', damage: 5, damageDice: '1d4', hitBonus: 1, statusEffect: 'poison', statusDuration: 2, description: 'The water is of unknowable origin.' },
     ],
   },
   {
@@ -26,9 +27,10 @@ export const commonItems: GameItem[] = [
     slot: 'weapon',
     description: 'Red. Heavy. Full of regret.',
     flavorText: 'It was his stapler. It was always his stapler.',
+    materialTags: ['metal'],
     actions: [
-      { name: 'Staple', damage: 8, description: 'Binds flesh as easily as paper.' },
-      { name: 'Throw', damage: 11, description: 'You won\'t get it back. You never do.' },
+      { name: 'Staple', damage: 8, damageDice: '1d6', hitBonus: 2, description: 'Binds flesh as easily as paper.' },
+      { name: 'Throw', damage: 11, damageDice: '1d6+1', hitBonus: 2, description: 'You won\'t get it back. You never do.' },
     ],
   },
   {
@@ -38,9 +40,10 @@ export const commonItems: GameItem[] = [
     slot: 'weapon',
     description: 'The clickiest weapon known to man.',
     flavorText: 'Cherry MX Blues. The Geneva Convention has opinions about this.',
+    materialTags: ['electrical', 'metal'],
     actions: [
-      { name: 'Type Furiously', damage: 6, description: 'CLACK CLACK CLACK CLACK' },
-      { name: 'Key Smash', damage: 10, description: 'asdfghjkl damage.' },
+      { name: 'Type Furiously', damage: 6, damageDice: '1d4', hitBonus: 1, description: 'CLACK CLACK CLACK CLACK' },
+      { name: 'Key Smash', damage: 10, damageDice: '1d6+1', hitBonus: 2, description: 'asdfghjkl damage.' },
     ],
   },
   {
@@ -50,8 +53,9 @@ export const commonItems: GameItem[] = [
     slot: 'weapon',
     description: 'Opens letters. Closes relationships.',
     flavorText: '"Per my last email" but in blade form.',
+    materialTags: ['metal'],
     actions: [
-      { name: 'Slice', damage: 9, description: 'A paper-cut on a cosmic scale.' },
+      { name: 'Slice', damage: 9, damageDice: '1d6+1', hitBonus: 2, description: 'A paper-cut on a cosmic scale.' },
     ],
   },
   {
@@ -61,9 +65,10 @@ export const commonItems: GameItem[] = [
     slot: 'weapon',
     description: 'The broom part left years ago.',
     flavorText: 'It\'s not a staff. Stop calling it a staff.',
+    materialTags: ['organic'],
     actions: [
-      { name: 'Bonk', damage: 8, description: 'Simple. Effective. Undignified.' },
-      { name: 'Sweep the Leg', damage: 6, statusEffect: 'stun', statusDuration: 1, description: 'No mercy.' },
+      { name: 'Bonk', damage: 8, damageDice: '1d6', hitBonus: 2, description: 'Simple. Effective. Undignified.' },
+      { name: 'Sweep the Leg', damage: 6, damageDice: '1d4', hitBonus: 1, statusEffect: 'stun', statusDuration: 1, description: 'No mercy.' },
     ],
   },
   {
@@ -73,9 +78,10 @@ export const commonItems: GameItem[] = [
     slot: 'weapon',
     description: 'Someone spent 14 years making this.',
     flavorText: 'Each band represents a meeting that could have been an email.',
+    materialTags: ['fabric'],
     actions: [
-      { name: 'Bounce Attack', damage: 7, description: 'It keeps coming back.' },
-      { name: 'Snap', damage: 10, description: 'Release a band at terminal velocity.' },
+      { name: 'Bounce Attack', damage: 7, damageDice: '1d6', hitBonus: 2, description: 'It keeps coming back.' },
+      { name: 'Snap', damage: 10, damageDice: '1d6+1', hitBonus: 2, description: 'Release a band at terminal velocity.' },
     ],
   },
   {
@@ -85,8 +91,9 @@ export const commonItems: GameItem[] = [
     slot: 'weapon',
     description: 'A ceramic mug that says "World\'s Okayest Weapon."',
     flavorText: 'It\'s honest, at least.',
+    materialTags: ['liquid'],
     actions: [
-      { name: 'Mug Shot', damage: 8, description: 'Throw scalding mediocrity.' },
+      { name: 'Mug Shot', damage: 8, damageDice: '1d6', hitBonus: 2, description: 'Throw scalding mediocrity.' },
     ],
   },
   {
@@ -96,9 +103,10 @@ export const commonItems: GameItem[] = [
     slot: 'weapon',
     description: 'If you hold a clipboard, no one questions you.',
     flavorText: 'The greatest weapon is looking like you belong.',
+    materialTags: ['paper', 'metal'],
     actions: [
-      { name: 'Board Smack', damage: 7, description: 'Flat, hard, official.' },
-      { name: 'Audit', damage: 5, statusEffect: 'existential_dread', statusDuration: 2, description: 'You begin writing things down about them.' },
+      { name: 'Board Smack', damage: 7, damageDice: '1d6', hitBonus: 2, description: 'Flat, hard, official.' },
+      { name: 'Audit', damage: 5, damageDice: '1d4', hitBonus: 1, statusEffect: 'existential_dread', statusDuration: 2, description: 'You begin writing things down about them.' },
     ],
   },
   {
@@ -108,8 +116,9 @@ export const commonItems: GameItem[] = [
     slot: 'weapon',
     description: 'Three holes. No waiting.',
     flavorText: 'Hole Punch, Hole Punch, Hole Punch.',
+    materialTags: ['metal'],
     actions: [
-      { name: 'Punch x3', damage: 9, description: 'Three precise perforations.' },
+      { name: 'Punch x3', damage: 9, damageDice: '1d6+1', hitBonus: 2, description: 'Three precise perforations.' },
     ],
   },
   {
@@ -119,9 +128,10 @@ export const commonItems: GameItem[] = [
     slot: 'weapon',
     description: 'CAUTION: This is also a weapon now.',
     flavorText: 'The little stick figure falling is a warning. For them.',
+    materialTags: ['metal'],
     actions: [
-      { name: 'Sign Slam', damage: 7, description: 'Fold it and swing.' },
-      { name: 'Place Strategically', damage: 5, statusEffect: 'stun', statusDuration: 1, description: 'They slip. You planned this.' },
+      { name: 'Sign Slam', damage: 7, damageDice: '1d6', hitBonus: 2, description: 'Fold it and swing.' },
+      { name: 'Place Strategically', damage: 5, damageDice: '1d4', hitBonus: 1, statusEffect: 'stun', statusDuration: 1, description: 'They slip. You planned this.' },
     ],
   },
   {
@@ -131,8 +141,9 @@ export const commonItems: GameItem[] = [
     slot: 'weapon',
     description: 'Sharpened to a dangerous nub.',
     flavorText: 'Too short to write with. Perfect length to stab with.',
+    materialTags: ['organic'],
     actions: [
-      { name: 'Stab', damage: 6, description: 'You can\'t erase this.' },
+      { name: 'Stab', damage: 6, damageDice: '1d4', hitBonus: 1, description: 'You can\'t erase this.' },
     ],
   },
   {
@@ -142,9 +153,10 @@ export const commonItems: GameItem[] = [
     slot: 'weapon',
     description: 'Was going to untangle it. Decided violence was faster.',
     flavorText: 'Nobody has ever successfully untangled one of these.',
+    materialTags: ['electrical', 'metal'],
     actions: [
-      { name: 'Lash', damage: 7, description: 'Like a whip but more pathetic.' },
-      { name: 'Trip Wire', damage: 5, statusEffect: 'stun', statusDuration: 1, description: 'OSHA violation in 3... 2... 1...' },
+      { name: 'Lash', damage: 7, damageDice: '1d6', hitBonus: 2, description: 'Like a whip but more pathetic.' },
+      { name: 'Trip Wire', damage: 5, damageDice: '1d4', hitBonus: 1, statusEffect: 'stun', statusDuration: 1, description: 'OSHA violation in 3... 2... 1...' },
     ],
   },
   {
@@ -154,8 +166,9 @@ export const commonItems: GameItem[] = [
     slot: 'weapon',
     description: 'It can spell BOOBLESS if you turn it upside down.',
     flavorText: '58008557 damage.',
+    materialTags: ['electrical'],
     actions: [
-      { name: 'Crunch Numbers', damage: 8, description: 'Math is the real weapon here.' },
+      { name: 'Crunch Numbers', damage: 8, damageDice: '1d6', hitBonus: 2, description: 'Math is the real weapon here.' },
     ],
   },
   {
@@ -165,9 +178,10 @@ export const commonItems: GameItem[] = [
     slot: 'weapon',
     description: 'For emergencies. This is an emergency.',
     flavorText: 'No one asks what the emergency was. They know.',
+    materialTags: ['fabric'],
     actions: [
-      { name: 'Suction Strike', damage: 7, description: 'The pop sound is psychologically devastating.' },
-      { name: 'Plunge', damage: 9, description: 'Force through any resistance.' },
+      { name: 'Suction Strike', damage: 7, damageDice: '1d6', hitBonus: 2, description: 'The pop sound is psychologically devastating.' },
+      { name: 'Plunge', damage: 9, damageDice: '1d6+1', hitBonus: 2, description: 'Force through any resistance.' },
     ],
   },
   {
@@ -177,9 +191,10 @@ export const commonItems: GameItem[] = [
     slot: 'weapon',
     description: 'Could be a training video. Could be something worse.',
     flavorText: 'The tracking is off. It\'s always off.',
+    materialTags: ['fabric'],
     actions: [
-      { name: 'Tape Whip', damage: 6, description: 'Unspooled and weaponized.' },
-      { name: 'Play Contents', damage: 5, statusEffect: 'existential_dread', statusDuration: 2, description: 'The footage is... unsettling.' },
+      { name: 'Tape Whip', damage: 6, damageDice: '1d4', hitBonus: 1, description: 'Unspooled and weaponized.' },
+      { name: 'Play Contents', damage: 5, damageDice: '1d4', hitBonus: 1, statusEffect: 'existential_dread', statusDuration: 2, description: 'The footage is... unsettling.' },
     ],
   },
 
@@ -191,6 +206,7 @@ export const commonItems: GameItem[] = [
     slot: 'armor',
     description: 'You are now extremely visible. This is not always good.',
     flavorText: 'Enemies can see you perfectly. But you look official.',
+    materialTags: ['fabric'],
     actions: [
       { name: 'Brace', shield: 3, description: 'The vest absorbs some impact.' },
     ],
@@ -202,6 +218,7 @@ export const commonItems: GameItem[] = [
     slot: 'armor',
     description: 'Protective AND stress-relieving.',
     flavorText: 'Pop pop pop pop pop pop pop.',
+    materialTags: ['fabric'],
     actions: [
       { name: 'Pop Shield', shield: 4, description: 'Each pop absorbs a little damage.' },
     ],
@@ -213,6 +230,7 @@ export const commonItems: GameItem[] = [
     slot: 'armor',
     description: 'You are now a box. Nobody can see you.',
     flavorText: '!',
+    materialTags: ['paper'],
     actions: [
       { name: 'Box Defense', shield: 3, description: 'Surprisingly stealthy.' },
     ],
@@ -224,6 +242,7 @@ export const commonItems: GameItem[] = [
     slot: 'armor',
     description: 'If it can\'t be fixed with duct tape, you\'re not using enough.',
     flavorText: 'Silver is a protective color, right?',
+    materialTags: ['fabric', 'chemical'],
     actions: [
       { name: 'Sticky Defense', shield: 4, description: 'Attacks stick to you less.' },
     ],
@@ -235,6 +254,7 @@ export const commonItems: GameItem[] = [
     slot: 'armor',
     description: 'Says "GREG." You are not Greg.',
     flavorText: 'Who is Greg? Where is Greg? Are you Greg now?',
+    materialTags: ['paper', 'fabric'],
     actions: [
       { name: 'Identity Crisis', shield: 2, description: 'Hard to hit someone whose identity is uncertain.' },
     ],
@@ -246,6 +266,7 @@ export const commonItems: GameItem[] = [
     slot: 'armor',
     description: 'Styrofoam filling. Environmentally questionable.',
     flavorText: 'They\'ll outlast civilization. They\'ll outlast you.',
+    materialTags: ['chemical'],
     actions: [
       { name: 'Cushion', shield: 3, description: 'Absorbs impact. Not guilt.' },
     ],
@@ -257,6 +278,7 @@ export const commonItems: GameItem[] = [
     slot: 'armor',
     description: 'The stains predate the building.',
     flavorText: 'No one knows what floor the lab was on. There is no lab.',
+    materialTags: ['fabric'],
     actions: [
       { name: 'Scientific Defense', shield: 4, description: 'Peer-reviewed protection.' },
     ],
@@ -268,6 +290,7 @@ export const commonItems: GameItem[] = [
     slot: 'armor',
     description: 'Wrapped around yourself for warmth and dignity.',
     flavorText: 'The headlines are about a building that shouldn\'t exist. Weird.',
+    materialTags: ['paper'],
     actions: [
       { name: 'Paper Shield', shield: 2, description: 'Better than nothing. Marginally.' },
     ],
@@ -279,6 +302,7 @@ export const commonItems: GameItem[] = [
     slot: 'armor',
     description: 'You are your own crime scene.',
     flavorText: 'DO NOT CROSS. They cross anyway.',
+    materialTags: ['fabric'],
     actions: [
       { name: 'Warning', shield: 3, description: 'Some things respect caution tape.' },
     ],
@@ -290,6 +314,7 @@ export const commonItems: GameItem[] = [
     slot: 'armor',
     description: 'The gel wrist rest doubles as body armor.',
     flavorText: 'Finally, a practical use for workplace ergonomics.',
+    materialTags: ['fabric'],
     actions: [
       { name: 'Gel Cushion', shield: 3, description: 'Absorbs impact with gentle wrist support.' },
     ],
@@ -301,6 +326,7 @@ export const commonItems: GameItem[] = [
     slot: 'armor',
     description: 'Fashion is what you make of it.',
     flavorText: 'Hefty. Ultra. Strong.',
+    materialTags: ['fabric'],
     actions: [
       { name: 'Refuse Defense', shield: 3, description: 'Water-resistant and dignity-resistant.' },
     ],
@@ -312,6 +338,7 @@ export const commonItems: GameItem[] = [
     slot: 'armor',
     description: 'Alphabetically organized protection.',
     flavorText: 'Your survival is filed under "S" for "slim chance."',
+    materialTags: ['metal'],
     actions: [
       { name: 'Cabinet Block', shield: 5, description: 'Heavy steel. Well organized.' },
     ],
@@ -325,6 +352,7 @@ export const commonItems: GameItem[] = [
     slot: 'accessory',
     description: 'Grants access to floors that don\'t want you.',
     flavorText: 'The photo on it isn\'t you. Close enough.',
+    materialTags: ['fabric'],
     actions: [],
     passive: { type: 'viewer_boost', value: 3 },
   },
@@ -335,6 +363,7 @@ export const commonItems: GameItem[] = [
     slot: 'accessory',
     description: 'A lucky penny from 1974.',
     flavorText: 'It\'s been on the floor since the building opened.',
+    materialTags: ['metal'],
     actions: [],
     passive: { type: 'gold_bonus', value: 5 },
   },
@@ -345,6 +374,7 @@ export const commonItems: GameItem[] = [
     slot: 'accessory',
     description: 'Squeeze it. It screams with you.',
     flavorText: 'The face was added by someone. The screaming was always there.',
+    materialTags: ['fabric'],
     actions: [],
     passive: { type: 'hp_regen', value: 1 },
   },
@@ -355,6 +385,7 @@ export const commonItems: GameItem[] = [
     slot: 'accessory',
     description: 'A ring made from accumulated desk residue.',
     flavorText: 'Contains the essence of 10,000 Monday mornings.',
+    materialTags: ['liquid', 'chemical'],
     actions: [],
     passive: { type: 'hp_regen', value: 1 },
   },
@@ -365,6 +396,7 @@ export const commonItems: GameItem[] = [
     slot: 'accessory',
     description: 'Can barely see through them. Feel safer though.',
     flavorText: 'Eye protection rated for impacts up to "oh no."',
+    materialTags: ['fabric'],
     actions: [],
     passive: { type: 'trap_detect', value: 10 },
   },
@@ -375,6 +407,7 @@ export const commonItems: GameItem[] = [
     slot: 'accessory',
     description: 'Crafted during a meeting that went 3 hours over.',
     flavorText: 'Each link represents a lost dream.',
+    materialTags: ['metal'],
     actions: [],
     passive: { type: 'viewer_boost', value: 2 },
   },
@@ -385,6 +418,7 @@ export const commonItems: GameItem[] = [
     slot: 'accessory',
     description: 'Compressed lint from the basement dryer. Warm.',
     flavorText: 'The dryer has been running since 1987. Nobody started it.',
+    materialTags: ['fabric'],
     actions: [],
     passive: { type: 'hp_regen', value: 1 },
   },
@@ -395,6 +429,7 @@ export const commonItems: GameItem[] = [
     slot: 'accessory',
     description: 'Completely dead. Tongue test confirms.',
     flavorText: 'Still tastes like poor decisions.',
+    materialTags: ['electrical', 'metal'],
     actions: [],
     passive: { type: 'trap_detect', value: 8 },
   },
@@ -405,6 +440,7 @@ export const commonItems: GameItem[] = [
     slot: 'accessory',
     description: 'A key that fits no lock in this building.',
     flavorText: 'It fits every lock in a building that doesn\'t exist.',
+    materialTags: ['metal'],
     actions: [],
     passive: { type: 'gold_bonus', value: 3 },
   },
@@ -415,6 +451,7 @@ export const commonItems: GameItem[] = [
     slot: 'accessory',
     description: 'Says "Hang in there!" with a cat on a branch.',
     flavorText: 'The cat fell off years ago. The magnet remains.',
+    materialTags: ['metal'],
     actions: [],
     passive: { type: 'cat_bond', value: 2 },
   },
@@ -427,6 +464,7 @@ export const commonItems: GameItem[] = [
     slot: 'consumable',
     description: 'Brown liquid that is technically coffee.',
     flavorText: 'The machine has been broken since 2003. This came out anyway.',
+    materialTags: ['liquid', 'chemical'],
     actions: [
       { name: 'Drink', healing: 15, description: 'Warm. Bitter. Functional.' },
     ],
@@ -438,6 +476,7 @@ export const commonItems: GameItem[] = [
     slot: 'consumable',
     description: 'From Friday\'s meeting. It\'s Tuesday.',
     flavorText: 'The frosting has achieved sentience but remains delicious.',
+    materialTags: ['organic'],
     actions: [
       { name: 'Eat', healing: 20, description: 'Crunchy in ways a donut shouldn\'t be.' },
     ],
@@ -449,6 +488,7 @@ export const commonItems: GameItem[] = [
     slot: 'consumable',
     description: 'Found in the fridge. No name on it. Yours now.',
     flavorText: 'The original owner has been missing for six floors.',
+    materialTags: ['organic'],
     actions: [
       { name: 'Eat', healing: 25, description: 'Could be tuna. Could be chicken. Could be neither.' },
     ],
@@ -460,6 +500,7 @@ export const commonItems: GameItem[] = [
     slot: 'consumable',
     description: 'Contains one bandaid and expired aspirin.',
     flavorText: 'The bandaid has cartoon dinosaurs on it.',
+    materialTags: ['fabric', 'chemical'],
     actions: [
       { name: 'Apply', healing: 18, description: 'Dinosaurs make everything better.' },
     ],
@@ -471,6 +512,7 @@ export const commonItems: GameItem[] = [
     slot: 'consumable',
     description: 'Best by 2019. Good enough by 2026.',
     flavorText: 'The chocolate chips have turned white. That\'s... fine.',
+    materialTags: ['organic'],
     actions: [
       { name: 'Eat', healing: 15, description: 'Tastes like determination and preservatives.' },
     ],
@@ -482,6 +524,7 @@ export const commonItems: GameItem[] = [
     slot: 'consumable',
     description: 'Refreshing and full of workplace gossip.',
     flavorText: 'The cooler bubbled when you weren\'t pressing anything.',
+    materialTags: ['liquid'],
     actions: [
       { name: 'Drink', healing: 15, description: 'Hydration is key. Key to what is unclear.' },
     ],
@@ -493,6 +536,7 @@ export const commonItems: GameItem[] = [
     slot: 'consumable',
     description: 'Covered in lint. Still menthol.',
     flavorText: 'The wrapper fused with it months ago. It\'s part of it now.',
+    materialTags: ['chemical'],
     actions: [
       { name: 'Suck On', healing: 12, description: 'Clears the sinuses and the soul.' },
     ],
@@ -504,6 +548,7 @@ export const commonItems: GameItem[] = [
     slot: 'consumable',
     description: '"XTREME BUILDING BLAST" flavor.',
     flavorText: 'Contains 400% daily caffeine and 0% daily hope.',
+    materialTags: ['liquid', 'chemical'],
     actions: [
       { name: 'Chug', healing: 20, description: 'Your heartbeat becomes avant-garde jazz.' },
     ],
@@ -515,6 +560,7 @@ export const commonItems: GameItem[] = [
     slot: 'consumable',
     description: 'Found on the floor of the elevator.',
     flavorText: 'It burns. That means it\'s working.',
+    materialTags: ['chemical'],
     actions: [
       { name: 'Crunch', healing: 10, description: 'Menthol damage to your own mouth. Net positive.' },
     ],
@@ -526,6 +572,7 @@ export const commonItems: GameItem[] = [
     slot: 'consumable',
     description: 'Kills 99.9% of germs and 12% of existential parasites.',
     flavorText: 'The 0.1% that survived are planning something.',
+    materialTags: ['chemical', 'liquid'],
     actions: [
       { name: 'Apply', healing: 15, description: 'Clean hands, cleaner conscience.' },
     ],
@@ -537,6 +584,7 @@ export const commonItems: GameItem[] = [
     slot: 'consumable',
     description: 'The microwave was occupied by something. You didn\'t ask.',
     flavorText: 'Sodium content: yes.',
+    materialTags: ['organic', 'liquid'],
     actions: [
       { name: 'Slurp', healing: 22, description: 'Cold noodles build character.' },
     ],
@@ -548,6 +596,7 @@ export const commonItems: GameItem[] = [
     slot: 'consumable',
     description: 'There is nothing fun about this size.',
     flavorText: 'Left over from the last office Halloween. The building remembers.',
+    materialTags: ['organic'],
     actions: [
       { name: 'Eat', healing: 12, description: 'Two bites of disappointment and sugar.' },
     ],
@@ -559,8 +608,86 @@ export const commonItems: GameItem[] = [
     slot: 'consumable',
     description: 'For when the building gives you heartburn.',
     flavorText: 'Chalky. Minty. Necessary.',
+    materialTags: ['chemical'],
     actions: [
       { name: 'Chew', healing: 16, description: 'Neutralizes acid and regret.' },
+    ],
+  },
+  // -- Class Starting Items -------------------------------------------
+  {
+    id: 'c_passive_aggressive_memo',
+    name: 'Passive-Aggressive Memo',
+    rarity: 'common',
+    slot: 'weapon',
+    description: 'A memo so passive-aggressive it deals psychic damage.',
+    flavorText: 'As per my previous communication, your existence has been noted and filed under Concerns.',
+    materialTags: ['paper'],
+    actions: [
+      { name: 'Paper Slash', damage: 6, damageDice: '1d4', hitBonus: 1, description: 'Words cut deeper than swords.' },
+      { name: 'CC Everyone', damage: 4, damageDice: '1d4', hitBonus: 1, statusEffect: 'existential_dread', statusDuration: 2, description: 'Reply all was a mistake. Your mistake.' },
+    ],
+  },
+  {
+    id: 'c_three_ring_binder',
+    name: 'Three-Ring Binder of Policy',
+    rarity: 'common',
+    slot: 'armor',
+    description: 'Contains every HR policy ever written. Doubles as a shield.',
+    flavorText: 'Section 47.3(b): Employees shall not be dissolved by eldritch forces during working hours.',
+    materialTags: ['paper', 'metal'],
+    actions: [
+      { name: 'Policy Shield', shield: 5, description: 'Hide behind bureaucracy.' },
+      { name: 'Binder Bash', damage: 5, description: 'Three hundred pages of compliance, weaponized.' },
+    ],
+  },
+  {
+    id: 'c_jumpsuit_armor',
+    name: 'Janitor Jumpsuit',
+    rarity: 'common',
+    slot: 'armor',
+    description: 'Stain-resistant, fire-retardant, dignity-optional.',
+    flavorText: 'The name tag says CARL but Carl left in 94. You are Carl now.',
+    materialTags: ['fabric'],
+    actions: [
+      { name: 'Tough It Out', shield: 4, description: 'You have cleaned worse.' },
+    ],
+  },
+  {
+    id: 'c_maglite_flashlight',
+    name: 'Maglite Flashlight',
+    rarity: 'common',
+    slot: 'weapon',
+    description: 'Four D-batteries of blunt force authority.',
+    flavorText: 'Standard issue. Non-standard applications.',
+    materialTags: ['metal'],
+    actions: [
+      { name: 'Flashlight Strike', damage: 7, damageDice: '1d6', hitBonus: 2, description: 'Illuminate their skull.' },
+      { name: 'Blind', damage: 3, damageDice: '1d4', hitBonus: 1, statusEffect: 'stun', statusDuration: 1, description: 'Right in the eyes.' },
+    ],
+  },
+  {
+    id: 'c_security_vest',
+    name: 'Security Vest',
+    rarity: 'common',
+    slot: 'armor',
+    description: 'Says SECURITY on the back. The building does not feel secure.',
+    flavorText: 'Rated for small arms, not for the things that live on floor 15.',
+    materialTags: ['fabric', 'metal'],
+    actions: [
+      { name: 'Brace', shield: 6, description: 'Tighten the vest. Pray.' },
+    ],
+  },
+  {
+    id: 'c_calculator_weapon',
+    name: 'Calculator of Doom',
+    rarity: 'common',
+    slot: 'weapon',
+    description: 'A Texas Instruments TI-84. The answer is always pain.',
+    flavorText: 'It can graph your demise in real-time.',
+    materialTags: ['electrical'],
+    actions: [
+      { name: 'Crunch Numbers', damage: 6, damageDice: '1d4', hitBonus: 1, description: 'Calculate the exact force needed.' },
+      { name: 'Divide by Zero', damage: 9, damageDice: '1d6+1', hitBonus: 2, statusEffect: 'stun', statusDuration: 1, description: 'Reality briefly disagrees with mathematics.' },
     ],
   },
 ];
@@ -579,9 +706,10 @@ export const uncommonItems: GameItem[] = [
     slot: 'weapon',
     description: 'It chose you. You didn\'t choose it.',
     flavorText: 'It has opinions about your bread preferences. Strong ones.',
+    materialTags: ['electrical', 'metal'],
     actions: [
-      { name: 'Toast Blast', damage: 12, statusEffect: 'on_fire', statusDuration: 2, description: 'Launches burning toast at high velocity.' },
-      { name: 'Crumb Tray', damage: 8, description: 'Years of accumulated crumb shrapnel.' },
+      { name: 'Toast Blast', damage: 12, damageDice: '1d8', hitBonus: 3, statusEffect: 'on_fire', statusDuration: 2, description: 'Launches burning toast at high velocity.' },
+      { name: 'Crumb Tray', damage: 8, damageDice: '1d6', hitBonus: 2, description: 'Years of accumulated crumb shrapnel.' },
     ],
   },
   {
@@ -591,8 +719,9 @@ export const uncommonItems: GameItem[] = [
     slot: 'weapon',
     description: 'Extradimensional storage in the margins.',
     flavorText: 'Irreconcilable differences with reality.',
+    materialTags: ['paper', 'supernatural'],
     actions: [
-      { name: 'Serve Papers', damage: 14, statusEffect: 'existential_dread', statusDuration: 2, description: 'The enemy must confront the end of something beautiful.' },
+      { name: 'Serve Papers', damage: 14, damageDice: '1d8+2', hitBonus: 4, statusEffect: 'existential_dread', statusDuration: 2, description: 'The enemy must confront the end of something beautiful.' },
     ],
   },
   {
@@ -602,9 +731,10 @@ export const uncommonItems: GameItem[] = [
     slot: 'weapon',
     description: 'A day of the week, weaponized.',
     flavorText: 'It\'s always Thursday somewhere. And now it\'s Thursday everywhere.',
+    materialTags: ['supernatural'],
     actions: [
-      { name: 'Invoke Thursday', damage: 10, statusEffect: 'existential_dread', statusDuration: 3, description: 'The enemy realizes it\'s not Friday.' },
-      { name: 'Hump Day+1', damage: 13, description: 'The worst kind of liminal.' },
+      { name: 'Invoke Thursday', damage: 10, damageDice: '1d8', hitBonus: 3, statusEffect: 'existential_dread', statusDuration: 3, description: 'The enemy realizes it\'s not Friday.' },
+      { name: 'Hump Day+1', damage: 13, damageDice: '1d8+2', hitBonus: 4, description: 'The worst kind of liminal.' },
     ],
   },
   {
@@ -614,9 +744,10 @@ export const uncommonItems: GameItem[] = [
     slot: 'weapon',
     description: 'Goes off at 3 AM. Every night. In different rooms.',
     flavorText: 'The ghost inside just really cares about fire safety.',
+    materialTags: ['metal', 'chemical', 'supernatural'],
     actions: [
-      { name: 'Spray', damage: 10, statusEffect: 'stun', statusDuration: 1, description: 'A face full of supernatural foam.' },
-      { name: 'Canister Bash', damage: 14, description: 'Heavy, red, and angry.' },
+      { name: 'Spray', damage: 10, damageDice: '1d8', hitBonus: 3, statusEffect: 'stun', statusDuration: 1, description: 'A face full of supernatural foam.' },
+      { name: 'Canister Bash', damage: 14, damageDice: '1d8+2', hitBonus: 4, description: 'Heavy, red, and angry.' },
     ],
   },
   {
@@ -626,9 +757,10 @@ export const uncommonItems: GameItem[] = [
     slot: 'weapon',
     description: 'Each note contains a passive-aggressive message.',
     flavorText: '"As previously discussed, please stop existing. Thanks!"',
+    materialTags: ['paper', 'chemical'],
     actions: [
-      { name: 'Note Storm', damage: 9, statusEffect: 'existential_dread', statusDuration: 2, description: 'A blizzard of yellow judgment.' },
-      { name: 'Priority Flag', damage: 15, description: 'This one is marked URGENT.' },
+      { name: 'Note Storm', damage: 9, damageDice: '1d8', hitBonus: 3, statusEffect: 'existential_dread', statusDuration: 2, description: 'A blizzard of yellow judgment.' },
+      { name: 'Priority Flag', damage: 15, damageDice: '1d8+2', hitBonus: 4, description: 'This one is marked URGENT.' },
     ],
   },
   {
@@ -638,9 +770,10 @@ export const uncommonItems: GameItem[] = [
     slot: 'weapon',
     description: 'The elevator didn\'t need this one. Probably.',
     flavorText: 'Don\'t think about which elevator. Don\'t think about which floor.',
+    materialTags: ['metal'],
     actions: [
-      { name: 'Cable Whip', damage: 13, description: 'Steel rope with gravitational trauma.' },
-      { name: 'Entangle', damage: 8, statusEffect: 'stun', statusDuration: 2, description: 'Wrapped in consequences.' },
+      { name: 'Cable Whip', damage: 13, damageDice: '1d8+2', hitBonus: 4, description: 'Steel rope with gravitational trauma.' },
+      { name: 'Entangle', damage: 8, damageDice: '1d6', hitBonus: 2, statusEffect: 'stun', statusDuration: 2, description: 'Wrapped in consequences.' },
     ],
   },
   {
@@ -650,9 +783,10 @@ export const uncommonItems: GameItem[] = [
     slot: 'weapon',
     description: 'Ergonomic violence.',
     flavorText: 'Adjustable height, tilt, and lethality.',
+    materialTags: ['metal'],
     actions: [
-      { name: 'Swing', damage: 14, description: 'Full 360-degree articulation.' },
-      { name: 'Clamp', damage: 10, statusEffect: 'bleed', statusDuration: 2, description: 'The desk clamp finds new purpose.' },
+      { name: 'Swing', damage: 14, damageDice: '1d8+2', hitBonus: 4, description: 'Full 360-degree articulation.' },
+      { name: 'Clamp', damage: 10, damageDice: '1d8', hitBonus: 3, statusEffect: 'bleed', statusDuration: 2, description: 'The desk clamp finds new purpose.' },
     ],
   },
   {
@@ -662,9 +796,10 @@ export const uncommonItems: GameItem[] = [
     slot: 'weapon',
     description: 'A ruptured toner cartridge. Devastating.',
     flavorText: 'Everything within six feet is now permanently cyan.',
+    materialTags: ['chemical'],
     actions: [
-      { name: 'Toner Burst', damage: 11, statusEffect: 'poison', statusDuration: 3, description: 'Inhaling toner is not recommended.' },
-      { name: 'Stain', damage: 8, description: 'This will never come out.' },
+      { name: 'Toner Burst', damage: 11, damageDice: '1d8', hitBonus: 3, statusEffect: 'poison', statusDuration: 3, description: 'Inhaling toner is not recommended.' },
+      { name: 'Stain', damage: 8, damageDice: '1d6', hitBonus: 2, description: 'This will never come out.' },
     ],
   },
   {
@@ -674,9 +809,10 @@ export const uncommonItems: GameItem[] = [
     slot: 'weapon',
     description: 'Swung like a medieval flail. Opens doors AND skulls.',
     flavorText: 'Key 14 glows faintly. Nobody knows what it opens.',
+    materialTags: ['metal'],
     actions: [
-      { name: 'Key Flail', damage: 12, description: 'Jingling death on a retractable chain.' },
-      { name: 'Unlock Pain', damage: 16, description: 'The right key for the wrong door.' },
+      { name: 'Key Flail', damage: 12, damageDice: '1d8', hitBonus: 3, description: 'Jingling death on a retractable chain.' },
+      { name: 'Unlock Pain', damage: 16, damageDice: '1d8+2', hitBonus: 4, description: 'The right key for the wrong door.' },
     ],
   },
   {
@@ -686,9 +822,10 @@ export const uncommonItems: GameItem[] = [
     slot: 'weapon',
     description: 'Ripped from the bathroom wall. Still works.',
     flavorText: 'WHOOOOOOSH. Your hands are now dry. Your enemies are not.',
+    materialTags: ['metal', 'electrical'],
     actions: [
-      { name: 'Gale Blast', damage: 11, statusEffect: 'stun', statusDuration: 1, description: 'Hurricane-force warm air.' },
-      { name: 'Blunt Trauma', damage: 15, description: 'Heavy chrome and bad decisions.' },
+      { name: 'Gale Blast', damage: 11, damageDice: '1d8', hitBonus: 3, statusEffect: 'stun', statusDuration: 1, description: 'Hurricane-force warm air.' },
+      { name: 'Blunt Trauma', damage: 15, damageDice: '1d8+2', hitBonus: 4, description: 'Heavy chrome and bad decisions.' },
     ],
   },
   {
@@ -698,8 +835,9 @@ export const uncommonItems: GameItem[] = [
     slot: 'weapon',
     description: 'The one that always pulled left.',
     flavorText: 'Freed from the chair. It has tasted freedom. Now it tastes blood.',
+    materialTags: ['metal', 'fabric'],
     actions: [
-      { name: 'Wheel Strike', damage: 13, description: 'Rolls over enemies like it rolled over your carpet.' },
+      { name: 'Wheel Strike', damage: 13, damageDice: '1d8+2', hitBonus: 4, description: 'Rolls over enemies like it rolled over your carpet.' },
     ],
   },
   {
@@ -709,9 +847,10 @@ export const uncommonItems: GameItem[] = [
     slot: 'weapon',
     description: 'The scariest weapon in this entire building.',
     flavorText: 'Schedule C. Schedule D. Schedule PAIN.',
+    materialTags: ['paper'],
     actions: [
-      { name: 'Audit Strike', damage: 10, statusEffect: 'existential_dread', statusDuration: 3, description: 'The IRS is inside the building. The IRS is always inside the building.' },
-      { name: 'Paper Cut Barrage', damage: 14, statusEffect: 'bleed', statusDuration: 2, description: 'Death by a thousand deductions.' },
+      { name: 'Audit Strike', damage: 10, damageDice: '1d8', hitBonus: 3, statusEffect: 'existential_dread', statusDuration: 3, description: 'The IRS is inside the building. The IRS is always inside the building.' },
+      { name: 'Paper Cut Barrage', damage: 14, damageDice: '1d8+2', hitBonus: 4, statusEffect: 'bleed', statusDuration: 2, description: 'Death by a thousand deductions.' },
     ],
   },
   {
@@ -721,9 +860,10 @@ export const uncommonItems: GameItem[] = [
     slot: 'weapon',
     description: 'Connected to a phone that rings at midnight.',
     flavorText: 'The person on the other end won\'t stop asking about your car\'s extended warranty.',
+    materialTags: ['electrical', 'metal'],
     actions: [
-      { name: 'Cord Whip', damage: 11, description: 'Stretchy. Springy. Violent.' },
-      { name: 'Dial Tone', damage: 9, statusEffect: 'stun', statusDuration: 1, description: 'BEEEEEEEEEP.' },
+      { name: 'Cord Whip', damage: 11, damageDice: '1d8', hitBonus: 3, description: 'Stretchy. Springy. Violent.' },
+      { name: 'Dial Tone', damage: 9, damageDice: '1d8', hitBonus: 3, statusEffect: 'stun', statusDuration: 1, description: 'BEEEEEEEEEP.' },
     ],
   },
   {
@@ -733,9 +873,10 @@ export const uncommonItems: GameItem[] = [
     slot: 'weapon',
     description: 'Still buzzing. Still flickering. Now a sword.',
     flavorText: 'The hum attracts things from between the floors.',
+    materialTags: ['electrical', 'chemical'],
     actions: [
-      { name: 'Light Saber', damage: 15, description: 'Shatters on impact. Worth it.' },
-      { name: 'Mercury Vapor', damage: 8, statusEffect: 'poison', statusDuration: 2, description: 'Not OSHA compliant. Not even close.' },
+      { name: 'Light Saber', damage: 15, damageDice: '1d8+2', hitBonus: 4, description: 'Shatters on impact. Worth it.' },
+      { name: 'Mercury Vapor', damage: 8, damageDice: '1d6', hitBonus: 2, statusEffect: 'poison', statusDuration: 2, description: 'Not OSHA compliant. Not even close.' },
     ],
   },
 
@@ -747,6 +888,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'armor',
     description: 'Your personal space, now literally.',
     flavorText: 'Still has Karen\'s motivational posters pinned to it.',
+    materialTags: ['fabric', 'metal'],
     actions: [
       { name: 'Cube Shield', shield: 6, description: 'The fabric dampens everything. Sound. Damage. Hope.' },
     ],
@@ -759,6 +901,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'armor',
     description: 'Found in a sealed room with warning signs. Cozy!',
     flavorText: 'The building inspector said it was fine. The building inspector has been dead since 1978.',
+    materialTags: ['fabric', 'chemical'],
     actions: [
       { name: 'Fireproof', shield: 7, description: 'Immune to fire. Probably not immune to other things.' },
     ],
@@ -770,6 +913,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'armor',
     description: 'From the server room nobody admits exists.',
     flavorText: 'The servers are still running. Processing what? Don\'t ask.',
+    materialTags: ['metal'],
     actions: [
       { name: 'Steel Defense', shield: 7, description: 'Industrial grade protection.' },
     ],
@@ -781,6 +925,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'armor',
     description: 'Canvas mail bag worn as a tunic.',
     flavorText: 'The last memo inside says "HELP. I\'VE BEEN DELIVERING MAIL FOR 30 YEARS. THERE IS NO EXIT."',
+    materialTags: ['fabric', 'paper'],
     actions: [
       { name: 'Bag Block', shield: 5, description: 'Cushioned by decades of unread memos.' },
     ],
@@ -793,6 +938,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'armor',
     description: 'Acoustic dampening for your torso.',
     flavorText: 'Something was living above this tile. It\'s your problem now.',
+    materialTags: ['paper'],
     actions: [
       { name: 'Absorb', shield: 6, description: 'Muffles impacts and screams equally.' },
     ],
@@ -804,6 +950,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'armor',
     description: 'Industrial-grade. Seen things you wouldn\'t believe.',
     flavorText: 'The previous wearer left notes. You burned the notes.',
+    materialTags: ['fabric', 'chemical'],
     actions: [
       { name: 'Insulate', shield: 5, description: 'Rubber doesn\'t conduct damage. That\'s not how physics works, but here we are.' },
     ],
@@ -816,6 +963,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'armor',
     description: 'Someone drew a shield on it. That counts.',
     flavorText: 'The marker is permanent. Just like your mistakes.',
+    materialTags: ['metal'],
     actions: [
       { name: 'Board Block', shield: 6, description: 'SWOT analysis: S-shield W-whiteboard O-okay T-this works.' },
     ],
@@ -827,6 +975,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'armor',
     description: 'Thick, padded, and smells like U-Haul.',
     flavorText: 'You\'re moving. To the next floor. Whether you want to or not.',
+    materialTags: ['fabric'],
     actions: [
       { name: 'Padded Defense', shield: 7, description: 'Built to protect furniture. You\'re furniture now.' },
     ],
@@ -838,6 +987,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'armor',
     description: 'Just the front half. Your back is on its own.',
     flavorText: 'Face the danger. Never retreat. Not because of bravery.',
+    materialTags: ['fabric', 'chemical'],
     actions: [
       { name: 'Chemical Resistance', shield: 8, description: 'Front-facing protection only.' },
     ],
@@ -849,6 +999,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'armor',
     description: 'Dozens of binders linked together with paper clips.',
     flavorText: 'Contains every memo ever written about "synergy." Impenetrable.',
+    materialTags: ['paper', 'metal'],
     actions: [
       { name: 'Bureaucratic Shield', shield: 6, description: 'Attacks get stuck in red tape.' },
     ],
@@ -863,6 +1014,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'accessory',
     description: 'Makes you look like you\'re talking to yourself. You might be.',
     flavorText: 'Connected to: UNKNOWN DEVICE. Signal strength: ELDRITCH.',
+    materialTags: ['electrical'],
     actions: [],
     passive: { type: 'viewer_boost', value: 8 },
   },
@@ -873,6 +1025,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'accessory',
     description: 'Permanently stuck on March 14. A very good cat.',
     flavorText: 'Your cat companion recognizes the cat in the photo. Refuses to elaborate.',
+    materialTags: ['paper'],
     actions: [],
     passive: { type: 'cat_bond', value: 5 },
   },
@@ -883,6 +1036,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'accessory',
     description: 'For carpal tunnel. Also for punching.',
     flavorText: 'Proper wrist alignment makes your attacks 12% more ergonomic.',
+    materialTags: ['fabric', 'metal'],
     actions: [
       { name: 'Brace Strike', damage: 8, description: 'Ergonomic violence.' },
     ],
@@ -895,6 +1049,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'accessory',
     description: 'For the parking garage. There is no parking garage.',
     flavorText: 'Level P7. The building only has 5 basement levels. Officially.',
+    materialTags: ['paper'],
     actions: [],
     passive: { type: 'gold_bonus', value: 10 },
   },
@@ -905,6 +1060,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'accessory',
     description: 'You can\'t see better, but you see... more.',
     flavorText: 'The things in the corners of your vision are now in the center.',
+    materialTags: ['metal'],
     actions: [],
     passive: { type: 'trap_detect', value: 20 },
   },
@@ -915,6 +1071,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'accessory',
     description: 'Hasn\'t been watered since the Clinton administration.',
     flavorText: 'It\'s not plastic. It\'s not alive. It\'s something else.',
+    materialTags: ['organic', 'supernatural'],
     actions: [],
     passive: { type: 'hp_regen', value: 3 },
   },
@@ -925,6 +1082,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'accessory',
     description: '"TEAMWORK: Together Everyone Achieves More Kills."',
     flavorText: 'The kitten on the poster blinks when you\'re not looking.',
+    materialTags: ['paper', 'supernatural'],
     actions: [],
     passive: { type: 'viewer_boost', value: 6 },
   },
@@ -935,6 +1093,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'accessory',
     description: 'Lists companies that don\'t exist on floors that do.',
     flavorText: 'Floor 13 is listed. Floor 13 was removed. Floor 13 is listed.',
+    materialTags: ['paper', 'supernatural'],
     actions: [],
     passive: { type: 'trap_detect', value: 18 },
   },
@@ -945,6 +1104,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'accessory',
     description: 'Good for one (1) snack from any vending machine.',
     flavorText: 'The token has been spent 47 times. It keeps coming back.',
+    materialTags: ['metal', 'supernatural'],
     actions: [],
     passive: { type: 'shop_discount', value: 15 },
   },
@@ -955,6 +1115,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'accessory',
     description: 'Your name is on it. You\'ve never worked here.',
     flavorText: 'Every Employee of the Month since 1992 is also named Greg.',
+    materialTags: ['metal'],
     actions: [],
     passive: { type: 'viewer_boost', value: 7 },
   },
@@ -967,6 +1128,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'consumable',
     description: 'Frozen outside. Lava inside. Perfect.',
     flavorText: 'The microwave apologized when it was done.',
+    materialTags: ['organic'],
     actions: [
       { name: 'Eat', healing: 30, description: 'Third-degree mouth burns are a small price for nutrition.' },
     ],
@@ -978,6 +1140,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'consumable',
     description: 'Contains "floor cleaner." Wink.',
     flavorText: 'The janitor winked when he said it was floor cleaner. Then he vanished.',
+    materialTags: ['liquid', 'chemical', 'metal'],
     actions: [
       { name: 'Swig', healing: 25, description: 'Tastes like pine and determination.' },
       { name: 'Splash', damage: 10, statusEffect: 'on_fire', statusDuration: 1, description: 'Also flammable, apparently.' },
@@ -990,6 +1153,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'consumable',
     description: 'Says "HAPPY BIRTHDAY GREG." Nobody came to the party.',
     flavorText: 'The candles relight themselves. There are too many candles.',
+    materialTags: ['organic', 'supernatural'],
     actions: [
       { name: 'Eat Slice', healing: 35, description: 'Sheet cake. The flavor is "institutional."' },
     ],
@@ -1001,6 +1165,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'consumable',
     description: 'Left by the gym bro who used to work on floor 4.',
     flavorText: '"GAINS." - written on the side in sharpie.',
+    materialTags: ['liquid', 'chemical'],
     actions: [
       { name: 'Drink', healing: 28, description: 'Chalky, thick, and vaguely banana.' },
     ],
@@ -1012,6 +1177,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'consumable',
     description: 'See clearly for the first time. Results may vary.',
     flavorText: 'Side effects include seeing clearly, seeing too much, and screaming.',
+    materialTags: ['liquid', 'chemical'],
     actions: [
       { name: 'Apply', healing: 20, description: 'Your eyes feel better. You see things now.' },
     ],
@@ -1023,6 +1189,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'consumable',
     description: 'From the espresso machine that appeared on floor 3 last Tuesday.',
     flavorText: 'The crema formed a face. The face had opinions.',
+    materialTags: ['liquid', 'chemical'],
     actions: [
       { name: 'Drink', healing: 22, viewerBoost: 5, description: 'Time dilates. You vibrate.' },
     ],
@@ -1034,6 +1201,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'consumable',
     description: 'Nobody remembers who brought this. Or what it is.',
     flavorText: 'The Tupperware lid says "DO NOT OPEN ON A FULL MOON."',
+    materialTags: ['organic'],
     actions: [
       { name: 'Eat', healing: 32, description: 'Tastes like every ethnicity at once.' },
     ],
@@ -1045,6 +1213,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'consumable',
     description: 'Dosage: "some." Side effects: "probably."',
     flavorText: 'Cherry flavor, but not any cherry found in nature.',
+    materialTags: ['liquid', 'chemical'],
     actions: [
       { name: 'Gulp', healing: 28, description: 'Everything becomes pleasantly distant.' },
     ],
@@ -1056,6 +1225,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'consumable',
     description: 'Organic, free-range, interdimensional.',
     flavorText: 'Your cat companion is suddenly very interested in you.',
+    materialTags: ['organic'],
     actions: [
       { name: 'Give to Cat', healing: 15, viewerBoost: 3, description: 'Cat bond increased. Cat judgment decreased.' },
     ],
@@ -1067,6 +1237,7 @@ export const uncommonItems: GameItem[] = [
     slot: 'consumable',
     description: 'It\'s blue. Or is it green? The color keeps changing.',
     flavorText: 'The five-second rule extends to infinity in this building.',
+    materialTags: ['chemical', 'supernatural'],
     actions: [
       { name: 'Swallow', healing: 35, description: 'You feel better. You feel different. You feel.' },
     ],
@@ -1087,9 +1258,10 @@ export const rareItems: GameItem[] = [
     slot: 'weapon',
     description: 'A 4-foot fluorescent tube wielded like a lightsaber.',
     flavorText: 'It hums. It flickers. It shatters dramatically on critical hits.',
+    materialTags: ['electrical', 'chemical'],
     actions: [
-      { name: 'Saber Strike', damage: 18, description: 'A sweeping arc of office lighting.' },
-      { name: 'Shatter Blow', damage: 24, description: 'Break the tube for massive damage. Glass everywhere.' },
+      { name: 'Saber Strike', damage: 18, damageDice: '1d10+2', hitBonus: 5, description: 'A sweeping arc of office lighting.' },
+      { name: 'Shatter Blow', damage: 24, damageDice: '1d10+2', hitBonus: 5, description: 'Break the tube for massive damage. Glass everywhere.' },
     ],
   },
   {
@@ -1099,9 +1271,10 @@ export const rareItems: GameItem[] = [
     slot: 'weapon',
     description: 'A 2U server on a chain. Still has blinking LEDs.',
     flavorText: 'IT put in a ticket about this. Priority: critical.',
+    materialTags: ['metal', 'electrical'],
     actions: [
-      { name: 'Overhead Slam', damage: 20, description: 'Bring down the server. Literally.' },
-      { name: 'Cable Whip', damage: 14, statusEffect: 'stun', statusDuration: 1, description: 'Ethernet lasso.' },
+      { name: 'Overhead Slam', damage: 20, damageDice: '1d10+2', hitBonus: 5, description: 'Bring down the server. Literally.' },
+      { name: 'Cable Whip', damage: 14, damageDice: '1d10', hitBonus: 4, statusEffect: 'stun', statusDuration: 1, description: 'Ethernet lasso.' },
     ],
   },
   {
@@ -1111,9 +1284,10 @@ export const rareItems: GameItem[] = [
     slot: 'weapon',
     description: 'Three feet of whittled measuring fury.',
     flavorText: 'Measures exactly one yard of regret.',
+    materialTags: ['organic'],
     actions: [
-      { name: 'Lunge', damage: 17, description: 'Precise and pointy.' },
-      { name: 'Measure Twice', damage: 22, description: 'Calculate the optimal stab angle.' },
+      { name: 'Lunge', damage: 17, damageDice: '1d10+2', hitBonus: 5, description: 'Precise and pointy.' },
+      { name: 'Measure Twice', damage: 22, damageDice: '1d10+2', hitBonus: 5, description: 'Calculate the optimal stab angle.' },
     ],
   },
   {
@@ -1123,9 +1297,10 @@ export const rareItems: GameItem[] = [
     slot: 'weapon',
     description: 'Industrial-grade. Fires staples at lethal velocity.',
     flavorText: 'OSHA stopped counting violations after this one.',
+    materialTags: ['metal', 'electrical'],
     actions: [
-      { name: 'Staple Burst', damage: 16, description: 'Rapid-fire staples.' },
-      { name: 'Staple Pin', damage: 12, statusEffect: 'bleed', statusDuration: 3, description: 'Pin them to the wall.' },
+      { name: 'Staple Burst', damage: 16, damageDice: '1d10', hitBonus: 4, description: 'Rapid-fire staples.' },
+      { name: 'Staple Pin', damage: 12, damageDice: '1d8+1', hitBonus: 3, statusEffect: 'bleed', statusDuration: 3, description: 'Pin them to the wall.' },
     ],
   },
   {
@@ -1135,9 +1310,10 @@ export const rareItems: GameItem[] = [
     slot: 'weapon',
     description: 'A braided steel cable ripped from shaft 7.',
     flavorText: 'The elevator is stuck on floor 13 now. Your fault.',
+    materialTags: ['metal'],
     actions: [
-      { name: 'Lash', damage: 18, description: 'Steel bites deep.' },
-      { name: 'Entangle', damage: 10, statusEffect: 'stun', statusDuration: 2, description: 'Wrap around and yank.' },
+      { name: 'Lash', damage: 18, damageDice: '1d10+2', hitBonus: 5, description: 'Steel bites deep.' },
+      { name: 'Entangle', damage: 10, damageDice: '1d8+1', hitBonus: 3, statusEffect: 'stun', statusDuration: 2, description: 'Wrap around and yank.' },
     ],
   },
   {
@@ -1147,9 +1323,10 @@ export const rareItems: GameItem[] = [
     slot: 'weapon',
     description: 'A heavy brass trophy. The plaque says "MOST LIKELY TO SURVIVE."',
     flavorText: 'Awarded posthumously to 14 previous winners.',
+    materialTags: ['metal'],
     actions: [
-      { name: 'Trophy Bash', damage: 19, description: 'You earned this.' },
-      { name: 'Acceptance Speech', damage: 14, viewerBoost: 15, description: '"I\'d like to thank my weapon..."' },
+      { name: 'Trophy Bash', damage: 19, damageDice: '1d10+2', hitBonus: 5, description: 'You earned this.' },
+      { name: 'Acceptance Speech', damage: 14, damageDice: '1d10', hitBonus: 4, viewerBoost: 15, description: '"I\'d like to thank my weapon..."' },
     ],
   },
   {
@@ -1159,9 +1336,10 @@ export const rareItems: GameItem[] = [
     slot: 'weapon',
     description: 'A modified espresso machine. 15 bars of pressure. Aimed at faces.',
     flavorText: 'Triple shot. Of pain.',
+    materialTags: ['metal', 'liquid', 'chemical'],
     actions: [
-      { name: 'Espresso Shot', damage: 15, statusEffect: 'on_fire', statusDuration: 2, description: 'Scalding hot bean water.' },
-      { name: 'Full Pot', damage: 21, description: 'Empty the entire carafe.' },
+      { name: 'Espresso Shot', damage: 15, damageDice: '1d10', hitBonus: 4, statusEffect: 'on_fire', statusDuration: 2, description: 'Scalding hot bean water.' },
+      { name: 'Full Pot', damage: 21, damageDice: '1d10+2', hitBonus: 5, description: 'Empty the entire carafe.' },
     ],
   },
   {
@@ -1171,9 +1349,10 @@ export const rareItems: GameItem[] = [
     slot: 'weapon',
     description: 'A filing drawer worn as a power fist.',
     flavorText: 'Alphabetical order: A is for ANNIHILATION.',
+    materialTags: ['metal'],
     actions: [
-      { name: 'File Punch', damage: 20, description: 'Under F for "Fist."' },
-      { name: 'Drawer Slam', damage: 15, statusEffect: 'stun', statusDuration: 1, description: 'Slam the drawer shut on them.' },
+      { name: 'File Punch', damage: 20, damageDice: '1d10+2', hitBonus: 5, description: 'Under F for "Fist."' },
+      { name: 'Drawer Slam', damage: 15, damageDice: '1d10', hitBonus: 4, statusEffect: 'stun', statusDuration: 1, description: 'Slam the drawer shut on them.' },
     ],
   },
   {
@@ -1183,9 +1362,10 @@ export const rareItems: GameItem[] = [
     slot: 'weapon',
     description: 'A giant dry-erase marker sharpened to a point. Wait—permanent marker.',
     flavorText: 'The damage is... permanent.',
+    materialTags: ['chemical'],
     actions: [
-      { name: 'Slash', damage: 16, statusEffect: 'poison', statusDuration: 3, description: 'The fumes alone are lethal.' },
-      { name: 'Mark for Death', damage: 20, description: 'Draw a big X on their face.' },
+      { name: 'Slash', damage: 16, damageDice: '1d10', hitBonus: 4, statusEffect: 'poison', statusDuration: 3, description: 'The fumes alone are lethal.' },
+      { name: 'Mark for Death', damage: 20, damageDice: '1d10+2', hitBonus: 5, description: 'Draw a big X on their face.' },
     ],
   },
   {
@@ -1195,9 +1375,10 @@ export const rareItems: GameItem[] = [
     slot: 'weapon',
     description: 'Shredder blades strapped to your fingers.',
     flavorText: 'Cross-cut for maximum destruction.',
+    materialTags: ['metal', 'electrical'],
     actions: [
-      { name: 'Shred', damage: 17, statusEffect: 'bleed', statusDuration: 2, description: 'Cross-cut laceration.' },
-      { name: 'Confetti Frenzy', damage: 22, description: 'Everything becomes confetti.' },
+      { name: 'Shred', damage: 17, damageDice: '1d10+2', hitBonus: 5, statusEffect: 'bleed', statusDuration: 2, description: 'Cross-cut laceration.' },
+      { name: 'Confetti Frenzy', damage: 22, damageDice: '1d10+2', hitBonus: 5, description: 'Everything becomes confetti.' },
     ],
   },
   {
@@ -1207,9 +1388,10 @@ export const rareItems: GameItem[] = [
     slot: 'weapon',
     description: 'The janitor\'s personal weapon. Enchanted by years of resentment.',
     flavorText: '"You kids don\'t respect the pipes." — Janitor Kragg',
+    materialTags: ['metal'],
     actions: [
-      { name: 'Wrench Strike', damage: 18, description: 'Percussive maintenance.' },
-      { name: 'Pipe Burst', damage: 14, statusEffect: 'stun', statusDuration: 1, description: 'Hit the pipes. Water everywhere.' },
+      { name: 'Wrench Strike', damage: 18, damageDice: '1d10+2', hitBonus: 5, description: 'Percussive maintenance.' },
+      { name: 'Pipe Burst', damage: 14, damageDice: '1d10', hitBonus: 4, statusEffect: 'stun', statusDuration: 1, description: 'Hit the pipes. Water everywhere.' },
     ],
   },
   {
@@ -1219,9 +1401,10 @@ export const rareItems: GameItem[] = [
     slot: 'weapon',
     description: 'Presentation tool upgraded to "class 4 hazard."',
     flavorText: 'DO NOT LOOK INTO BEAM. DO NOT AIM AT AIRCRAFT. DO AIM AT ENEMIES.',
+    materialTags: ['electrical'],
     actions: [
-      { name: 'Focused Beam', damage: 22, description: 'Burns a hole through anything.' },
-      { name: 'Scatter Shot', damage: 14, statusEffect: 'stun', statusDuration: 1, description: 'Blind them with science.' },
+      { name: 'Focused Beam', damage: 22, damageDice: '1d10+2', hitBonus: 5, description: 'Burns a hole through anything.' },
+      { name: 'Scatter Shot', damage: 14, damageDice: '1d10', hitBonus: 4, statusEffect: 'stun', statusDuration: 1, description: 'Blind them with science.' },
     ],
   },
   {
@@ -1231,9 +1414,10 @@ export const rareItems: GameItem[] = [
     slot: 'weapon',
     description: 'Every conference badge from every terrible conference, linked together.',
     flavorText: 'HELLO MY NAME IS PAIN.',
+    materialTags: ['fabric'],
     actions: [
-      { name: 'Lanyard Lash', damage: 16, description: 'Whip with corporate identity.' },
-      { name: 'Strangle', damage: 20, statusEffect: 'stun', statusDuration: 2, description: 'Wrap around their neck.' },
+      { name: 'Lanyard Lash', damage: 16, damageDice: '1d10', hitBonus: 4, description: 'Whip with corporate identity.' },
+      { name: 'Strangle', damage: 20, damageDice: '1d10+2', hitBonus: 5, statusEffect: 'stun', statusDuration: 2, description: 'Wrap around their neck.' },
     ],
   },
   {
@@ -1243,9 +1427,10 @@ export const rareItems: GameItem[] = [
     slot: 'weapon',
     description: 'An 18V cordless drill on a mop handle.',
     flavorText: 'Charges last about 3 fights. But what fights they are.',
+    materialTags: ['metal', 'electrical'],
     actions: [
-      { name: 'Drill Strike', damage: 21, description: 'BRRRRR right through.' },
-      { name: 'Spin Attack', damage: 15, statusEffect: 'bleed', statusDuration: 2, description: 'Bit goes in, bit comes out.' },
+      { name: 'Drill Strike', damage: 21, damageDice: '1d10+2', hitBonus: 5, description: 'BRRRRR right through.' },
+      { name: 'Spin Attack', damage: 15, damageDice: '1d10', hitBonus: 4, statusEffect: 'bleed', statusDuration: 2, description: 'Bit goes in, bit comes out.' },
     ],
   },
   {
@@ -1255,9 +1440,10 @@ export const rareItems: GameItem[] = [
     slot: 'weapon',
     description: 'Behind glass that says BREAK IN CASE OF EMERGENCY. This qualifies.',
     flavorText: 'HERE\'S... you. Just you. With an axe.',
+    materialTags: ['metal', 'organic'],
     actions: [
-      { name: 'Chop', damage: 22, description: 'A solid swing.' },
-      { name: 'Overhead Cleave', damage: 25, description: 'Everything has a breakpoint.' },
+      { name: 'Chop', damage: 22, damageDice: '1d10+2', hitBonus: 5, description: 'A solid swing.' },
+      { name: 'Overhead Cleave', damage: 25, damageDice: '1d10+2', hitBonus: 5, description: 'Everything has a breakpoint.' },
     ],
   },
   {
@@ -1267,9 +1453,10 @@ export const rareItems: GameItem[] = [
     slot: 'weapon',
     description: 'The CEO\'s desk ornament. Turns out it\'s actually sharp.',
     flavorText: 'Engraved: "To synergy, and beyond."',
+    materialTags: ['metal'],
     actions: [
-      { name: 'Executive Slash', damage: 19, description: 'Cut through red tape and flesh.' },
-      { name: 'Power Move', damage: 23, viewerBoost: 10, description: 'A dramatic finishing move.' },
+      { name: 'Executive Slash', damage: 19, damageDice: '1d10+2', hitBonus: 5, description: 'Cut through red tape and flesh.' },
+      { name: 'Power Move', damage: 23, damageDice: '1d10+2', hitBonus: 5, viewerBoost: 10, description: 'A dramatic finishing move.' },
     ],
   },
   {
@@ -1279,9 +1466,10 @@ export const rareItems: GameItem[] = [
     slot: 'weapon',
     description: 'From the construction on floor 8 that never finished.',
     flavorText: 'The construction has been "ongoing" since 1994. The workers are gone.',
+    materialTags: ['metal'],
     actions: [
-      { name: 'Nail Burst', damage: 20, statusEffect: 'bleed', statusDuration: 2, description: 'Three nails in rapid succession.' },
-      { name: 'Pin Down', damage: 14, statusEffect: 'stun', statusDuration: 2, description: 'Nail their feet to the floor.' },
+      { name: 'Nail Burst', damage: 20, damageDice: '1d10+2', hitBonus: 5, statusEffect: 'bleed', statusDuration: 2, description: 'Three nails in rapid succession.' },
+      { name: 'Pin Down', damage: 14, damageDice: '1d10', hitBonus: 4, statusEffect: 'stun', statusDuration: 2, description: 'Nail their feet to the floor.' },
     ],
   },
   {
@@ -1291,9 +1479,10 @@ export const rareItems: GameItem[] = [
     slot: 'weapon',
     description: 'An uninterruptible power supply that interrupts everything.',
     flavorText: 'BEEP BEEP BEEP BEEP (battery critical) (YOUR battery, not the UPS)',
+    materialTags: ['electrical', 'metal'],
     actions: [
-      { name: 'Shock', damage: 18, statusEffect: 'stun', statusDuration: 1, description: 'Electrical discharge at close range.' },
-      { name: 'Overload', damage: 24, description: 'Dump all the charge at once.' },
+      { name: 'Shock', damage: 18, damageDice: '1d10+2', hitBonus: 5, statusEffect: 'stun', statusDuration: 1, description: 'Electrical discharge at close range.' },
+      { name: 'Overload', damage: 24, damageDice: '1d10+2', hitBonus: 5, description: 'Dump all the charge at once.' },
     ],
   },
   {
@@ -1303,9 +1492,10 @@ export const rareItems: GameItem[] = [
     slot: 'weapon',
     description: 'Ripped from the wall. Water still drips from one end.',
     flavorText: 'Plumbing bill: $14,000. The look on your enemy\'s face: priceless.',
+    materialTags: ['metal', 'liquid'],
     actions: [
-      { name: 'Pipe Strike', damage: 17, description: 'Heavy copper swing.' },
-      { name: 'Geyser', damage: 13, statusEffect: 'stun', statusDuration: 1, description: 'Water blast from the broken end.' },
+      { name: 'Pipe Strike', damage: 17, damageDice: '1d10+2', hitBonus: 5, description: 'Heavy copper swing.' },
+      { name: 'Geyser', damage: 13, damageDice: '1d10', hitBonus: 4, statusEffect: 'stun', statusDuration: 1, description: 'Water blast from the broken end.' },
     ],
   },
   {
@@ -1315,8 +1505,9 @@ export const rareItems: GameItem[] = [
     slot: 'weapon',
     description: 'The industrial paper cutter from the copy room. It cuts more than paper.',
     flavorText: 'Maximum cut capacity: 500 sheets. Or 1 enemy.',
+    materialTags: ['metal'],
     actions: [
-      { name: 'Guillotine', damage: 25, description: 'One clean cut.' },
+      { name: 'Guillotine', damage: 25, damageDice: '1d10+2', hitBonus: 5, description: 'One clean cut.' },
     ],
   },
 
@@ -1328,6 +1519,7 @@ export const rareItems: GameItem[] = [
     slot: 'armor',
     description: 'A full cubicle partition ripped from its moorings.',
     flavorText: 'Now YOU are the open floor plan.',
+    materialTags: ['fabric', 'metal'],
     actions: [
       { name: 'Partition Block', shield: 10, description: 'Hide behind corporate infrastructure.' },
     ],
@@ -1339,6 +1531,7 @@ export const rareItems: GameItem[] = [
     slot: 'armor',
     description: 'Found in the restricted maintenance closet.',
     flavorText: 'Protects against fire. Contains other problems.',
+    materialTags: ['fabric', 'chemical'],
     actions: [
       { name: 'Hazmat Stance', shield: 11, description: 'Sealed protection.' },
     ],
@@ -1350,6 +1543,7 @@ export const rareItems: GameItem[] = [
     slot: 'armor',
     description: 'Interlocking binder clips forming a mesh of armor.',
     flavorText: 'Inter-office mail has never been this defensive.',
+    materialTags: ['metal', 'paper'],
     actions: [
       { name: 'Clip Guard', shield: 9, description: 'Clink clink clink.' },
     ],
@@ -1362,6 +1556,7 @@ export const rareItems: GameItem[] = [
     slot: 'armor',
     description: 'Gold-starred hard hat of the legendary Floor 7 foreman.',
     flavorText: 'He went in. He never came out. His hat did.',
+    materialTags: ['metal'],
     actions: [
       { name: 'Head Block', shield: 8, description: 'Protect the brain.' },
     ],
@@ -1374,6 +1569,7 @@ export const rareItems: GameItem[] = [
     slot: 'armor',
     description: 'Rubber mat strapped to your chest. Grounds all electrical attacks.',
     flavorText: 'You can touch doorknobs without fear now.',
+    materialTags: ['fabric'],
     actions: [
       { name: 'Ground', shield: 9, description: 'Absorb and dissipate.' },
     ],
@@ -1385,6 +1581,7 @@ export const rareItems: GameItem[] = [
     slot: 'armor',
     description: 'The CEO\'s personal briefcase. Surprisingly bulletproof.',
     flavorText: 'Contains: one sandwich, a will, and hope.',
+    materialTags: ['fabric', 'metal'],
     actions: [
       { name: 'Briefcase Block', shield: 11, description: 'Boardroom-grade defense.' },
       { name: 'Case Swing', damage: 13, description: 'Offense is the best defense.' },
@@ -1397,6 +1594,7 @@ export const rareItems: GameItem[] = [
     slot: 'armor',
     description: 'From the R&D floor. What were they reinforcing against?',
     flavorText: 'Stain-resistant. Slash-resistant. Question-resistant.',
+    materialTags: ['fabric'],
     actions: [
       { name: 'Lab Shield', shield: 10, description: 'Science protects you.' },
     ],
@@ -1408,6 +1606,7 @@ export const rareItems: GameItem[] = [
     slot: 'armor',
     description: 'Ripped from the basement. Weighs 40 lbs. You don\'t notice.',
     flavorText: 'The sewer below is not a sewer. Don\'t look down.',
+    materialTags: ['metal'],
     actions: [
       { name: 'Iron Guard', shield: 12, description: 'Cast iron doesn\'t flex.' },
     ],
@@ -1419,6 +1618,7 @@ export const rareItems: GameItem[] = [
     slot: 'armor',
     description: 'Smothers fire. Also smothers attacks.',
     flavorText: 'SMOTHER. ROLL. SURVIVE.',
+    materialTags: ['fabric'],
     actions: [
       { name: 'Smother', shield: 8, description: 'Wrap and protect.' },
       { name: 'Throw', damage: 8, statusEffect: 'stun', statusDuration: 1, description: 'Blind them with safety equipment.' },
@@ -1431,6 +1631,7 @@ export const rareItems: GameItem[] = [
     slot: 'armor',
     description: 'Three cafeteria trays welded together. By whom? With what?',
     flavorText: 'The meatloaf residue has hardened into a secondary armor layer.',
+    materialTags: ['metal'],
     actions: [
       { name: 'Triple Tray Block', shield: 11, description: 'Three times the tray. Three times the defense.' },
     ],
@@ -1444,6 +1645,7 @@ export const rareItems: GameItem[] = [
     slot: 'accessory',
     description: 'Whispers tactical advice from a dead middle manager.',
     flavorText: '"Per my last death, you should dodge left." — The Voice',
+    materialTags: ['electrical', 'supernatural'],
     actions: [
       { name: 'Ghostly Tip', shield: 6, description: 'Spectral warning.' },
     ],
@@ -1456,6 +1658,7 @@ export const rareItems: GameItem[] = [
     slot: 'accessory',
     description: 'Awarded for 40 years of service. Still ticking.',
     flavorText: 'Time is money. This watch is both.',
+    materialTags: ['metal'],
     actions: [],
     passive: { type: 'gold_bonus', value: 20 },
   },
@@ -1466,6 +1669,7 @@ export const rareItems: GameItem[] = [
     slot: 'accessory',
     description: 'Organic, free-range, interdimensional cat treats.',
     flavorText: 'Your cat will tolerate you 15% more.',
+    materialTags: ['organic'],
     actions: [],
     passive: { type: 'cat_bond', value: 8 },
   },
@@ -1476,6 +1680,7 @@ export const rareItems: GameItem[] = [
     slot: 'accessory',
     description: 'A glowing charm that attracts viewers like moths.',
     flavorText: 'SUBSCRIBE. LIKE. SURVIVE.',
+    materialTags: ['metal', 'supernatural'],
     actions: [
       { name: 'Flash', viewerBoost: 20, damage: 5, description: 'Blind with fame.' },
     ],
@@ -1488,6 +1693,7 @@ export const rareItems: GameItem[] = [
     slot: 'accessory',
     description: 'Protects your pocket. And your heart. And your sternum.',
     flavorText: 'Nerd defense technology at its finest.',
+    materialTags: ['metal'],
     actions: [
       { name: 'Deflect', shield: 7, description: 'Pen-proof and sword-proof.' },
     ],
@@ -1500,6 +1706,7 @@ export const rareItems: GameItem[] = [
     slot: 'accessory',
     description: 'Mainline caffeine directly into your bloodstream.',
     flavorText: 'Sleep is for people who aren\'t being hunted by office supplies.',
+    materialTags: ['liquid', 'chemical', 'metal'],
     actions: [
       { name: 'Boost', healing: 12, description: 'Caffeinated regeneration.' },
     ],
@@ -1512,6 +1719,7 @@ export const rareItems: GameItem[] = [
     slot: 'accessory',
     description: 'Grants collective bargaining power against monsters.',
     flavorText: 'You have the right to not be eaten.',
+    materialTags: ['paper'],
     actions: [
       { name: 'Negotiate', shield: 7, description: 'Demand better conditions.' },
     ],
@@ -1524,6 +1732,7 @@ export const rareItems: GameItem[] = [
     slot: 'accessory',
     description: 'The original plans. The building doesn\'t match them at all.',
     flavorText: 'Floor 13 is on these blueprints. The 1974 revision removed it. But it\'s still here.',
+    materialTags: ['paper', 'supernatural'],
     actions: [],
     passive: { type: 'trap_detect', value: 30 },
   },
@@ -1534,6 +1743,7 @@ export const rareItems: GameItem[] = [
     slot: 'accessory',
     description: 'Boosts your broadcast signal. Everyone can see you now.',
     flavorText: 'Signal strength: 5 bars. Signal content: screaming.',
+    materialTags: ['metal', 'electrical'],
     actions: [
       { name: 'Broadcast', viewerBoost: 15, description: 'Amplify your presence.' },
     ],
@@ -1546,6 +1756,7 @@ export const rareItems: GameItem[] = [
     slot: 'accessory',
     description: 'The chi flow in this building is catastrophic.',
     flavorText: 'The needle points at danger. It spins constantly.',
+    materialTags: ['metal', 'supernatural'],
     actions: [],
     passive: { type: 'trap_detect', value: 22 },
   },
@@ -1558,6 +1769,7 @@ export const rareItems: GameItem[] = [
     slot: 'consumable',
     description: 'CLEAR! One use. Makes you feel very alive.',
     flavorText: 'Side effects: consciousness, pain, gratitude.',
+    materialTags: ['electrical', 'metal'],
     actions: [
       { name: 'Shock', healing: 50, description: 'ZAP. Welcome back.' },
     ],
@@ -1569,6 +1781,7 @@ export const rareItems: GameItem[] = [
     slot: 'consumable',
     description: 'Found in a locked drawer. Glows faintly.',
     flavorText: 'Take the pill. What\'s the worst that could happen? (Don\'t answer that.)',
+    materialTags: ['chemical', 'supernatural'],
     actions: [
       { name: 'Swallow', healing: 55, description: 'Either healing or hallucination.' },
     ],
@@ -1580,6 +1793,7 @@ export const rareItems: GameItem[] = [
     slot: 'consumable',
     description: 'A copier toner cartridge rigged to explode.',
     flavorText: 'The printer giveth and the printer taketh away.',
+    materialTags: ['chemical'],
     actions: [
       { name: 'Throw', damage: 25, statusEffect: 'poison', statusDuration: 2, description: 'Black cloud of toxic toner.' },
     ],
@@ -1591,6 +1805,7 @@ export const rareItems: GameItem[] = [
     slot: 'consumable',
     description: 'Microwaved for 45 minutes. Surface of the sun hot.',
     flavorText: 'The center is still frozen somehow.',
+    materialTags: ['organic'],
     actions: [
       { name: 'Eat (Carefully)', healing: 40, description: 'Burn your mouth. Heal your body.' },
       { name: 'Throw', damage: 16, statusEffect: 'on_fire', statusDuration: 3, description: 'Weaponized lunch.' },
@@ -1603,6 +1818,7 @@ export const rareItems: GameItem[] = [
     slot: 'consumable',
     description: 'A jammed printer that produces nothing but smoke.',
     flavorText: 'PC LOAD SMOKE.',
+    materialTags: ['electrical', 'paper'],
     actions: [
       { name: 'Deploy', damage: 14, statusEffect: 'stun', statusDuration: 2, description: 'Paper jam creates a fog of war.' },
     ],
@@ -1614,6 +1830,7 @@ export const rareItems: GameItem[] = [
     slot: 'consumable',
     description: 'Just add water. Or throw it at someone.',
     flavorText: 'Hardens on impact. So do you.',
+    materialTags: ['chemical'],
     actions: [
       { name: 'Throw', damage: 20, statusEffect: 'stun', statusDuration: 2, description: 'Encased in concrete.' },
     ],
@@ -1625,6 +1842,7 @@ export const rareItems: GameItem[] = [
     slot: 'consumable',
     description: 'From the R&D floor. Tastes like ambition and copper.',
     flavorText: 'WARNING: May cause temporary invincibility or temporary death.',
+    materialTags: ['chemical', 'liquid'],
     actions: [
       { name: 'Consume', healing: 45, description: 'Science-flavored recovery.' },
     ],
@@ -1636,6 +1854,7 @@ export const rareItems: GameItem[] = [
     slot: 'consumable',
     description: 'Confiscated from a going-away party. Weaponized.',
     flavorText: 'You will never get the glitter out. Never.',
+    materialTags: ['metal'],
     actions: [
       { name: 'Deploy', damage: 18, statusEffect: 'stun', statusDuration: 2, description: 'Fabulous and disorienting.' },
     ],
@@ -1647,6 +1866,7 @@ export const rareItems: GameItem[] = [
     slot: 'consumable',
     description: '70% alcohol by volume. 100% effective when lit.',
     flavorText: 'Kills 99.9% of germs AND enemies.',
+    materialTags: ['chemical', 'liquid'],
     actions: [
       { name: 'Throw', damage: 22, statusEffect: 'on_fire', statusDuration: 3, description: 'Hygienic hellfire.' },
     ],
@@ -1658,6 +1878,7 @@ export const rareItems: GameItem[] = [
     slot: 'consumable',
     description: 'For allergic reactions. Your allergy: dying.',
     flavorText: 'STAB INTO THIGH. BECOME ALIVE. STAY ALIVE.',
+    materialTags: ['chemical', 'metal'],
     actions: [
       { name: 'Inject', healing: 35, viewerBoost: 10, description: 'Heart rate: YES.' },
     ],
@@ -1678,9 +1899,10 @@ export const legendaryItems: GameItem[] = [
     slot: 'weapon',
     description: 'Both stapled and unstapled until observed. Deals quantum damage.',
     flavorText: 'The stapler is simultaneously full and empty. HR has questions.',
+    materialTags: ['metal', 'supernatural'],
     actions: [
-      { name: 'Quantum Staple', damage: 30, statusEffect: 'existential_dread', statusDuration: 3, description: 'The staple both hits and misses.' },
-      { name: 'Observe', damage: 38, description: 'Collapse the wavefunction. Into their face.' },
+      { name: 'Quantum Staple', damage: 30, damageDice: '2d6+4', hitBonus: 7, statusEffect: 'existential_dread', statusDuration: 3, description: 'The staple both hits and misses.' },
+      { name: 'Observe', damage: 38, damageDice: '2d6+4', hitBonus: 7, description: 'Collapse the wavefunction. Into their face.' },
     ],
   },
   {
@@ -1690,9 +1912,10 @@ export const legendaryItems: GameItem[] = [
     slot: 'weapon',
     description: 'A weapon that IS the void. Not from the void. IS the void.',
     flavorText: 'When you stare into the abyss, the abyss files a complaint with HR.',
+    materialTags: ['supernatural'],
     actions: [
-      { name: 'Dread Strike', damage: 32, statusEffect: 'existential_dread', statusDuration: 4, description: 'Confront them with the meaninglessness of it all.' },
-      { name: 'Void Embrace', damage: 25, healing: 15, description: 'The void gives back sometimes.' },
+      { name: 'Dread Strike', damage: 32, damageDice: '2d6+4', hitBonus: 7, statusEffect: 'existential_dread', statusDuration: 4, description: 'Confront them with the meaninglessness of it all.' },
+      { name: 'Void Embrace', damage: 25, damageDice: '2d6+2', hitBonus: 6, healing: 15, description: 'The void gives back sometimes.' },
     ],
     passive: { type: 'hp_regen', value: 3 },
   },
@@ -1703,9 +1926,10 @@ export const legendaryItems: GameItem[] = [
     slot: 'weapon',
     description: 'A memo so important, reality itself bends around it.',
     flavorText: 'RE: RE: RE: RE: RE: RE: FWD: THE END OF ALL THINGS',
+    materialTags: ['paper', 'supernatural'],
     actions: [
-      { name: 'Paper Cut', damage: 28, statusEffect: 'bleed', statusDuration: 4, description: 'The deepest paper cut in existence.' },
-      { name: 'Reply All', damage: 40, viewerBoost: 25, description: 'The nuclear option.' },
+      { name: 'Paper Cut', damage: 28, damageDice: '2d6+4', hitBonus: 7, statusEffect: 'bleed', statusDuration: 4, description: 'The deepest paper cut in existence.' },
+      { name: 'Reply All', damage: 40, damageDice: '2d6+4', hitBonus: 7, viewerBoost: 25, description: 'The nuclear option.' },
     ],
     passive: { type: 'viewer_boost', value: 25 },
   },
@@ -1716,9 +1940,10 @@ export const legendaryItems: GameItem[] = [
     slot: 'weapon',
     description: 'Contains infinite staples. Each one hits harder than the last.',
     flavorText: 'With all six staples in place, I can simply snap my fingers...',
+    materialTags: ['metal', 'supernatural'],
     actions: [
-      { name: 'Staple Barrage', damage: 30, description: 'Unlimited staple works.' },
-      { name: 'Final Staple', damage: 38, statusEffect: 'stun', statusDuration: 2, description: 'Pin reality itself.' },
+      { name: 'Staple Barrage', damage: 30, damageDice: '2d6+4', hitBonus: 7, description: 'Unlimited staple works.' },
+      { name: 'Final Staple', damage: 38, damageDice: '2d6+4', hitBonus: 7, statusEffect: 'stun', statusDuration: 2, description: 'Pin reality itself.' },
     ],
   },
   {
@@ -1728,9 +1953,10 @@ export const legendaryItems: GameItem[] = [
     slot: 'weapon',
     description: 'Sends faxes to the afterlife. Receives faxes from the future.',
     flavorText: 'INCOMING FAX: "DUCK." — You, 3 seconds from now.',
+    materialTags: ['electrical', 'paper', 'supernatural'],
     actions: [
-      { name: 'Fax Blast', damage: 28, description: 'Paper from beyond the grave.' },
-      { name: 'Prophecy Fax', damage: 22, shield: 10, description: 'Know the future. Act on it.' },
+      { name: 'Fax Blast', damage: 28, damageDice: '2d6+4', hitBonus: 7, description: 'Paper from beyond the grave.' },
+      { name: 'Prophecy Fax', damage: 22, damageDice: '2d6+2', hitBonus: 6, shield: 10, description: 'Know the future. Act on it.' },
     ],
     passive: { type: 'trap_detect', value: 30 },
   },
@@ -1741,9 +1967,10 @@ export const legendaryItems: GameItem[] = [
     slot: 'weapon',
     description: 'A poster that says "REACH FOR THE STARS" that literally creates a gravitational pull.',
     flavorText: 'You reached. The stars reached back.',
+    materialTags: ['paper', 'supernatural'],
     actions: [
-      { name: 'Gravity Well', damage: 32, statusEffect: 'stun', statusDuration: 2, description: 'Pull enemies into the singularity.' },
-      { name: 'Inspire Collapse', damage: 24, viewerBoost: 30, description: 'The crowd goes wild. Reality goes weird.' },
+      { name: 'Gravity Well', damage: 32, damageDice: '2d6+4', hitBonus: 7, statusEffect: 'stun', statusDuration: 2, description: 'Pull enemies into the singularity.' },
+      { name: 'Inspire Collapse', damage: 24, damageDice: '2d6+2', hitBonus: 6, viewerBoost: 30, description: 'The crowd goes wild. Reality goes weird.' },
     ],
     passive: { type: 'viewer_boost', value: 20 },
   },
@@ -1754,9 +1981,10 @@ export const legendaryItems: GameItem[] = [
     slot: 'weapon',
     description: 'It prints your enemies\' obituaries. Before they\'re dead.',
     flavorText: 'PC LOAD ANNIHILATION.',
+    materialTags: ['electrical', 'paper', 'supernatural'],
     actions: [
-      { name: 'Print Obituary', damage: 34, statusEffect: 'existential_dread', statusDuration: 3, description: 'They read their own obituary.' },
-      { name: 'Paper Storm', damage: 26, statusEffect: 'bleed', statusDuration: 3, description: 'A thousand paper cuts.' },
+      { name: 'Print Obituary', damage: 34, damageDice: '2d6+4', hitBonus: 7, statusEffect: 'existential_dread', statusDuration: 3, description: 'They read their own obituary.' },
+      { name: 'Paper Storm', damage: 26, damageDice: '2d6+4', hitBonus: 7, statusEffect: 'bleed', statusDuration: 3, description: 'A thousand paper cuts.' },
     ],
   },
   {
@@ -1766,9 +1994,10 @@ export const legendaryItems: GameItem[] = [
     slot: 'weapon',
     description: 'A mop that has cleaned floors stained with the tears of 10,000 employees.',
     flavorText: '"You think YOU had a bad day?" — The Mop',
+    materialTags: ['metal', 'organic', 'liquid', 'supernatural'],
     actions: [
-      { name: 'Mop of Ages', damage: 30, description: 'Every swipe carries the weight of a thousand cleanups.' },
-      { name: 'Wring Out', damage: 22, statusEffect: 'poison', statusDuration: 3, description: 'The water is not water.' },
+      { name: 'Mop of Ages', damage: 30, damageDice: '2d6+4', hitBonus: 7, description: 'Every swipe carries the weight of a thousand cleanups.' },
+      { name: 'Wring Out', damage: 22, damageDice: '2d6+2', hitBonus: 6, statusEffect: 'poison', statusDuration: 3, description: 'The water is not water.' },
     ],
     passive: { type: 'hp_regen', value: 3 },
   },
@@ -1779,9 +2008,10 @@ export const legendaryItems: GameItem[] = [
     slot: 'weapon',
     description: 'Whoever pulls this spork from the Jell-O shall rule the cafeteria.',
     flavorText: 'It is simultaneously a spoon AND a fork. This is power.',
+    materialTags: ['metal', 'supernatural'],
     actions: [
-      { name: 'Spork Strike', damage: 32, description: 'Neither spoon nor fork. Both spoon and fork.' },
-      { name: 'Royal Feast', damage: 24, healing: 15, description: 'Eat your enemies. Metaphorically. Mostly.' },
+      { name: 'Spork Strike', damage: 32, damageDice: '2d6+4', hitBonus: 7, description: 'Neither spoon nor fork. Both spoon and fork.' },
+      { name: 'Royal Feast', damage: 24, damageDice: '2d6+2', hitBonus: 6, healing: 15, description: 'Eat your enemies. Metaphorically. Mostly.' },
     ],
   },
   {
@@ -1791,9 +2021,10 @@ export const legendaryItems: GameItem[] = [
     slot: 'weapon',
     description: 'THIS IS NOT A DRILL. THIS IS A MEGAPHONE.',
     flavorText: 'ATTENTION ALL FLOORS: SOMETHING TERRIBLE.',
+    materialTags: ['metal', 'electrical'],
     actions: [
-      { name: 'Broadcast', damage: 26, statusEffect: 'stun', statusDuration: 2, viewerBoost: 25, description: 'EVERYONE HEARD THAT.' },
-      { name: 'Feedback Loop', damage: 36, description: 'EEEEEEEEEE\u2014' },
+      { name: 'Broadcast', damage: 26, damageDice: '2d6+4', hitBonus: 7, statusEffect: 'stun', statusDuration: 2, viewerBoost: 25, description: 'EVERYONE HEARD THAT.' },
+      { name: 'Feedback Loop', damage: 36, damageDice: '2d6+4', hitBonus: 7, description: 'EEEEEEEEEE\u2014' },
     ],
     passive: { type: 'viewer_boost', value: 15 },
   },
@@ -1806,6 +2037,7 @@ export const legendaryItems: GameItem[] = [
     slot: 'armor',
     description: 'An executive severance package made physical. Literally golden.',
     flavorText: 'When you fall, you fall UP.',
+    materialTags: ['fabric', 'metal'],
     actions: [
       { name: 'Deploy', shield: 16, description: 'Float above danger.' },
     ],
@@ -1818,6 +2050,7 @@ export const legendaryItems: GameItem[] = [
     slot: 'armor',
     description: 'Forged in the condemned wing of Floor 9. Immune to fire. Immune to lawsuits.',
     flavorText: 'The EPA would like a word. The EPA cannot reach Floor 9.',
+    materialTags: ['chemical', 'supernatural'],
     actions: [
       { name: 'Dragon Guard', shield: 17, description: 'Ancient building material protects you.' },
       { name: 'Toxic Cloud', damage: 16, statusEffect: 'poison', statusDuration: 3, description: 'Don\'t breathe in. Or do. Your choice.' },
@@ -1830,6 +2063,7 @@ export const legendaryItems: GameItem[] = [
     slot: 'armor',
     description: 'The carpet from Floor 6. It\'s alive. It\'s on your side. Probably.',
     flavorText: 'It hums. It writhes. It matches nothing.',
+    materialTags: ['fabric', 'supernatural'],
     actions: [
       { name: 'Carpet Shield', shield: 13, description: 'The carpet wraps around you protectively.' },
       { name: 'Rug Pull', damage: 18, statusEffect: 'stun', statusDuration: 2, description: 'Pull the rug out from under them. Literally.' },
@@ -1843,6 +2077,7 @@ export const legendaryItems: GameItem[] = [
     slot: 'armor',
     description: 'You are inside a vending machine. The vending machine is now your body.',
     flavorText: 'INSERT COIN TO PUNCH.',
+    materialTags: ['metal', 'electrical'],
     actions: [
       { name: 'Dispense Pain', damage: 22, description: 'Your selection: violence.' },
       { name: 'Armored Shell', shield: 18, description: 'Reinforced glass doesn\'t break easy.' },
@@ -1855,6 +2090,7 @@ export const legendaryItems: GameItem[] = [
     slot: 'armor',
     description: 'The building fears this hat. CODE VIOLATIONS HAVE CONSEQUENCES.',
     flavorText: 'Cited: gravity, entropy, and the concept of open floor plans.',
+    materialTags: ['metal'],
     actions: [
       { name: 'Code Violation', damage: 16, shield: 14, description: 'Cite them for existing improperly.' },
     ],
@@ -1867,6 +2103,7 @@ export const legendaryItems: GameItem[] = [
     slot: 'armor',
     description: 'An entire HVAC unit worn as power armor. Climate-controlled combat.',
     flavorText: 'Set to 68\u00B0F. The perfect temperature for violence.',
+    materialTags: ['metal', 'electrical'],
     actions: [
       { name: 'Cold Snap', damage: 16, shield: 14, statusEffect: 'stun', statusDuration: 1, description: 'Blast them with AC.' },
       { name: 'Heat Wave', damage: 22, statusEffect: 'on_fire', statusDuration: 2, description: 'Switch to heating mode.' },
@@ -1881,6 +2118,7 @@ export const legendaryItems: GameItem[] = [
     slot: 'accessory',
     description: 'Press it. Go somewhere that doesn\'t exist. Come back stronger.',
     flavorText: 'Floor ??? selected. Going up. Or down. Or sideways.',
+    materialTags: ['metal', 'supernatural'],
     actions: [
       { name: 'Press Button', damage: 22, statusEffect: 'stun', statusDuration: 2, description: 'Send them to floor ???.' },
       { name: 'Emergency Stop', shield: 15, description: 'Halt between realities.' },
@@ -1894,6 +2132,7 @@ export const legendaryItems: GameItem[] = [
     slot: 'accessory',
     description: 'The legendary coffee mug of Floor 0. It refills itself.',
     flavorText: 'He who drinks from the Grail shall never need a morning meeting again.',
+    materialTags: ['liquid', 'chemical', 'supernatural'],
     actions: [
       { name: 'Sip', healing: 20, description: 'Infinite coffee. Infinite hope.' },
     ],
@@ -1906,6 +2145,7 @@ export const legendaryItems: GameItem[] = [
     slot: 'accessory',
     description: 'Opens every door. Even the ones that shouldn\'t open.',
     flavorText: 'CLEARANCE LEVEL: YES',
+    materialTags: ['metal'],
     actions: [
       { name: 'Flash Badge', shield: 10, viewerBoost: 15, description: 'Everyone respects the badge.' },
     ],
@@ -1918,6 +2158,7 @@ export const legendaryItems: GameItem[] = [
     slot: 'accessory',
     description: 'Your cat demands you wear this. Your cat is right.',
     flavorText: 'ALL HAIL. ALL HAIL. ALL HAIL. (the cat, not you)',
+    materialTags: ['metal', 'supernatural'],
     actions: [
       { name: 'Royal Decree', damage: 16, viewerBoost: 20, description: 'Command with feline authority.' },
     ],
@@ -1930,6 +2171,7 @@ export const legendaryItems: GameItem[] = [
     slot: 'accessory',
     description: 'An ergonomic office chair that grants dominion over all it surveys.',
     flavorText: 'Sit. Rule. Swivel menacingly.',
+    materialTags: ['metal', 'fabric'],
     actions: [
       { name: 'Power Sit', shield: 12, description: 'The posture of authority.' },
       { name: 'Hostile Takeover', damage: 26, viewerBoost: 15, description: 'Spin and strike.' },
@@ -1943,6 +2185,7 @@ export const legendaryItems: GameItem[] = [
     slot: 'accessory',
     description: 'A pulsing orb from the center of the building. It beats.',
     flavorText: 'The building is alive. This is its heart. It chose you.',
+    materialTags: ['supernatural'],
     actions: [
       { name: 'Pulse', healing: 25, shield: 8, description: 'The building protects its champion.' },
     ],
@@ -1955,6 +2198,7 @@ export const legendaryItems: GameItem[] = [
     slot: 'accessory',
     description: 'Forged from pure viewer engagement. Glows with parasocial energy.',
     flavorText: 'You are no longer a person. You are CONTENT.',
+    materialTags: ['metal', 'supernatural'],
     actions: [
       { name: 'Go Viral', damage: 20, viewerBoost: 40, description: 'Instant viral moment.' },
     ],
@@ -1967,6 +2211,7 @@ export const legendaryItems: GameItem[] = [
     slot: 'accessory',
     description: 'Contains the extracted enthusiasm of every employee who ever said "I\'m fine."',
     flavorText: 'It pulses with suppressed feelings.',
+    materialTags: ['supernatural'],
     actions: [
       { name: 'Soul Drain', damage: 20, healing: 18, description: 'Take their energy. Add it to yours.' },
     ],
@@ -1979,6 +2224,7 @@ export const legendaryItems: GameItem[] = [
     slot: 'accessory',
     description: 'Opens the floor that doesn\'t exist. Yes, that one.',
     flavorText: 'The key is warm. The lock is cold. The door... breathes.',
+    materialTags: ['metal', 'supernatural'],
     actions: [
       { name: 'Unlock Reality', damage: 22, statusEffect: 'existential_dread', statusDuration: 3, description: 'Show them what\'s behind door number 13.' },
     ],
@@ -1991,6 +2237,7 @@ export const legendaryItems: GameItem[] = [
     slot: 'accessory',
     description: 'Written on a scroll. The password to the building\'s consciousness.',
     flavorText: 'Password: Stairwell2024! (the building is bad at security)',
+    materialTags: ['paper', 'supernatural'],
     actions: [
       { name: 'Connect', healing: 15, shield: 10, viewerBoost: 20, description: 'Link to the building\'s network.' },
     ],
@@ -2010,9 +2257,10 @@ export const cursedItems: GameItem[] = [
     slot: 'weapon',
     description: '+50 ATK. Hangs above your head. Might fall.',
     flavorText: 'The thread is getting thinner.',
+    materialTags: ['metal', 'supernatural'],
     actions: [
-      { name: 'Inevitable Strike', damage: 40, description: 'Swing the sword that swings for you.' },
-      { name: 'Thread Snap', damage: 50, description: 'Cut the thread. Go all in.' },
+      { name: 'Inevitable Strike', damage: 40, damageDice: '2d8', hitBonus: 5, description: 'Swing the sword that swings for you.' },
+      { name: 'Thread Snap', damage: 50, damageDice: '2d8', hitBonus: 5, description: 'Cut the thread. Go all in.' },
     ],
     cursedDownside: '10% chance each combat turn to take 30 damage from the falling sword.',
   },
@@ -2023,9 +2271,10 @@ export const cursedItems: GameItem[] = [
     slot: 'weapon',
     description: 'It was always here. It was always yours. It WANTS to be used.',
     flavorText: 'I believe you have my stapler...',
+    materialTags: ['metal', 'supernatural'],
     actions: [
-      { name: 'Blood Staple', damage: 35, statusEffect: 'bleed', statusDuration: 4, description: 'Staple them to their own mortality.' },
-      { name: 'Office Rage', damage: 45, description: 'And I said, I don\'t care if they lay me off...' },
+      { name: 'Blood Staple', damage: 35, damageDice: '2d8', hitBonus: 5, statusEffect: 'bleed', statusDuration: 4, description: 'Staple them to their own mortality.' },
+      { name: 'Office Rage', damage: 45, damageDice: '2d8', hitBonus: 5, description: 'And I said, I don\'t care if they lay me off...' },
     ],
     cursedDownside: 'You take 5 bleed damage per turn. The stapler feeds.',
   },
@@ -2036,9 +2285,10 @@ export const cursedItems: GameItem[] = [
     slot: 'weapon',
     description: 'A crystal trophy that amplifies all damage. All of it. Both ways.',
     flavorText: '1ST PLACE: MOST LIKELY TO DEAL AND RECEIVE FATAL DAMAGE.',
+    materialTags: ['metal', 'supernatural'],
     actions: [
-      { name: 'Crystal Strike', damage: 45, description: 'Devastating crystalline blow.' },
-      { name: 'Shatter Surge', damage: 55, description: 'Maximum damage. Maximum risk.' },
+      { name: 'Crystal Strike', damage: 45, damageDice: '2d8', hitBonus: 5, description: 'Devastating crystalline blow.' },
+      { name: 'Shatter Surge', damage: 55, damageDice: '2d8', hitBonus: 5, description: 'Maximum damage. Maximum risk.' },
     ],
     cursedDownside: 'All damage you receive is increased by 50%. Glass doesn\'t protect.',
   },
@@ -2049,9 +2299,10 @@ export const cursedItems: GameItem[] = [
     slot: 'weapon',
     description: 'Prints weapons from thin air. Also prints your darkest secrets.',
     flavorText: 'NOW PRINTING: your browser history. IN COMBAT.',
+    materialTags: ['electrical', 'paper', 'supernatural'],
     actions: [
-      { name: 'Print Blade', damage: 34, description: 'A freshly printed weapon.' },
-      { name: 'Paper Storm', damage: 26, statusEffect: 'bleed', statusDuration: 3, description: 'Death by a thousand prints.' },
+      { name: 'Print Blade', damage: 34, damageDice: '2d8', hitBonus: 5, description: 'A freshly printed weapon.' },
+      { name: 'Paper Storm', damage: 26, damageDice: '2d8', hitBonus: 5, statusEffect: 'bleed', statusDuration: 3, description: 'Death by a thousand prints.' },
     ],
     cursedDownside: 'Randomly prints embarrassing secrets, reducing viewer entertainment by 15.',
   },
@@ -2062,9 +2313,10 @@ export const cursedItems: GameItem[] = [
     slot: 'weapon',
     description: 'Drains life. From enemies. And sometimes from you.',
     flavorText: 'Feed me. FEED ME.',
+    materialTags: ['metal', 'supernatural'],
     actions: [
-      { name: 'Drain Bite', damage: 28, healing: 15, description: 'Steal their vitality.' },
-      { name: 'Blood Frenzy', damage: 38, healing: 20, statusEffect: 'bleed', statusDuration: 3, description: 'The staple remover goes wild.' },
+      { name: 'Drain Bite', damage: 28, damageDice: '2d8', hitBonus: 5, healing: 15, description: 'Steal their vitality.' },
+      { name: 'Blood Frenzy', damage: 38, damageDice: '2d8', hitBonus: 5, healing: 20, statusEffect: 'bleed', statusDuration: 3, description: 'The staple remover goes wild.' },
     ],
     cursedDownside: 'If you end combat below 50% HP, lose 10 additional HP. It\'s still hungry.',
   },
@@ -2075,8 +2327,9 @@ export const cursedItems: GameItem[] = [
     slot: 'weapon',
     description: 'Shows enemies their worst performance review. Shows you yours.',
     flavorText: '"Meets expectations" has never sounded so devastating.',
+    materialTags: ['metal', 'supernatural'],
     actions: [
-      { name: 'Reflect', damage: 32, statusEffect: 'existential_dread', statusDuration: 4, description: 'Show them their Q3 review.' },
+      { name: 'Reflect', damage: 32, damageDice: '2d8', hitBonus: 5, statusEffect: 'existential_dread', statusDuration: 4, description: 'Show them their Q3 review.' },
       { name: 'Self-Review', healing: 25, description: 'Confront your own performance. Grow from it.' },
     ],
     cursedDownside: 'Lose 10% of gold after each floor. Management takes their cut.',
@@ -2088,9 +2341,10 @@ export const cursedItems: GameItem[] = [
     slot: 'weapon',
     description: 'A literal ladder. Climb it to gain power. Fall off to lose everything.',
     flavorText: 'Every rung is slippery. Every rung is worth it.',
+    materialTags: ['metal', 'organic'],
     actions: [
-      { name: 'Ladder Strike', damage: 30, description: 'Hit them with upward mobility.' },
-      { name: 'Climb and Slam', damage: 38, viewerBoost: 20, description: 'Go up. Come down. Hard.' },
+      { name: 'Ladder Strike', damage: 30, damageDice: '2d8', hitBonus: 5, description: 'Hit them with upward mobility.' },
+      { name: 'Climb and Slam', damage: 38, damageDice: '2d8', hitBonus: 5, viewerBoost: 20, description: 'Go up. Come down. Hard.' },
     ],
     cursedDownside: 'If you flee from combat, lose 25% of your gold. Quitters don\'t climb.',
   },
@@ -2101,9 +2355,10 @@ export const cursedItems: GameItem[] = [
     slot: 'weapon',
     description: 'Every action is audited. Every mistake is recorded. Power through accountability.',
     flavorText: 'FINDING #847: Contestant breathed inefficiently on Floor 4.',
+    materialTags: ['paper', 'metal', 'supernatural'],
     actions: [
-      { name: 'Audit Strike', damage: 32, description: 'Cite them for non-compliance.' },
-      { name: 'Final Report', damage: 42, statusEffect: 'existential_dread', statusDuration: 3, description: 'The findings are devastating.' },
+      { name: 'Audit Strike', damage: 32, damageDice: '2d8', hitBonus: 5, description: 'Cite them for non-compliance.' },
+      { name: 'Final Report', damage: 42, damageDice: '2d8', hitBonus: 5, statusEffect: 'existential_dread', statusDuration: 3, description: 'The findings are devastating.' },
     ],
     cursedDownside: 'Consumable items are 50% less effective. Everything is under review.',
   },
@@ -2114,9 +2369,10 @@ export const cursedItems: GameItem[] = [
     slot: 'weapon',
     description: 'A sentient organizational chart. You\'re at the bottom. Always.',
     flavorText: 'CEO \u2192 VP \u2192 Director \u2192 Manager \u2192 You \u2192 Floor \u2192 Dust',
+    materialTags: ['paper', 'supernatural'],
     actions: [
-      { name: 'Restructure', damage: 36, description: 'Reorganize their face.' },
-      { name: 'Downsize', damage: 28, statusEffect: 'existential_dread', statusDuration: 3, description: 'Their position has been eliminated.' },
+      { name: 'Restructure', damage: 36, damageDice: '2d8', hitBonus: 5, description: 'Reorganize their face.' },
+      { name: 'Downsize', damage: 28, damageDice: '2d8', hitBonus: 5, statusEffect: 'existential_dread', statusDuration: 3, description: 'Their position has been eliminated.' },
     ],
     cursedDownside: 'Viewer milestones require 25% more viewers. Management doesn\'t think you\'re ready.',
   },
@@ -2127,9 +2383,10 @@ export const cursedItems: GameItem[] = [
     slot: 'weapon',
     description: 'The building\'s power source. It should NOT be portable.',
     flavorText: 'CAUTION: RADIOACTIVE. CAUTION: WHO GAVE YOU THIS.',
+    materialTags: ['metal', 'electrical', 'chemical'],
     actions: [
-      { name: 'Meltdown', damage: 45, statusEffect: 'on_fire', statusDuration: 3, description: 'Partial meltdown directed at the enemy.' },
-      { name: 'Radiation Pulse', damage: 32, statusEffect: 'poison', statusDuration: 4, description: 'Everything in the room glows.' },
+      { name: 'Meltdown', damage: 45, damageDice: '2d8', hitBonus: 5, statusEffect: 'on_fire', statusDuration: 3, description: 'Partial meltdown directed at the enemy.' },
+      { name: 'Radiation Pulse', damage: 32, damageDice: '2d8', hitBonus: 5, statusEffect: 'poison', statusDuration: 4, description: 'Everything in the room glows.' },
     ],
     cursedDownside: 'Take 3 poison damage per turn in combat. Radiation doesn\'t discriminate.',
   },
@@ -2142,6 +2399,7 @@ export const cursedItems: GameItem[] = [
     slot: 'armor',
     description: 'It wraps around your neck. It fights for you. It\'s getting tighter.',
     flavorText: 'Business casual has never been so threatening.',
+    materialTags: ['fabric', 'supernatural'],
     actions: [
       { name: 'Tie Whip', damage: 22, description: 'The tie extends and strikes.' },
       { name: 'Professional Guard', shield: 14, description: 'Dress for the defense you want.' },
@@ -2155,6 +2413,7 @@ export const cursedItems: GameItem[] = [
     slot: 'armor',
     description: 'Woven from shadows of Floor -1. Makes you nearly invisible.',
     flavorText: 'You smell like mildew and forgotten things.',
+    materialTags: ['fabric', 'supernatural'],
     actions: [
       { name: 'Shadow Wrap', shield: 16, description: 'The darkness protects you.' },
       { name: 'Basement Strike', damage: 28, description: 'Attack from the shadows.' },
@@ -2170,6 +2429,7 @@ export const cursedItems: GameItem[] = [
     slot: 'accessory',
     description: 'Access to a floor that shouldn\'t exist. You shouldn\'t either, now.',
     flavorText: 'EMPLOYEE #000000000. FLOOR: 13. STATUS: [REDACTED].',
+    materialTags: ['metal', 'supernatural'],
     actions: [
       { name: 'Phase Shift', damage: 25, shield: 12, description: 'Slip between floors of reality.' },
     ],
@@ -2183,9 +2443,10 @@ export const cursedItems: GameItem[] = [
     slot: 'weapon',
     description: 'A miniature vending machine that eats gold and dispenses violence.',
     flavorText: 'INSERT SOUL. RECEIVE SNACK.',
+    materialTags: ['metal', 'electrical', 'supernatural'],
     actions: [
-      { name: 'Dispense', damage: 36, description: 'It vends destruction.' },
-      { name: 'Coin Barrage', damage: 28, viewerBoost: 20, description: 'Your gold becomes projectiles.' },
+      { name: 'Dispense', damage: 36, damageDice: '2d8', hitBonus: 5, description: 'It vends destruction.' },
+      { name: 'Coin Barrage', damage: 28, damageDice: '2d8', hitBonus: 5, viewerBoost: 20, description: 'Your gold becomes projectiles.' },
     ],
     cursedDownside: 'Consumes 10 gold after every combat. If you can\'t pay, it takes 15 HP instead.',
   },
@@ -2196,6 +2457,7 @@ export const cursedItems: GameItem[] = [
     slot: 'accessory',
     description: 'Infinite coffee. You can never stop drinking.',
     flavorText: 'You haven\'t slept since Floor 2. Your hands vibrate at a frequency that hurts.',
+    materialTags: ['liquid', 'chemical', 'supernatural'],
     actions: [
       { name: 'Overcaffeinate', damage: 16, healing: 20, description: 'Drink more. Feel less.' },
     ],
@@ -2209,6 +2471,7 @@ export const cursedItems: GameItem[] = [
     slot: 'accessory',
     description: 'Plays smooth jazz that never, ever stops.',
     flavorText: '*bossa nova intensifies*',
+    materialTags: ['electrical', 'supernatural'],
     actions: [
       { name: 'Smooth Jazz Attack', damage: 20, statusEffect: 'stun', statusDuration: 2, description: 'The music is inescapable.' },
     ],
@@ -2222,6 +2485,7 @@ export const cursedItems: GameItem[] = [
     slot: 'accessory',
     description: 'Time moves differently. You get extra turns. You age faster.',
     flavorText: 'It\'s always 5:01 PM. You can never leave.',
+    materialTags: ['metal', 'supernatural'],
     actions: [
       { name: 'Time Crunch', damage: 35, description: 'Compress time violently.' },
     ],
@@ -2234,6 +2498,7 @@ export const cursedItems: GameItem[] = [
     slot: 'accessory',
     description: 'A spectral former employee bound to your service.',
     flavorText: '"I gave 30 years to this company. Now I give them to you."',
+    materialTags: ['supernatural'],
     actions: [
       { name: 'Spectral Strike', damage: 30, description: 'The ghost attacks with decades of rage.' },
       { name: 'Ghostly Shield', shield: 12, description: 'The ghost interposes itself.' },
@@ -2248,6 +2513,7 @@ export const cursedItems: GameItem[] = [
     slot: 'accessory',
     description: 'You can\'t unequip this. But the gold generation is very nice.',
     flavorText: 'The benefits are too good to leave.',
+    materialTags: ['metal', 'supernatural'],
     actions: [
       { name: 'Chain Strike', damage: 20, description: 'Swing the chains.' },
     ],
@@ -2261,6 +2527,7 @@ export const cursedItems: GameItem[] = [
     slot: 'accessory',
     description: 'A hovering spectral boss who criticizes everything but also fights for you.',
     flavorText: '"That slash was adequate. Let\'s schedule a 1-on-1 to discuss your combat technique."',
+    materialTags: ['supernatural'],
     actions: [
       { name: 'Constructive Criticism', damage: 32, statusEffect: 'existential_dread', statusDuration: 3, description: 'The feedback is brutal.' },
       { name: 'Performance Improvement Plan', damage: 36, description: 'This is their final warning.' },
@@ -2274,6 +2541,7 @@ export const cursedItems: GameItem[] = [
     slot: 'accessory',
     description: 'Incredible defensive power. Slowly killing you.',
     flavorText: 'Banned in 47 countries. Not banned on Floor 9.',
+    materialTags: ['chemical', 'supernatural'],
     actions: [
       { name: 'Toxic Guard', shield: 18, description: 'The forbidden mineral protects you.' },
     ],
@@ -2286,6 +2554,7 @@ export const cursedItems: GameItem[] = [
     slot: 'accessory',
     description: 'Grants wishes. Badly.',
     flavorText: 'Wish 1: Power. Granted. Wish 2: More power. Granted. Wish 3: ...',
+    materialTags: ['organic', 'supernatural'],
     actions: [
       { name: 'Wish for Pain', damage: 40, description: 'Wish granted. For them.' },
       { name: 'Wish for Health', healing: 35, description: 'Wish granted. The paw curls.' },
@@ -2299,6 +2568,7 @@ export const cursedItems: GameItem[] = [
     slot: 'accessory',
     description: 'A signed deal with the building itself. Great benefits. Read the fine print.',
     flavorText: 'WHEREAS the PARTY OF THE FIRST PART (the Building) shall grant...',
+    materialTags: ['paper', 'supernatural'],
     actions: [
       { name: 'Invoke Clause', damage: 26, shield: 12, description: 'The contract empowers you.' },
     ],
@@ -2312,6 +2582,7 @@ export const cursedItems: GameItem[] = [
     slot: 'accessory',
     description: 'Stolen from the cat\'s secret stash. The cat is NOT happy.',
     flavorText: 'The cat watches. The cat remembers. The cat plots.',
+    materialTags: ['fabric', 'supernatural'],
     actions: [
       { name: 'Feline Fury', damage: 32, description: 'Channel the cat\'s rage.' },
       { name: 'Nine Lives', healing: 30, description: 'One of nine. Use wisely.' },
@@ -2325,6 +2596,7 @@ export const cursedItems: GameItem[] = [
     slot: 'accessory',
     description: 'Audio feedback made solid. Screeches with every hit.',
     flavorText: 'EEEEEEEEEEEEEEEEEEEE',
+    materialTags: ['metal', 'electrical', 'supernatural'],
     actions: [
       { name: 'Feedback Screech', damage: 24, statusEffect: 'stun', statusDuration: 2, description: 'EEEEEEE\u2014' },
     ],
@@ -2338,6 +2610,7 @@ export const cursedItems: GameItem[] = [
     slot: 'accessory',
     description: 'Glows with the light of exits that don\'t exist.',
     flavorText: 'EXIT \u2190 (there is no exit)',
+    materialTags: ['electrical', 'supernatural'],
     actions: [
       { name: 'False Exit', damage: 22, statusEffect: 'stun', statusDuration: 3, description: 'They run toward it. There\'s nothing there.' },
     ],
@@ -2351,6 +2624,7 @@ export const cursedItems: GameItem[] = [
     slot: 'accessory',
     description: 'Open it for powerful random effects. Not all of them are good.',
     flavorText: 'SUGGESTION: "Please stop opening the box." \u2014 Previous Contestant',
+    materialTags: ['metal', 'supernatural'],
     actions: [
       { name: 'Open Box', damage: 36, healing: 15, description: 'Something comes out. Something always comes out.' },
     ],
@@ -2364,6 +2638,7 @@ export const cursedItems: GameItem[] = [
     slot: 'accessory',
     description: 'A sound that shouldn\'t exist from a floor that was never built.',
     flavorText: 'You hear it in your teeth. You see it in your dreams.',
+    materialTags: ['supernatural'],
     actions: [
       { name: 'Resonance', damage: 35, statusEffect: 'existential_dread', statusDuration: 4, description: 'The sound unmakes.' },
     ],

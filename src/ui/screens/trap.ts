@@ -4,6 +4,8 @@ import { updateHud } from '../components/hud';
 import { updateEntertainment } from '../../engine/viewers';
 import { renderAnnouncer } from '../components/announcer';
 import { announcerTrapRoom } from '../../data/announcer-lines';
+import { audio } from '../../engine/audio';
+import { triggerViewerChat } from '../components/viewer-chat';
 import type { GamePhase, TrapRoom } from '../../types';
 
 export function renderTrapScreen(container: HTMLElement, onTransition: (next: GamePhase) => void): void {
@@ -36,11 +38,17 @@ export function renderTrapScreen(container: HTMLElement, onTransition: (next: Ga
   const choices = el('div', 'trap-choices');
 
   const riskBtn = el('button', 'btn btn-action trap-choice-risk', trap.riskChoice);
-  riskBtn.addEventListener('click', () => resolveRisk(trap, container, onTransition));
+  riskBtn.addEventListener('click', () => {
+    audio.playButtonClick();
+    resolveRisk(trap, container, onTransition);
+  });
   choices.appendChild(riskBtn);
 
   const safeBtn = el('button', 'btn btn-action trap-choice-safe', trap.safeChoice);
-  safeBtn.addEventListener('click', () => resolveSafe(container, onTransition));
+  safeBtn.addEventListener('click', () => {
+    audio.playButtonClick();
+    resolveSafe(container, onTransition);
+  });
   choices.appendChild(safeBtn);
 
   container.appendChild(choices);
@@ -54,6 +62,7 @@ function resolveRisk(trap: TrapRoom, container: HTMLElement, onTransition: (next
   container.className = 'screen trap-screen';
 
   if (success) {
+    audio.playGoldPickup();
     const result = el('div', 'trap-result trap-result-success');
 
     if (typeof trap.riskReward === 'number') {
@@ -73,6 +82,8 @@ function resolveRisk(trap: TrapRoom, container: HTMLElement, onTransition: (next
 
     container.appendChild(result);
   } else {
+    triggerViewerChat('trap_triggered');
+    audio.playHit(trap.riskDamage);
     const result = el('div', 'trap-result trap-result-failure');
     result.textContent = `Failed! You take ${trap.riskDamage} damage!`;
     container.appendChild(result);

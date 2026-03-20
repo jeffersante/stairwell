@@ -4,6 +4,8 @@ import { updateHud } from '../components/hud';
 import { renderItemCard } from '../components/item-card';
 import { renderAnnouncer } from '../components/announcer';
 import { announcerItemPickup } from '../../data/announcer-lines';
+import { audio } from '../../engine/audio';
+import { triggerViewerChat } from '../components/viewer-chat';
 import type { GamePhase, LootRoom, GameItem } from '../../types';
 
 export function renderLootScreen(container: HTMLElement, onTransition: (next: GamePhase) => void): void {
@@ -80,6 +82,8 @@ export function renderLootScreen(container: HTMLElement, onTransition: (next: Ga
 }
 
 function pickUpItem(item: GameItem): void {
+  audio.playItemPickup();
+  triggerViewerChat('item_pickup');
   modifyRun(s => {
     s.itemsFound.push(item.id);
     if (item.slot === 'consumable') {

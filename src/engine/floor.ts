@@ -182,6 +182,7 @@ function createFallbackEnemy(floorNumber: number): Enemy {
     description: 'A suspiciously large rat that seems to own the place.',
     floorRange: [1, 999],
     hp: Math.round(20 * hpScale),
+    armorClass: Math.min(8 + Math.floor(floorNumber / 3), 18),
     actions: [
       { name: 'Bite', damage: Math.round(5 * (1 + floorNumber * 0.1)), telegraph: 'The rat bares its teeth...' },
       { name: 'Scratch', damage: Math.round(3 * (1 + floorNumber * 0.1)), telegraph: 'The rat raises its claws...' },

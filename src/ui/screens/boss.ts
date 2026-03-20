@@ -2,15 +2,20 @@ import { el, pickRandom, clamp } from '../../utils';
 import { getRunState, modifyRun } from '../../engine/state';
 import {
   initCombat, getAvailableActions, resolvePlayerAction,
-  resolveEnemyTurn, tickStatusEffects, isCombatOver, advanceEnemyAction
+  resolveEnemyTurn, tickStatusEffects, isCombatOver, advanceEnemyAction,
+  tickClassAbilityCooldowns
 } from '../../engine/combat';
 import { updateEntertainment } from '../../engine/viewers';
 import { catGainXp } from '../../engine/cat';
+import { getXpFromCombat, applyPlayerLevelUp, checkPlayerLevelUp } from '../../engine/progression';
 import { renderEnemyDisplay, updateEnemyDisplay } from '../components/enemy-display';
 import { updateHud } from '../components/hud';
 import { renderAnnouncer } from '../components/announcer';
 import { shake, damageFloat, hpFlash } from '../animations';
+import { animateDiceRoll } from '../dice-animation';
 import { announcerBossIntro, announcerBossWin } from '../../data/announcer-lines';
+import { audio } from '../../engine/audio';
+import { triggerViewerChat } from '../components/viewer-chat';
 import type { GamePhase, CombatRoom, Boss } from '../../types';
 
 export function renderBossScreen(container: HTMLElement, onTransition: (next: GamePhase) => void): void {
@@ -26,6 +31,7 @@ export function renderBossScreen(container: HTMLElement, onTransition: (next: Ga
 
   // Show intro first if combat hasn't started
   if (!state.combatState) {
+    triggerViewerChat('boss_encounter');
     renderBossIntro(container, combatData, boss, onTransition);
     return;
   }
@@ -58,6 +64,8 @@ function renderBossIntro(
   const actions = el('div', 'screen-actions');
   const fightBtn = el('button', 'btn btn-action btn-danger', 'FIGHT');
   fightBtn.addEventListener('click', () => {
+    audio.playButtonClick();
+    audio.playDiceRoll();
     modifyRun(s => { s.combatState = initCombat(combatData.enemy); });
     renderBossScreen(container, onTransition);
   });
@@ -138,8 +146,13 @@ function renderBossActions(container: HTMLElement, onTransition: (next: GamePhas
     for (let j = i; j < Math.min(i + 2, available.length); j++) {
       const { source, action } = available[j];
       const btn = el('button', 'btn');
-      btn.innerHTML = `<strong>${action.name}</strong><br><span class="text-xs text-dim">${source}${action.damage ? ` | ${action.damage} dmg` : ''}</span>`;
-      btn.addEventListener('click', () => executeBossTurn(action.name, container, onTransition));
+      const dmgText = action.damageDice ? ` | ${action.damageDice}` : action.damage ? ` | ${action.damage} dmg` : '';
+      const healText = action.healing ? ` | +${action.healing} hp` : '';
+      btn.innerHTML = `<strong>${action.name}</strong><br><span class="text-xs text-dim">${source}${dmgText}${healText}</span>`;
+      btn.addEventListener('click', () => {
+        audio.playButtonClick();
+        executeBossTurn(action.name, container, onTransition);
+      });
       row.appendChild(btn);
     }
     actionsEl.appendChild(row);
@@ -170,11 +183,40 @@ function executeBossTurn(actionName: string, container: HTMLElement, onTransitio
     s.viewers = updateEntertainment(s.viewers, 'risky_action');
   });
 
+  // Dice animation for attacks
+  if (result.attackRoll) {
+    animateDiceRoll({
+      die: 'd20',
+      result: result.attackRoll.results[0],
+      critical: result.critical ?? false,
+      fumble: result.fumble ?? false,
+      container,
+      onComplete: () => {
+        if (result.critical) triggerViewerChat('critical_hit');
+        if (result.fumble) triggerViewerChat('fumble');
+        handleBossPostAction(result, container, onTransition);
+      },
+    });
+  } else {
+    handleBossPostAction(result, container, onTransition);
+  }
+}
+
+function handleBossPostAction(
+  result: { damage: number; healing: number; hit?: boolean; critical?: boolean; fumble?: boolean },
+  container: HTMLElement,
+  onTransition: (next: GamePhase) => void
+): void {
+  const state = getRunState();
+
   const enemyEmoji = document.getElementById('enemy-emoji');
   if (enemyEmoji && result.damage > 0) {
     shake(enemyEmoji);
     damageFloat(enemyEmoji.parentElement!, result.damage, 'dealt');
+    audio.playHit(result.damage);
+    if (result.critical) audio.playCritical();
   }
+  if (result.hit === false && !result.fumble) audio.playMiss();
 
   const check1 = isCombatOver(state.combatState!, state.hp);
   if (check1.over) {
@@ -193,12 +235,17 @@ function executeBossTurn(actionName: string, container: HTMLElement, onTransitio
       s.combatState!.log.push(...enemyResult.logEntries);
       if (enemyResult.damage > 0) {
         s.viewers = updateEntertainment(s.viewers, 'took_damage');
+        audio.playHit(enemyResult.damage);
       }
     });
 
     const playerHpFill = document.getElementById('player-hp-fill');
     if (playerHpFill && enemyResult.damage > 0) {
       hpFlash(playerHpFill);
+    }
+
+    if (state.hp > 0 && state.hp <= state.maxHp * 0.2) {
+      triggerViewerChat('low_hp');
     }
 
     const statusTick = tickStatusEffects(state.combatState!);
@@ -212,6 +259,7 @@ function executeBossTurn(actionName: string, container: HTMLElement, onTransitio
       const c = s.combatState!;
       c.enemyNextAction = advanceEnemyAction(c, s.rng);
       c.turn++;
+      s.classAbilityCooldowns = tickClassAbilityCooldowns(s.classAbilityCooldowns);
     });
 
     const check2 = isCombatOver(state.combatState!, state.hp);
@@ -236,6 +284,7 @@ function finishBossCombat(playerWon: boolean, container: HTMLElement, onTransiti
   if (playerWon) {
     const enemy = state.combatState!.enemy;
     const goldEarned = enemy.goldDrop[0] + Math.floor(state.rng() * (enemy.goldDrop[1] - enemy.goldDrop[0] + 1));
+    const xpEarned = getXpFromCombat(enemy.xpDrop * 3, state.floorNumber, state.playerClass);
 
     modifyRun(s => {
       s.gold += goldEarned;
@@ -243,10 +292,21 @@ function finishBossCombat(playerWon: boolean, container: HTMLElement, onTransiti
       s.roomsExplored++;
       if (s.currentRoom) s.currentRoom.explored = true;
       s.viewers = updateEntertainment(s.viewers, 'boss_kill');
+      s.playerXp += xpEarned;
     });
+
+    const levelResult = checkPlayerLevelUp(state);
+    if (levelResult.leveled) {
+      modifyRun(s => { applyPlayerLevelUp(s); });
+      audio.playLevelUp();
+      triggerViewerChat('level_up');
+    }
 
     const catResult = catGainXp(state.cat, enemy.xpDrop * 3);
     modifyRun(s => { s.cat = catResult.cat; });
+
+    triggerViewerChat('boss_kill');
+    audio.playGoldPickup();
 
     const reward = el('div', 'reward-container');
     reward.appendChild(el('div', 'reward-title', 'BOSS DEFEATED'));
@@ -257,10 +317,15 @@ function finishBossCombat(playerWon: boolean, container: HTMLElement, onTransiti
     }
 
     reward.appendChild(el('div', 'reward-gold', `+${goldEarned} gold`));
-    reward.appendChild(el('div', 'reward-xp', `+${enemy.xpDrop * 3} cat XP`));
+    reward.appendChild(el('div', 'reward-xp', `+${xpEarned} XP`));
+
+    if (levelResult.leveled) {
+      reward.appendChild(el('div', 'text-gold text-center', `Level up! Now level ${levelResult.newLevel}!`));
+    }
 
     const continueBtn = el('button', 'btn btn-action btn-action-primary', 'Descend Deeper');
     continueBtn.addEventListener('click', () => {
+      audio.playButtonClick();
       modifyRun(s => { s.combatState = null; s.phase = 'floor_complete'; });
       onTransition('floor_complete');
     });
@@ -268,6 +333,8 @@ function finishBossCombat(playerWon: boolean, container: HTMLElement, onTransiti
 
     container.appendChild(reward);
   } else {
+    triggerViewerChat('player_death');
+    audio.playDeath();
     modifyRun(s => { s.combatState = null; });
     onTransition('death');
   }

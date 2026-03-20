@@ -1,6 +1,73 @@
-import type { RunState, MetaState, GameItem, CatState, CatAbility } from '../types';
+import type { RunState, MetaState, GameItem, CatState, CatAbility, PlayerStats, ClassAbility } from '../types';
 import { allUnlocks } from '../data/unlocks';
 import { allItems } from '../data/items';
+import { getClassById } from '../data/classes';
+
+// === XP Thresholds ===
+
+const PLAYER_XP_THRESHOLDS = [0, 25, 60, 100, 150, 210, 280, 360, 450, 550];
+
+export function getPlayerXpThreshold(level: number): number {
+  if (level < 1 || level >= PLAYER_XP_THRESHOLDS.length) return Infinity;
+  return PLAYER_XP_THRESHOLDS[level];
+}
+
+export function checkPlayerLevelUp(runState: RunState): {
+  leveled: boolean;
+  newLevel: number;
+  statIncrease?: { stat: keyof PlayerStats; amount: number };
+  newAbility?: ClassAbility;
+} {
+  const threshold = getPlayerXpThreshold(runState.playerLevel);
+  if (runState.playerXp < threshold || runState.playerLevel >= 10) {
+    return { leveled: false, newLevel: runState.playerLevel };
+  }
+
+  const newLevel = runState.playerLevel + 1;
+
+  // Random stat increase
+  const statKeys: (keyof PlayerStats)[] = ['str', 'dex', 'con', 'int', 'wis', 'cha'];
+  const randomStat = statKeys[Math.floor(runState.rng() * statKeys.length)];
+  const statIncrease = { stat: randomStat, amount: 1 };
+
+  // Check for new class ability unlock
+  let newAbility: ClassAbility | undefined;
+  const playerClass = getClassById(runState.playerClass);
+  if (playerClass) {
+    for (const ability of playerClass.abilityTree) {
+      if (ability.levelRequired === newLevel) {
+        newAbility = ability;
+        break;
+      }
+    }
+  }
+
+  return { leveled: true, newLevel, statIncrease, newAbility };
+}
+
+export function applyPlayerLevelUp(runState: RunState): void {
+  const result = checkPlayerLevelUp(runState);
+  if (!result.leveled) return;
+
+  runState.playerLevel = result.newLevel;
+  runState.maxHp += 5;
+  runState.hp = Math.min(runState.hp + 5, runState.maxHp);
+
+  if (result.statIncrease) {
+    runState.playerStats[result.statIncrease.stat] += result.statIncrease.amount;
+  }
+}
+
+export function getXpFromCombat(enemyXpDrop: number, floorNumber: number, playerClass: string): number {
+  const floorMultiplier = 1 + floorNumber / 10;
+  let xp = Math.floor(enemyXpDrop * floorMultiplier);
+  if (playerClass === 'intern') {
+    xp *= 2;
+  }
+  return xp;
+}
+
+// === SP Calculation ===
 
 export function calculateSP(runState: RunState): number {
   const floorPoints = runState.floorNumber * 10;
@@ -13,6 +80,8 @@ export function calculateSP(runState: RunState): number {
 
   return floorPoints + killPoints + viewerPoints + bossPoints;
 }
+
+// === Meta Unlock System ===
 
 export function canPurchaseUnlock(unlockId: string, metaState: MetaState): boolean {
   if (metaState.unlocks.includes(unlockId)) return false;
@@ -61,6 +130,8 @@ export function getStartingViewers(metaState: MetaState): number {
 
   return 50 + extraViewers;
 }
+
+// === Cat Progression ===
 
 export function getCatXpForAction(action: 'combat_win' | 'boss_win' | 'pet' | 'item_use'): number {
   switch (action) {
